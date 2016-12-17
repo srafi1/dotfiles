@@ -1,0 +1,10 @@
+#! /bin/bash
+
+if [ -d ".git" ]
+then
+git add .
+git commit -m "Commiting with gpush"
+git push
+else
+echo "This is not a git dir"
+fi

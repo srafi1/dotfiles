@@ -2,7 +2,7 @@
 
 if [ -d ".git" ]
 then
-git add .
+git add . -A
 git commit -m "Commiting with gpush"
 git push
 else

@@ -31,6 +31,8 @@
 (add-hook 'java-mode-hook 'ajc-java-complete-mode)
 (add-hook 'find-file-hook 'ajc-4-jsp-find-file-hook)
 
+(yas-global-mode 1)
+
 (setq show-paren-delay 0)
 (show-paren-mode 1)
 (global-set-key (kbd "RET") 'newline-and-indent)

@@ -1,8 +1,9 @@
+
 (require 'package) ;; You might already have this line
-(add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/"))
-(when (< emacs-major-version 24)
-  ;; For important compatibility libraries like cl-lib
+ (add-to-list 'package-archives
+              '("melpa" . "https://melpa.org/packages/"))
+ (when (< emacs-major-version 24)
+For important compatibility libraries like cl-lib
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize) ;; You might already have this line
 
@@ -26,24 +27,31 @@
  ;; If there is more than one, they won't work right.
  )
 
-(add-to-list 'load-path "~/.emacs.d/auto-java-complete/")
-(require 'ajc-java-complete-config)
-(add-hook 'java-mode-hook 'ajc-java-complete-mode)
-(add-hook 'find-file-hook 'ajc-4-jsp-find-file-hook)
+(defun comment-or-uncomment-region-or-line ()
+  "Comments or uncomments the region or the current line if there's no active region."
+  (interactive)
+  (let (beg end)
+    (if (region-active-p)
+	(progn
+	 (goto-char (region-beginning))
+	 (setq beg (line-beginning-position))
+	 (goto-char (region-end))
+	 (setq end (line-end-position)))
+      (setq beg (line-beginning-position) end (line-end-position)))
+    (comment-or-uncomment-region beg end)))
 
 (yas-global-mode 1)
-
 (setq show-paren-delay 0)
 (show-paren-mode 1)
-(global-set-key (kbd "RET") 'newline-and-indent)
-
 (global-linum-mode t)
 (global-hl-line-mode t)
+(global-auto-complete-mode 1)
 
+(global-set-key (kbd "RET") 'newline-and-indent)
 (global-set-key (kbd "C-c C-c") 'kill-ring-save)
 (global-set-key (kbd "C-x C-x") 'kill-region)
 (global-set-key (kbd "C-v") 'yank)
 (global-set-key (kbd "C-y") 'kill-whole-line)
 (global-set-key (kbd "M-f") 'find-file)
-(global-set-key (kbd "C-;") 'comment-or-uncomment-region)
+(global-set-key (kbd "C-;") 'comment-or-uncomment-region-or-line)
 (global-set-key (kbd "C-x C-a") 'mark-whole-buffer)

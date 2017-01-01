@@ -45,6 +45,7 @@ For important compatibility libraries like cl-lib
 (global-linum-mode t)
 (global-hl-line-mode t)
 (global-auto-complete-mode 1)
+(delete-selection-mode 1)
 
 (global-set-key (kbd "RET") 'newline-and-indent)
 (global-set-key (kbd "C-c C-c") 'kill-ring-save)

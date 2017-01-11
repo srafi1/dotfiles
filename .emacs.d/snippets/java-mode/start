@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: classTemplate
+# key: start
+# --
+public class ${1:`(substring (file-name-nondirectory (buffer-file-name)) 0 -5)`} $2 {
+    $0
+}

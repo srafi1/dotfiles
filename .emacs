@@ -56,3 +56,4 @@ For important compatibility libraries like cl-lib
 (global-set-key (kbd "C-;") 'comment-or-uncomment-region-or-line)
 (global-set-key (kbd "C-x C-a") 'mark-whole-buffer)
 (global-set-key (kbd "C-j") 'goto-line)
+(global-set-key (kbd "C-f") 'revert-buffer)

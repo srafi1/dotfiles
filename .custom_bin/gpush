@@ -1,9 +1,16 @@
 #! /bin/bash
 
+if [ "$1asdf" = "asdf" ]
+then
+msg="Automatic commit message"
+else
+msg="$1"
+fi
+
 if [ -d ".git" ]
 then
 git add . -A
-git commit -m "Commiting with gpush"
+git commit -m "$msg"
 git push
 else
 echo "This is not a git dir"

@@ -57,3 +57,5 @@ For important compatibility libraries like cl-lib
 (global-set-key (kbd "C-x C-a") 'mark-whole-buffer)
 (global-set-key (kbd "C-j") 'goto-line)
 (global-set-key (kbd "C-f") 'revert-buffer)
+(global-set-key (kbd "M-j") 'beginning-of-line)
+(global-set-key (kbd "M-;") 'end-of-line)

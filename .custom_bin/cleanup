@@ -4,7 +4,7 @@ find -name "*#" > del
 find -name "*~" >> del
 
 while read -r LINE; do
-rm -v $LINE
+rm -v "$LINE"
 done < del
 
 rm del

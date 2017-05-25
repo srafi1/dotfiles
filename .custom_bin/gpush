@@ -11,6 +11,7 @@ if [ -d ".git" ]
 then
 git add . -A
 git commit -m "$msg"
+git pull
 git push
 else
 echo "This is not a git dir"

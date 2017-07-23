@@ -1,0 +1,55 @@
+execute pathogen#infect()
+filetype on
+syntax on
+colorscheme darcula
+set t_ut= " fixes bg color
+set number
+"set colorcolumn=90
+let mapleader=" "
+map <Leader>s :source ~/.vimrc<CR> 
+set hidden
+set history=100
+filetype indent on
+set wrap
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set smartindent
+set autoindent
+set hlsearch
+set showmatch
+set splitbelow
+set splitright
+set laststatus=2 " for lightline to work with only one screen
+nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
+nnoremap <Leader><Leader> :e#<CR>
+let NERDTreeMapActivateNode='l'
+let NERDTreeShowHidden=1
+nmap <leader>g :NERDTreeToggle<CR>
+let NERDTreeIgnore=['\.DS_Store', '\~$', '\.swp', '\.class$', '\.git$[[dir]]', '\.pyc$']
+nnoremap <leader>f :edit 
+let g:multi_cursor_next_key='<C-o>'
+let g:multi_cursor_prev_key='<C-y>'
+let g:multi_cursor_skip_key='<C-u>'
+let g:multi_cursor_quit_key='<C-i>'
+nnoremap <leader>l :vsp<CR>
+nnoremap <leader>h :rightb vsp<CR>
+nnoremap <leader>j :bel split<CR>
+nnoremap <leader>k :split<CR>
+nnoremap <C-l> <C-w>l
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w><C-w>
+nnoremap <C-k> <C-w>W
+nnoremap <M-h> <C-w><
+nnoremap <M-j> <C-w>+
+nnoremap <M-k> <C-w>-
+nnoremap <M-l> <C-w>>
+nnoremap <leader>e <C-W>= 
+nnoremap U :redo<CR>
+tnoremap <Esc> <C-\><C-n>
+nnoremap qq :q<CR>
+nnoremap <C-s> :w<CR>
+nnoremap L $
+nnoremap H 0
+nnoremap J G
+nnoremap K gg

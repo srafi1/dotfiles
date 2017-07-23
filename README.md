@@ -1,2 +1,2 @@
-# configs
-Repo to sync configs through all computers
+# Configs
+Configs for editors and tools in general

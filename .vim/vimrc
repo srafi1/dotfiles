@@ -21,6 +21,9 @@ set showmatch
 set splitbelow
 set splitright
 set laststatus=2 " for lightline to work with only one screen
+set showtabline=2  " always show tabline
+" quit if there are no buffers left
+autocmd BufDelete * if len(filter(range(1, bufnr('$')), '! empty(bufname(v:val)) && buflisted(v:val)')) == 1 | quit | endif
 nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
 nnoremap <Leader><Leader> :e#<CR>
 let NERDTreeMapActivateNode='l'
@@ -47,9 +50,57 @@ nnoremap <M-l> <C-w>>
 nnoremap <leader>e <C-W>= 
 nnoremap U :redo<CR>
 tnoremap <Esc> <C-\><C-n>
-nnoremap qq :q<CR>
+nnoremap qq :bd<CR>
 nnoremap <C-s> :w<CR>
 nnoremap L $
 nnoremap H 0
 nnoremap J G
 nnoremap K gg
+
+" use lightline-buffer in lightline
+let g:lightline = {
+    \ 'colorscheme': 'wombat',
+	\ 'tabline': {
+		\ 'left': [ [ 'bufferinfo' ], [ 'bufferbefore', 'buffercurrent', 'bufferafter' ], ],
+		\ 'right': [ [ 'close' ], ],
+		\ },
+	\ 'component_expand': {
+		\ 'buffercurrent': 'lightline#buffer#buffercurrent2',
+		\ },
+	\ 'component_type': {
+		\ 'buffercurrent': 'tabsel',
+		\ },
+	\ 'component_function': {
+		\ 'bufferbefore': 'lightline#buffer#bufferbefore',
+		\ 'bufferafter': 'lightline#buffer#bufferafter',
+		\ 'bufferinfo': 'lightline#buffer#bufferinfo',
+		\ },
+	\ }
+
+" remap arrow keys
+nnoremap <leader>y :bprev<CR>
+nnoremap <leader>o :bnext<CR>
+
+" lightline-buffer ui settings
+" replace these symbols with ascii characters if your environment does not support unicode
+let g:lightline_buffer_logo = '(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ '
+let g:lightline_buffer_readonly_icon = ''
+let g:lightline_buffer_modified_icon = '✭'
+let g:lightline_buffer_git_icon = ' '
+let g:lightline_buffer_ellipsis_icon = '..'
+let g:lightline_buffer_expand_left_icon = '◀ '
+let g:lightline_buffer_expand_right_icon = ' ▶'
+let g:lightline_buffer_active_buffer_right_icon = ''
+let g:lightline_buffer_separator_icon = ' '
+
+" lightline-buffer function settings
+let g:lightline_buffer_show_bufnr = 1
+let g:lightline_buffer_rotate = 0
+let g:lightline_buffer_fname_mod = ':t'
+let g:lightline_buffer_excludes = ['vimfiler']
+
+let g:lightline_buffer_maxflen = 30
+let g:lightline_buffer_maxfextlen = 3
+let g:lightline_buffer_minflen = 16
+let g:lightline_buffer_minfextlen = 3
+let g:lightline_buffer_reservelen = 20

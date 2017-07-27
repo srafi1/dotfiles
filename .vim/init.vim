@@ -1,1 +1,1 @@
-/home/cookie/.vimrc
+/home/waffle/.vimrc

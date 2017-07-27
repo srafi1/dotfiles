@@ -4,6 +4,7 @@ filetype on
 syntax on
 colorscheme darcula
 set t_ut= " fixes bg color
+set relativenumber
 set number
 let mapleader=" "
 set hidden

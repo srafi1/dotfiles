@@ -52,7 +52,6 @@ nnoremap <M-l> <C-w>>
 nnoremap <leader>e <C-W>= 
 nnoremap U :redo<CR>
 tnoremap <Esc> <C-\><C-n>
-nnoremap qq :bd<CR>
 nnoremap <C-s> :w<CR>
 nnoremap L $
 nnoremap H 0

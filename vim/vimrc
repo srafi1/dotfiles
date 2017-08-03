@@ -1,6 +1,6 @@
 " generic defaults setup
 execute pathogen#infect()
-filetype on
+filetype plugin indent on
 syntax on
 colorscheme darcula
 set t_ut= " fixes bg color
@@ -9,7 +9,6 @@ set number
 let mapleader=" "
 set hidden
 set history=100
-filetype indent on
 set wrap
 set tabstop=4
 set shiftwidth=4

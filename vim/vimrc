@@ -1,4 +1,4 @@
-" generic defaults setup
+" general defaults setup
 execute pathogen#infect()
 filetype plugin indent on
 syntax on
@@ -19,7 +19,7 @@ set hlsearch
 set showmatch
 set splitbelow
 set splitright
-set laststatus=2 "for lightline to work with only one screen
+set laststatus=2 " for lightline to work with only one screen
 set showtabline=2  " always show tabline
 " quit if there are no buffers left
 autocmd BufDelete * if len(filter(range(1, bufnr('$')), '! empty(bufname(v:val)) && buflisted(v:val)')) == 1 | quit | endif
@@ -103,3 +103,4 @@ let g:lightline_buffer_maxfextlen = 3
 let g:lightline_buffer_minflen = 16
 let g:lightline_buffer_minfextlen = 3
 let g:lightline_buffer_reservelen = 20
+

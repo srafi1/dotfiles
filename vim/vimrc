@@ -21,8 +21,8 @@ set splitbelow
 set splitright
 set laststatus=2 " for lightline to work with only one screen
 set showtabline=2  " always show tabline
-" quit if there are no buffers left
-autocmd BufDelete * if len(filter(range(1, bufnr('$')), '! empty(bufname(v:val)) && buflisted(v:val)')) == 1 | quit | endif
+" quit if there are no buffers left (causes problems wiwth NERDTree)
+"autocmd BufDelete * if len(filter(range(1, bufnr('$')), '! empty(bufname(v:val)) && buflisted(v:val)')) == 1 | quit | endif
 let NERDTreeMapActivateNode='l'
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.DS_Store', '\~$', '\.swp', '\.class$', '\.git$[[dir]]', '\.pyc$']

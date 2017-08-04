@@ -22,3 +22,6 @@
 [submodule "vim/bundle/lightline-buffer"]
 	path = vim/bundle/lightline-buffer
 	url = https://github.com/taohex/lightline-buffer
+[submodule "vim/bundle/nerdtree"]
+	path = vim/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree/

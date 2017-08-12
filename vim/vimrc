@@ -23,9 +23,18 @@ set laststatus=2 " for lightline to work with only one screen
 set showtabline=2  " always show tabline
 " quit if there are no buffers left (causes problems wiwth NERDTree)
 "autocmd BufDelete * if len(filter(range(1, bufnr('$')), '! empty(bufname(v:val)) && buflisted(v:val)')) == 1 | quit | endif
+augroup Mkdir
+  autocmd!
+  autocmd BufWritePre *
+    \ if !isdirectory(expand("<afile>:p:h")) |
+        \ call mkdir(expand("<afile>:p:h"), "p") |
+    \ endif
+augroup END
 let NERDTreeMapActivateNode='l'
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.DS_Store', '\~$', '\.swp', '\.class$', '\.git$[[dir]]', '\.pyc$']
+" change tabs to 2 spaces for html files
+autocmd BufRead,BufNewFile *.html set tabstop=2 shiftwidth=2
 
 " key mappings
 nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
@@ -60,6 +69,7 @@ nnoremap J G
 nnoremap K gg
 nnoremap <leader>y :bprev<CR>
 nnoremap <leader>o :bnext<CR>
+nnoremap <leader>w :bd<CR>
 
 " use lightline-buffer in lightline
 let g:lightline = {

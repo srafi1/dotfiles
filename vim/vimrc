@@ -32,9 +32,10 @@ augroup Mkdir
 augroup END
 let NERDTreeMapActivateNode='l'
 let NERDTreeShowHidden=1
-let NERDTreeIgnore=['\.DS_Store', '\~$', '\.swp', '\.class$', '\.git$[[dir]]', '\.pyc$']
+let NERDTreeIgnore=['\.DS_Store', '\~$', '\.swp', '\.class$', '\.git$[[dir]]', '\.pyc$', 'flask$']
 " change tabs to 2 spaces for html files
 autocmd BufRead,BufNewFile *.html set tabstop=2 shiftwidth=2
+set wildignore+=*/flask/*,*/.git/*,*/db_repository/*,*/node_modules/*
 
 " key mappings
 nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>

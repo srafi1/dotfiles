@@ -16,6 +16,7 @@ set expandtab
 set smartindent
 set autoindent
 set hlsearch
+set cursorline
 set showmatch
 set splitbelow
 set splitright

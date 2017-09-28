@@ -65,6 +65,7 @@ if has('nvim') " only run if using neovim
     tnoremap <Esc> <C-\><C-n>
 endif
 nnoremap <C-s> :w<CR>
+inoremap <C-s> <Esc>:w<CR>li
 nnoremap L $
 nnoremap H 0
 nnoremap J }

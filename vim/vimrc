@@ -72,7 +72,7 @@ nnoremap J }
 nnoremap K {
 nnoremap <leader>y :bprev<CR>
 nnoremap <leader>o :bnext<CR>
-nnoremap <leader>w :bd<CR>
+nnoremap <leader>q :bd<CR>
 " navigate using hjkl in insert and terminal mode
 inoremap <C-h> <Left>
 inoremap <C-j> <Down>

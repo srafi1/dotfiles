@@ -2,16 +2,16 @@
 
 for d in *
 do
-if [ -d $d ]
-then
-cd $d
-if [ -d ".git" ]
-then
-echo " "
-echo "-----Pulling from $d-----"
-git pull
-fi
-cd ..
-fi
+    if [ -d $d ]
+    then
+        cd $d
+        if [ -d ".git" ]
+        then
+            echo " "
+            echo "-----Pulling from $d-----"
+            git pull
+        fi
+        cd ..
+    fi
 done
 

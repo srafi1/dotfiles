@@ -1,17 +1,17 @@
 #! /bin/bash
 
-if [ "$1asdf" = "asdf" ]
+if [ -z $1 ]
 then
-msg="Automatic commit message"
+    msg="Automatic commit message"
 else
-msg="$1"
+    msg="$1"
 fi
 
 if [ -d ".git" ]
 then
-git add . -A
-git commit -m "$msg"
-git push
+    git add . -A
+    git commit -m "$msg"
+    git push
 else
-echo "This is not a git dir"
+    echo "This is not a git dir"
 fi

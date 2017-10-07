@@ -1,0 +1,21 @@
+#! /bin/bash
+
+if [ -z $1 ]
+then
+    echo "Enter hw number: flask-init <hw num>"
+    exit
+fi
+
+touch app.py
+mkdir templates
+mkdir util
+mkdir data
+mkdir static
+touch templates/index.html
+
+echo "# Shakil Rafi" >> app.py
+echo "# SoftDev1 pd7" >> app.py
+echo "Enter summary: "
+read input
+echo "# HW$1 -- $input" >> app.py
+echo "# $(date +%Y-%m-%d)" >> app.py

@@ -1,0 +1,1 @@
+/home/syrup/github/dotfiles/emacs.d

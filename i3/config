@@ -3,13 +3,13 @@ font pango:DejaVu Sans Mono 8
 floating_modifier $mod
 hide_edge_borders both
 new_window none
-for_window [class="^.*"] border pixel none # hide window borders
+for_window [class="^.*"] border pixel none
 gaps inner 15
+gaps outer 0
 exec ~/.fehbg # open wallpaper
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh # launch polybar
 exec xbindkeys # custom key bindings (volume keys)
 exec xset b off
-
 
 bindsym $mod+Return exec i3-sensible-terminal 
 bindsym $mod+b exec chromium 
@@ -23,10 +23,10 @@ bindsym $mod+k focus up
 bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
+# bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+# bindsym $mod+Right focus right
 
 # move focused window
 bindsym $mod+Shift+h move left
@@ -53,6 +53,10 @@ bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
+
+# splits
+bindsym $mod+n split vertical
+bindsym $mod+m split horizontal
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -85,26 +89,26 @@ bindsym $mod+Shift+0 move container to workspace 10
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+    bindsym h resize shrink width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+    # resize gaps
+    bindsym $mod+j gaps inner current minus 5
+    bindsym $mod+k gaps inner current plus 5
+    bindsym $mod+h gaps outer current minus 5
+    bindsym $mod+l gaps outer current plus 5
+    bindsym $mod+0 gaps inner current set 15; gaps outer current set 0
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
 }
 
 bindsym $mod+r mode "resize"
@@ -112,7 +116,8 @@ bindsym $mod+r mode "resize"
 # lock or shutdown
 mode "Shutdown?" {
     bindsym Return exec poweroff
-    bindsym $mod+Ctrl+l exec lock
+    bindsym r exec reboot 
+    bindsym l mode "default"; exec "/home/syrup/.custom_bin/lock" 
 
     # cancel and exit mode
     bindsym Escape mode "default"

@@ -1,6 +1,6 @@
 #! /bin/bash
 
-if [ -z $1 ]
+if [ $# -eq 0 ]
 then
     echo "Enter hw number: flask-init <hw num>"
     exit
@@ -12,6 +12,7 @@ mkdir util
 mkdir data
 mkdir static
 touch templates/index.html
+touch util/__init__.py
 
 echo "# Shakil Rafi" >> app.py
 echo "# SoftDev1 pd7" >> app.py

@@ -1,6 +1,6 @@
 #! /bin/bash
 
-if [ -z $1 ]
+if [ $# -eq 0 ]
 then
     msg="Automatic commit message"
 else

@@ -1,5 +1,5 @@
 set $mod Mod1
-font pango:DejaVu Sans Mono 8
+font xft:FontAwesome 12
 floating_modifier $mod
 hide_edge_borders both
 new_window none
@@ -93,8 +93,8 @@ bindsym $mod+Shift+r restart
 # resize window (you can also use the mouse for that)
 mode "resize" {
     bindsym h resize shrink width 10 px or 10 ppt
-    bindsym j resize grow height 10 px or 10 ppt
-    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym k resize grow height 10 px or 10 ppt
+    bindsym j resize shrink height 10 px or 10 ppt
     bindsym l resize grow width 10 px or 10 ppt
 
 

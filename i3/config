@@ -3,7 +3,7 @@ font xft:FontAwesome 12
 floating_modifier $mod
 hide_edge_borders both
 new_window none
-for_window [class="^.*"] border pixel none
+# for_window [class="^.*"] border pixel none
 gaps inner 15
 gaps outer 0
 exec ~/.fehbg # open wallpaper
@@ -16,6 +16,15 @@ bindsym $mod+b exec chromium
 bindsym $mod+Shift+q kill 
 bindsym $mod+d exec rofi -show run 
 bindsym $mod+Tab focus right
+
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 
 # change focused window
 bindsym $mod+h focus left

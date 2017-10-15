@@ -40,8 +40,8 @@ set wildignore+=*/flask/*,*/.git/*,*/db_repository/*,*/node_modules/*
 
 " key mappings
 nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
-nmap <leader>g :NERDTreeToggle<CR>
-map <Leader>s :source ~/.vimrc<CR> 
+nnoremap <leader>g :NERDTreeToggle<CR>
+nnoremap <Leader>s :e!<CR>
 nnoremap <leader>f :edit 
 let g:multi_cursor_next_key='<C-o>'
 let g:multi_cursor_prev_key='<C-y>'

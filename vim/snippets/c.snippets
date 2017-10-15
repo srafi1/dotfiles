@@ -17,7 +17,7 @@ snippet mainn
 snippet inc
 	#include <${1:stdio}.h>
 # #include "..."
-snippet Inc
+snippet incc
 	#include "${1}"
 # ifndef...define...endif
 snippet ndef
@@ -111,7 +111,7 @@ snippet forr
 		${5}
 	}
 # while
-snippet wh
+snippet while
 	while (${1:/* condition */}) {
 		${0:${VISUAL}}
 	}
@@ -126,13 +126,13 @@ snippet do
 snippet fun
 	${1:void} ${2:function_name}(${3})
 	{
-		${4}
+		${0}
 	}
 # function definition with zero parameters
 snippet fun0
 	${1:void} ${2:function_name}()
 	{
-		${3}
+		${0}
 	}
 # function definition with Doxygen documentation
 snippet dfun0
@@ -150,7 +150,7 @@ snippet dfun0
 snippet fun1
 	${1:void} ${2:function_name}(${3:Type} ${4:Parameter})
 	{
-		${5}
+		${0}
 	}
 # function definition with one parameter with  Doxygen documentation
 snippet dfun1

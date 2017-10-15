@@ -1,0 +1,12 @@
+#! /bin/bash
+
+if [ $# -eq 0 ]
+then
+    echo "Usage: clone [<user:sraf1>] <repo>"
+elif [ $# -eq 1 ]
+then
+    echo https://github.com/srafi1/$1
+elif [ $# -eq 2 ]
+then
+    echo https://github.com/$1/$2
+fi

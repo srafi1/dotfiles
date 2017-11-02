@@ -31,3 +31,6 @@
 [submodule "vim/bundle/vimwiki"]
 	path = vim/bundle/vimwiki
 	url = https://github.com/vimwiki/vimwiki
+[submodule "vim/bundle/Colorizer"]
+	path = vim/bundle/Colorizer
+	url = https://github.com/chrisbra/Colorizer.git

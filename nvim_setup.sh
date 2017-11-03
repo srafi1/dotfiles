@@ -1,6 +1,6 @@
 #! /bin/sh
 
-ln -s $(pwd)/vim ~/.vim
-ln -s $(pwd)/vim ~/.config/nvim 
-ln -s $(pwd)/vim/vimrc ~/.vimrc
+ln -sf $(pwd)/vim ~/.vim
+ln -sf $(pwd)/vim ~/.config/nvim 
+ln -sf $(pwd)/vim/vimrc ~/.vimrc
 git submodule update --init 

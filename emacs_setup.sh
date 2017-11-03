@@ -1,4 +1,4 @@
 #! /bin/bash
 
-ln -s $(pwd)/emacs ~/.emacs
-ln -s $(pwd)/emacs.d ~/.emacs.d
+ln -sf $(pwd)/emacs ~/.emacs
+ln -sf $(pwd)/emacs.d ~/.emacs.d

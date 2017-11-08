@@ -93,8 +93,9 @@ type = internal/fs
 interval = 25
 
 mount-0 = /
+mount-1 = /home/syrup
 
-label-mounted = %free%
+label-mounted = %mountpoint%: %free%
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
 

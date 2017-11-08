@@ -1,4 +1,4 @@
-set $mod Mod1
+set $mod Mod4
 font xft:FontAwesome 12
 floating_modifier $mod
 hide_edge_borders both

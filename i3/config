@@ -15,7 +15,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+b exec chromium 
 bindsym $mod+Shift+q kill 
 bindsym $mod+d exec rofi -show run 
-bindsym $mod+Tab focus right
+bindsym Mod1+Tab focus right
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume

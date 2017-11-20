@@ -93,7 +93,7 @@ type = internal/fs
 interval = 25
 
 mount-0 = /
-mount-1 = /home/syrup
+mount-1 = /home/rotom
 
 label-mounted = %mountpoint%: %free%
 label-unmounted = %mountpoint% not mounted

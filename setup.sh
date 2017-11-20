@@ -32,5 +32,5 @@ echo "Setup custom scripts? [y/n]: "
 read -n 1 -s ans
 if [ $ans == "y" ]
 then
-    ln -s $(pwd)/custom_bin ~/.custom_bin
+    ln -sf $(pwd)/custom_bin ~/.custom_bin
 fi

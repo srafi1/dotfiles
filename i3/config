@@ -1,4 +1,4 @@
-set $mod Mod4
+set $mod Mod1
 font xft:FontAwesome 12
 floating_modifier $mod
 hide_edge_borders both
@@ -8,7 +8,6 @@ gaps inner 15
 gaps outer 0
 exec ~/.fehbg # open wallpaper
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh # launch polybar
-exec xbindkeys # custom key bindings (volume keys)
 exec xset b off
 
 bindsym $mod+Return exec i3-sensible-terminal 
@@ -25,6 +24,9 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute s
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+
+#Caps Lock to Escape
+exec xmodmap ~/.Xmodmap
 
 # change focused window
 bindsym $mod+h focus left

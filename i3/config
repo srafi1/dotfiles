@@ -6,6 +6,7 @@ new_window none
 # for_window [class="^.*"] border pixel none
 gaps inner 15
 gaps outer 0
+smart_gaps on
 exec ~/.fehbg # open wallpaper
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh # launch polybar
 exec xset b off

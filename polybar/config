@@ -50,7 +50,7 @@ font-4 = monospace:size=10;1
 
 modules-left = bspwm i3
 modules-center = 
-modules-right = filesystem xbacklight volume memory cpu wlan eth battery temperature date
+modules-right = filesystem xbacklight volume memory cpu wlan eth temperature battery date
 
 tray-position = right
 tray-padding = 2
@@ -93,7 +93,6 @@ type = internal/fs
 interval = 25
 
 mount-0 = /
-mount-1 = /home/rotom
 
 label-mounted = %mountpoint%: %free%
 label-unmounted = %mountpoint% not mounted

@@ -10,6 +10,7 @@ smart_gaps on
 exec ~/.fehbg # open wallpaper
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh # launch polybar
 exec xset b off
+exec chromium-browser --no-startup-window
 
 bindsym $mod+Return exec i3-sensible-terminal 
 bindsym $mod+b exec chromium 
@@ -18,9 +19,9 @@ bindsym $mod+d exec rofi -show run
 bindsym Mod1+Tab focus right
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume bluez_sink.F4_4E_FD_74_CD_42 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume bluez_sink.F4_4E_FD_74_CD_42 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute bluez_sink.F4_4E_FD_74_CD_42 toggle # mute sound
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec light -A 10 # increase screen brightness
@@ -144,7 +145,7 @@ bindsym $mod+space mode "move"
 mode "Shutdown?" {
     bindsym Return exec poweroff
     bindsym r exec reboot 
-    bindsym l mode "default"; exec "/home/syrup/.custom_bin/lock" 
+    bindsym l mode "default"; exec "/home/staravia/.custom_bin/lock" 
 
     # cancel and exit mode
     bindsym Escape mode "default"

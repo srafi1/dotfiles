@@ -50,7 +50,7 @@ font-4 = monospace:size=10;1
 
 modules-left = bspwm i3
 modules-center = 
-modules-right = filesystem xbacklight volume memory cpu wlan eth temperature battery date
+modules-right = filesystem xbacklight memory cpu wlan eth temperature battery date
 
 tray-position = right
 tray-padding = 2

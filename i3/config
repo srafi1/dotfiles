@@ -10,13 +10,14 @@ smart_gaps on
 exec ~/.fehbg # open wallpaper
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh # launch polybar
 exec xset b off
-exec chromium-browser --no-startup-window
 
-bindsym $mod+Return exec i3-sensible-terminal 
+bindsym $mod+Return exec urxvt
 bindsym $mod+b exec chromium 
 bindsym $mod+Shift+q kill 
 bindsym $mod+d exec rofi -show run 
 bindsym Mod1+Tab focus right
+bindsym Mod1+Shift+Tab focus left
+bindsym $mod+F6 exec scrot
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume bluez_sink.F4_4E_FD_74_CD_42 +5% #increase sound volume

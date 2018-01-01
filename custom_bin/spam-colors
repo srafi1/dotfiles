@@ -1,0 +1,1 @@
+while :;do e=($(shuf -i1-7 -n2));s=${*:-$1};printf "$(set -- $(stty size);tput cup $((RANDOM%$1)) $((RANDOM%$(($2-${#s}+1)))))$(tput setaf ${e[0]})$(tput setab ${e[1]})$s";done

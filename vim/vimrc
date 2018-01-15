@@ -24,6 +24,7 @@ set laststatus=2 " for lightline to work with only one screen
 set showtabline=2  " always show tabline
 " quit if there are no buffers left (causes problems wiwth NERDTree)
 "autocmd BufDelete * if len(filter(range(1, bufnr('$')), '! empty(bufname(v:val)) && buflisted(v:val)')) == 1 | quit | endif
+
 augroup Mkdir
   autocmd!
   autocmd BufWritePre *
@@ -42,7 +43,7 @@ set wildignore+=*/flask/*,*/.git/*,*/db_repository/*,*/node_modules/*
 nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
 nnoremap <leader>g :NERDTreeToggle<CR>
 nnoremap <Leader>s :e!<CR>
-nnoremap <leader>f :edit 
+nnoremap <leader>f :edit
 let g:multi_cursor_next_key='<C-o>'
 let g:multi_cursor_prev_key='<C-y>'
 let g:multi_cursor_skip_key='<C-u>'
@@ -59,7 +60,7 @@ nnoremap <M-h> <C-w><
 nnoremap <M-j> <C-w>+
 nnoremap <M-k> <C-w>-
 nnoremap <M-l> <C-w>>
-nnoremap <leader>e <C-W>= 
+nnoremap <leader>e <C-W>=
 nnoremap U :redo<CR>
 if has('nvim') " only run if using neovim
     tnoremap <Esc> <C-\><C-n>
@@ -82,6 +83,7 @@ tnoremap <C-h> <Left>
 tnoremap <C-j> <Down>
 tnoremap <C-k> <Up>
 tnoremap <C-l> <Right>
+nnoremap <leader><BS> :%s/\s\+$//e<CR>
 
 " use lightline-buffer in lightline
 let g:lightline = {

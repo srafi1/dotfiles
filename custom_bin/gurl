@@ -2,7 +2,7 @@
 
 if [ $# -eq 0 ]
 then
-    echo "Usage: clone [<user:sraf1>] <repo>"
+    echo "Usage: gurl [<user:sraf1>] <repo>"
 elif [ $# -eq 1 ]
 then
     echo https://github.com/srafi1/$1

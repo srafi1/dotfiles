@@ -1,6 +1,8 @@
 #! /bin/bash
 
 pulseaudio --start
-echo "connect F4:4E:FD:74:CD:42
+echo "power on
+scan on
+connect F4:4E:FD:74:CD:42
 exit" | bluetoothctl
 pactl set-default-sink 2

@@ -32,10 +32,10 @@ URxvt.intensityStyles: false
 URxvt.depth: 32
 URxvt.transparent: true
 URxvt.shading: 20
-URxvt.font: xft:monospace:size=11
+URxvt.font: xft:monospace:size=12
 URxvt.scrollBar: false
 URxvt.cursorColor: white
-URxvt.perl-ext-common: default,matcher,resize-font,clipboard
+URxvt.perl-ext-common: default,matcher
 URxvt.perl-lib: $HOME/.config/Scripts
 URxvt.url-launcher: /usr/bin/xdg-open
 URxvt.matcher.button: 1

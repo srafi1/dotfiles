@@ -36,13 +36,14 @@ let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.DS_Store', '\~$', '\.swp', '\.class$', '\.git$[[dir]]', '\.pyc$', 'flask$']
 " change tabs to 2 spaces for html files
 autocmd BufRead,BufNewFile *.html set tabstop=2 shiftwidth=2
+autocmd BufRead,BufNewFile *.js set tabstop=4 shiftwidth=4
 set wildignore+=*/flask/*,*/.git/*,*/db_repository/*,*/node_modules/*
 
 " key mappings
 nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
 nnoremap <leader>g :NERDTreeToggle<CR>
-nnoremap <Leader>s :e!<CR>
-nnoremap <leader>f :edit 
+nnoremap <leader>s :e!<CR>
+nnoremap <leader>f :edit
 let g:multi_cursor_next_key='<C-o>'
 let g:multi_cursor_prev_key='<C-y>'
 let g:multi_cursor_skip_key='<C-u>'
@@ -59,7 +60,7 @@ nnoremap <M-h> <C-w><
 nnoremap <M-j> <C-w>+
 nnoremap <M-k> <C-w>-
 nnoremap <M-l> <C-w>>
-nnoremap <leader>e <C-W>= 
+nnoremap <leader>e <C-W>=
 nnoremap U :redo<CR>
 if has('nvim') " only run if using neovim
     tnoremap <Esc> <C-\><C-n>
@@ -73,6 +74,10 @@ nnoremap K {
 nnoremap <leader>y :bprev<CR>
 nnoremap <leader>o :bnext<CR>
 nnoremap <leader>q :lclose<bar>b#<bar>bd #<CR>
+nnoremap <leader><BS> :%s/\s\+$//e<CR>
+nnoremap <C-r> :make run<CR>
+nnoremap <C-f> :make feh<CR>
+
 " navigate using hjkl in insert and terminal mode
 inoremap <C-h> <Left>
 inoremap <C-j> <Down>

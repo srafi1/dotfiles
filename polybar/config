@@ -13,7 +13,7 @@ background = #344A71
 background-alt = #406BB7
 ;foreground = ${xrdb:color7:#222}
 foreground = #dfdfdf
-foreground-alt = #555
+foreground-alt = #999
 primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
@@ -50,7 +50,7 @@ font-4 = monospace:size=10;1
 
 modules-left = bspwm i3
 modules-center = 
-modules-right = filesystem xbacklight volume memory cpu wlan eth temperature battery date
+modules-right = volume mpd memory cpu temperature battery date
 
 tray-position = right
 tray-padding = 2
@@ -153,16 +153,15 @@ label-urgent-padding = ${module/bspwm.label-urgent-padding}
 
 [module/mpd]
 type = internal/mpd
-format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
-
-icon-prev = 
-icon-stop = 
-icon-play = 
-icon-pause = 
-icon-next = 
+format-online = <label-song> <bar-progress>
 
 label-song-maxlen = 25
 label-song-ellipsis = true
+
+bar-progress-width = 20
+bar-progress-indicator = |
+bar-progress-fill = ─
+bar-progress-empty = ─
 
 [module/xbacklight]
 type = internal/xbacklight
@@ -204,7 +203,7 @@ label = MEM %percentage_used%%
 
 [module/wlan]
 type = internal/network
-interface = net1
+interface = wlp2s0
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
@@ -259,13 +258,21 @@ label = %date% | %time%
 [module/volume]
 type = internal/volume
 
+; Soundcard to be used
+; Usually in the format hw:#
+master-soundcard = default
+speaker-soundcard = default
+headphone-soundcard = default
+
+master-mixer = Master
+
 format-volume = <label-volume> <bar-volume>
 label-volume = VOL
 label-volume-foreground = ${root.foreground}
 
 format-muted-prefix = " "
 format-muted-foreground = ${colors.foreground-alt}
-label-muted = sound muted
+label-muted = MUTE
 
 bar-volume-width = 10
 bar-volume-foreground-0 = #55aa55
@@ -289,26 +296,31 @@ type = internal/battery
 battery = BAT0
 adapter = ADP1
 full-at = 98
+time-format = %H:%M
 
-format-charging = <animation-charging> <label-charging>
+format-charging = <ramp-capacity> <label-charging>
 format-charging-underline = #ffb52a
 
 format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
+format-discharging-underline = ${colors.background-alt}
 
 format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground-alt}
-format-full-underline = ${self.format-charging-underline}
+format-full-prefix-foreground = ${colors.background-alt}
+format-full-underline = #228822
 
-label = "BAT: %percentage%"
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
+label = "%percentage%"
+ramp-capacity-0 =  PLUG THIS SHIT IN
+ramp-capacity-0-underline = ${colors.alert}
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
 animation-charging-foreground = ${colors.foreground-alt}
 animation-charging-framerate = 750
 

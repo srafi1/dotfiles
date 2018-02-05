@@ -10,23 +10,25 @@ smart_gaps on
 exec ~/.fehbg # open wallpaper
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh # launch polybar
 exec xset b off
+exec xautolock -time 2 -locker ~/.custom_bin/lock &
 
 bindsym $mod+Return exec urxvt
-bindsym $mod+b exec chromium 
+bindsym $mod+Shift+Return exec urxvt -cd "`xcwd`"
+bindsym $mod+b exec google-chrome-stable 
 bindsym $mod+Shift+q kill 
 bindsym $mod+d exec rofi -show run 
+bindsym F7 deepin-screenshot
 bindsym Mod1+Tab focus right
 bindsym Mod1+Shift+Tab focus left
-bindsym $mod+F6 exec scrot
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume bluez_sink.F4_4E_FD_74_CD_42 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume bluez_sink.F4_4E_FD_74_CD_42 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute bluez_sink.F4_4E_FD_74_CD_42 toggle # mute sound
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer sset Master 5%+ #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer sset Master 5%- #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id amixer -D pulse set Master 1+ toggle # mute sound
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec light -A 10 # increase screen brightness
-bindsym XF86MonBrightnessDown exec light -U 10 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
+bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
 
 # Caps Lock to Escape
 exec xmodmap ~/.Xmodmap
@@ -112,7 +114,6 @@ mode "resize" {
     bindsym j resize shrink height 10 px or 10 ppt
     bindsym l resize grow width 10 px or 10 ppt
 
-
     # resize gaps
     bindsym $mod+j gaps inner current minus 5
     bindsym $mod+k gaps inner current plus 5
@@ -125,7 +126,6 @@ mode "resize" {
     bindsym Escape mode "default"
     bindsym $mod+r mode "default"
 }
-
 bindsym $mod+r mode "resize"
 
 # move floating window
@@ -137,19 +137,31 @@ mode "move" {
 
     bindsym $mod+space mode "default"
     bindsym Escape mode "default"
-    bindsym Enter mode "default"
 }
-
 bindsym $mod+space mode "move"
+
+# control mpd using mpc
+mode "music" {
+    bindsym space exec mpc toggle
+    bindsym h exec mpc prev
+    bindsym j exec mpc repeat
+    bindsym k exec mpc shuffle
+    bindsym l exec mpc next
+    bindsym BackSpace exec mpc seek 0:0:0
+    bindsym s mode "default"; exec mpc stop
+
+    bindsym Escape mode "default"
+    bindsym $mod+g mode "default"
+}
+bindsym $mod+g mode "music"
 
 # lock or shutdown
 mode "Shutdown?" {
     bindsym Return exec poweroff
     bindsym r exec reboot 
-    bindsym l mode "default"; exec "/home/staravia/.custom_bin/lock" 
-    bindsym Backspace exec i3-msg exit
+    bindsym l mode "default"; exec "/home/srafi1/.custom_bin/lock" 
+    bindsym BackSpace exec "i3-msg exit"
 
-    # cancel and exit mode
     bindsym Escape mode "default"
 }
 bindsym $mod+Shift+e mode "Shutdown?"

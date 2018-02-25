@@ -1,9 +1,6 @@
 [submodule "vim/bundle/lightline.vim"]
 	path = vim/bundle/lightline.vim
 	url = https://github.com/itchyny/lightline.vim
-[submodule "vim/bundle/supertab"]
-	path = vim/bundle/supertab
-	url = https://github.com/ervandew/supertab
 [submodule "vim/bundle/ctrlp.vim"]
 	path = vim/bundle/ctrlp.vim
 	url = https://github.com/ctrlpvim/ctrlp.vim
@@ -19,9 +16,6 @@
 [submodule "vim/bundle/nerdtree"]
 	path = vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree/
-[submodule "vim/bundle/vim-snipmate"]
-	path = vim/bundle/vim-snipmate
-	url = https://github.com/garbas/vim-snipmate
 [submodule "vim/bundle/tlib_vim"]
 	path = vim/bundle/tlib_vim
 	url = https://github.com/tomtom/tlib_vim.git
@@ -37,3 +31,9 @@
 [submodule "vim/bundle/typescript-vim"]
 	path = vim/bundle/typescript-vim
 	url = https://github.com/leafgarland/typescript-vim
+[submodule "vim/bundle/YouCompleteMe"]
+	path = vim/bundle/YouCompleteMe
+	url = https://github.com/Valloric/YouCompleteMe
+[submodule "vim/bundle/ultisnips"]
+	path = vim/bundle/ultisnips
+	url = https://github.com/SirVer/ultisnips

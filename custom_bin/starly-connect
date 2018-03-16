@@ -1,0 +1,3 @@
+#! /bin/bash
+
+echo "connect 0C:37:DC:89:4E:0D" | bluetoothctl

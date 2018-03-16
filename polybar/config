@@ -312,7 +312,7 @@ format-full-prefix-foreground = ${colors.background-alt}
 format-full-underline = #228822
 
 label = "%percentage%"
-ramp-capacity-0 =  PLUG THIS SHIT IN
+ramp-capacity-0 =  PLUG THIS IN
 ramp-capacity-0-underline = ${colors.alert}
 ramp-capacity-1 = 
 ramp-capacity-2 = 

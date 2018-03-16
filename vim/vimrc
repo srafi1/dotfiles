@@ -43,7 +43,7 @@ set wildignore+=*/flask/*,*/.git/*,*/db_repository/*,*/node_modules/*
 nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
 nnoremap <leader>g :NERDTreeToggle<CR>
 nnoremap <leader>s :e!<CR>
-nnoremap <leader>f :edit 
+nnoremap <leader>f :edit<space>
 let g:multi_cursor_next_key='<C-o>'
 let g:multi_cursor_prev_key='<C-y>'
 let g:multi_cursor_skip_key='<C-u>'

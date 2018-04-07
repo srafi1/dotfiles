@@ -2,11 +2,23 @@
 
 if [ $# -eq 0 ]
 then
-    echo "Usage: gurl [<user:sraf1>] <repo>"
+    echo "Usage: gurl [-g] [<user:sraf1>] <repo>"
 elif [ $# -eq 1 ]
 then
     echo https://github.com/srafi1/$1
 elif [ $# -eq 2 ]
 then
-    echo https://github.com/$1/$2
+    case $1 in
+        -g)
+            echo git@github.com:srafi1/$2
+            exit
+            ;;
+        *)
+            echo https://github.com/$1/$2
+            exit
+            ;;
+    esac
+elif [ $# -eq 3 ]
+then
+    echo git@github.com:$2/$3
 fi

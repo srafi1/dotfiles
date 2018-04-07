@@ -36,16 +36,16 @@ URxvt.font: xft:Dejavu Sans Mono For Powerline:normal:size=12
 URxvt.boldFont: xft:Dejavu Sans Mono For Powerline:bold:size=12
 URxvt.scrollBar: false
 URxvt.cursorColor: white
-URxvt.perl-ext-common: default,matcher
+URxvt.perl-ext-common: default,matcher,font-size
 URxvt.perl-lib: $HOME/.config/Scripts
 URxvt.url-launcher: /usr/bin/xdg-open
 URxvt.matcher.button: 1
-URxvt.resize-font.smaller: C-Down
-URxvt.resize-font.bigger: C-Up
 URxvt.colorUL: #4682B4
 URxvt.iso14755: false
 URxvt.keysym.Shift-Control-V: eval:paste_clipboard
 URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+URxvt.keysym.C-equal: font-size:increase
+URxvt.keysym.C-0: font-size:reset
 
 ! ------------------------------------------------------------------------------
 ! ROFI standard archlabs theme

@@ -1,4 +1,4 @@
-#! /usr/bin/python
+#! /usr/bin/python2
 import datetime
 
 # period end times
@@ -24,7 +24,7 @@ end_times_homeroom = [
         [ 11, 54 ],
         [ 12, 38 ],
         [ 13, 22 ],
-        [ 14, 06 ],
+        [ 14, 6 ],
         [ 14, 50 ],
         [ 15, 35 ]
         ]

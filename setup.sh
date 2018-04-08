@@ -1,12 +1,5 @@
 #! /bin/bash
 
-echo "Setup Neovim? [y/n]: "
-read -n 1 -s ans
-if [ $ans == "y" ]
-then
-    ./nvim_setup.sh
-fi
-
 echo "Setup Emacs? [y/n]: "
 read -n 1 -s ans
 if [ $ans == "y" ]
@@ -33,4 +26,11 @@ read -n 1 -s ans
 if [ $ans == "y" ]
 then
     ln -sf $(pwd)/custom_bin ~/.custom_bin
+fi
+
+echo "Setup Neovim? [y/n]: "
+read -n 1 -s ans
+if [ $ans == "y" ]
+then
+    ./nvim_setup.sh
 fi

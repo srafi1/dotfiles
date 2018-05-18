@@ -25,11 +25,11 @@ set showtabline=2  " always show tabline
 " quit if there are no buffers left (causes problems wiwth NERDTree)
 "autocmd BufDelete * if len(filter(range(1, bufnr('$')), '! empty(bufname(v:val)) && buflisted(v:val)')) == 1 | quit | endif
 augroup Mkdir
-  autocmd!
-  autocmd BufWritePre *
-    \ if !isdirectory(expand("<afile>:p:h")) |
-        \ call mkdir(expand("<afile>:p:h"), "p") |
-    \ endif
+    autocmd!
+    autocmd BufWritePre *
+                \ if !isdirectory(expand("<afile>:p:h")) |
+                \ call mkdir(expand("<afile>:p:h"), "p") |
+                \ endif
 augroup END
 let NERDTreeMapActivateNode='l'
 let NERDTreeShowHidden=1
@@ -64,6 +64,10 @@ nnoremap <leader>e <C-W>=
 nnoremap U :redo<CR>
 if has('nvim') " only run if using neovim
     tnoremap <Esc> <C-\><C-n>
+    tnoremap <C-h> <Left>
+    tnoremap <C-j> <Down>
+    tnoremap <C-k> <Up>
+    tnoremap <C-l> <Right>
 endif
 nnoremap <C-s> :w<CR>
 inoremap <C-s> <Esc>:w<CR>li
@@ -83,35 +87,31 @@ inoremap <C-h> <Left>
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 inoremap <C-l> <Right>
-tnoremap <C-h> <Left>
-tnoremap <C-j> <Down>
-tnoremap <C-k> <Up>
-tnoremap <C-l> <Right>
 
 " use lightline-buffer in lightline
 let g:lightline = {
-    \ 'colorscheme': 'wombat',
-	\ 'tabline': {
-		\ 'left': [ [ 'bufferinfo' ], [ 'bufferbefore', 'buffercurrent', 'bufferafter' ], ],
-		\ 'right': [ [ 'close' ], ],
-		\ },
-    \ 'component_expand': {
-    \   'buffercurrent': 'lightline#buffer#buffercurrent',
-    \   'bufferbefore': 'lightline#buffer#bufferbefore',
-    \   'bufferafter': 'lightline#buffer#bufferafter',
-    \ },
-    \ 'component_type': {
-    \   'buffercurrent': 'tabsel',
-    \   'bufferbefore': 'raw',
-    \   'bufferafter': 'raw',
-    \ },
-    \ 'component_function': {
-    \   'bufferinfo': 'lightline#buffer#bufferinfo',
-    \ },
-    \ 'component': {
-    \   'separator': '',
-    \ },
-    \ }
+            \ 'colorscheme': 'wombat',
+            \ 'tabline': {
+            \ 'left': [ [ 'bufferinfo' ], [ 'bufferbefore', 'buffercurrent', 'bufferafter' ], ],
+            \ 'right': [ [ 'close' ], ],
+            \ },
+            \ 'component_expand': {
+            \   'buffercurrent': 'lightline#buffer#buffercurrent',
+            \   'bufferbefore': 'lightline#buffer#bufferbefore',
+            \   'bufferafter': 'lightline#buffer#bufferafter',
+            \ },
+            \ 'component_type': {
+            \   'buffercurrent': 'tabsel',
+            \   'bufferbefore': 'raw',
+            \   'bufferafter': 'raw',
+            \ },
+            \ 'component_function': {
+            \   'bufferinfo': 'lightline#buffer#bufferinfo',
+            \ },
+            \ 'component': {
+            \   'separator': '',
+            \ },
+            \ }
 
 " lightline-buffer ui settings
 " replace these symbols with ascii characters if your environment does not support unicode

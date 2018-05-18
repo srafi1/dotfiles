@@ -21,6 +21,13 @@ then
     ./polybar_setup.sh
 fi
 
+echo "Setup Zsh? [y/n]: "
+read -n 1 -s ans
+if [ $ans == "y" ]
+then
+    ln -sf $(pwd)/zshrc ~/.zshrc
+fi
+
 echo "Setup custom scripts? [y/n]: "
 read -n 1 -s ans
 if [ $ans == "y" ]

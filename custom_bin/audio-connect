@@ -1,4 +1,4 @@
 #! /bin/bash
 
-echo "connect F4:4E:FD:74:CD:42" | bluetoothctl
+echo "connect C4:45:67:09:2E:9B" | bluetoothctl
 #pactl set-default-sink 2

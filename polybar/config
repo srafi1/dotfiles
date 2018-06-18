@@ -50,7 +50,7 @@ font-4 = monospace:size=10;1
 
 modules-left = bspwm i3
 modules-center = 
-modules-right = volume mpd wlan memory cpu temperature battery date period_time
+modules-right = volume mpd wlan memory cpu temperature battery date
 
 tray-position = right
 tray-padding = 2

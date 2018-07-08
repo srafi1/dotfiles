@@ -11,6 +11,12 @@ do
             echo "-----Pulling from $d-----"
             git pull
         fi
+        if [ -f ".git" ]
+        then
+            echo " "
+            echo "-----Updating submodule $d-----"
+            git pull origin master
+        fi
         cd ..
     fi
 done

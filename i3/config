@@ -159,7 +159,7 @@ bindsym $mod+g mode "music"
 mode "Shutdown?" {
     bindsym Return exec poweroff
     bindsym r exec reboot 
-    bindsym l mode "default"; exec "/home/srafi1/.custom_bin/lock" 
+    bindsym l mode "default"; exec "~/.custom_bin/lock" 
     bindsym BackSpace exec "i3-msg exit"
 
     bindsym Escape mode "default"

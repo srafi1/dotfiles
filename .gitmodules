@@ -46,3 +46,6 @@
 [submodule "vim/bundle/sparkup"]
 	path = vim/bundle/sparkup
 	url = https://github.com/rstacruz/sparkup
+[submodule "vim/bundle/YCM"]
+	path = vim/bundle/YCM
+	url = https://github.com/Valloric/YouCompleteMe

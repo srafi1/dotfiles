@@ -139,10 +139,12 @@ let g:lightline_buffer_reservelen = 20
 
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-m>', '<Up>']
+let g:ycm_key_list_previous_completion = ['<C-m>', '<Up>', '<S-TAB>']
+let g:ycm_key_list_stop_completion = ['<Enter>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
 
-let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_min_num_of_chars_for_completion = 2
 
 " better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsExpandTrigger = "<tab>"

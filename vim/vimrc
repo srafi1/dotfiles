@@ -82,7 +82,7 @@ nnoremap <leader>q :lclose<bar>b#<bar>bd #<CR>
 nnoremap <leader><BS> :%s/\s\+$//e<CR>
 nnoremap <C-r> :!make run<CR>
 nnoremap Y y$
-nnoremap <leader>d :r! date "+\%Y-\%m-\%d"<CR>ddkPo<Esc>
+nnoremap <leader>d :r! date "+\%Y-\%m-\%d"<CR>ddkPo<Esc>k
 
 " navigate using hjkl in insert
 inoremap <C-h> <Left>

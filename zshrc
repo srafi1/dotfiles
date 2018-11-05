@@ -59,10 +59,10 @@ function cd() {
 alias grep='grep --color'
 
 # yay aliases (AUR helper
-alias yayin='yay -S --noconfirm'
-alias yayrem='yay -Rns'
-alias yayupd='yay -Syy'
-alias yayupg='yay -Syyu --builddir ~/tmp/yay --noconfirm'
+alias yain='yay -S --noconfirm'
+alias yarem='yay -Rns'
+alias yaupd='yay -Syy'
+alias yaupg='yay -Syyu --builddir ~/tmp/yay --noconfirm'
 
 # loading this automtically really slows down shell startup
 # load manually when using nvm

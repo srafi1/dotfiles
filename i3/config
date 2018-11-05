@@ -7,9 +7,11 @@ gaps inner 15
 gaps outer 0
 smart_gaps on
 exec ~/.fehbg # open wallpaper
+exec dunst
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh # launch polybar
 exec xset b off
 exec mpd
+exec redshift
 # exec xautolock -time 5 -corners ---- -locker ~/.custom_bin/lock &
 
 bindsym $mod+Return exec urxvt

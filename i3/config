@@ -15,7 +15,11 @@ exec redshift
 # exec xautolock -time 5 -corners ---- -locker ~/.custom_bin/lock &
 
 bindsym $mod+Return exec urxvt
+# cd to active terminal
 bindsym $mod+Shift+Return exec urxvt -cd "`xcwd`"
+# floating terminal
+bindsym $mod+Control+t exec urxvt -name floating
+for_window [class="URxvt" instance="floating"] floating enable
 bindsym $mod+b exec google-chrome-stable 
 bindsym $mod+Shift+q kill 
 bindsym $mod+d exec rofi -show run 

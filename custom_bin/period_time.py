@@ -1,4 +1,7 @@
 #! /usr/bin/python2
+
+# get the current period at stuyvesant high school (assumes a normal day)
+
 import datetime
 
 # period end times

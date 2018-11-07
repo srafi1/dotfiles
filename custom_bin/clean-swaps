@@ -1,4 +1,6 @@
 #! /bin/bash
 
+# remove all swap files for neovim
+
 cd ~/.local/share/nvim/swap
 rm * -v

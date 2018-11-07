@@ -1,5 +1,7 @@
 #! /bin/bash
 
+# remove backup files (mainly made by emacs)
+
 find -name "*#" > del
 find -name "*~" >> del
 

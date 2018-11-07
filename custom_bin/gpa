@@ -1,5 +1,7 @@
 #! /bin/bash
 
+# pull from all git dirs in current dir
+
 for d in *
 do
     if [ -d $d ]

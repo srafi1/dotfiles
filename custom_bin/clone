@@ -1,5 +1,7 @@
 #! /bin/bash
 
+# clone using ssh url
+
 if [ $# -eq 0 ]
 then
     echo "Usage: clone [<user:srafi1>] <repo>"

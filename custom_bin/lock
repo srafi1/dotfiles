@@ -1,5 +1,7 @@
 #! /bin/bash
 
+# lock using i3 with a blurred screenshot of the current screen
+
 ICON=$HOME/.config/lock.png
 scrot /tmp/screen.png
 TMPBG=/tmp/screen.png

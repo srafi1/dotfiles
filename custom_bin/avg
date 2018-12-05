@@ -1,0 +1,12 @@
+#! /bin/python
+
+import sys
+
+total = 0
+
+for i in sys.argv[1:]:
+    total += float(i)
+
+print('total: %f' % total)
+print('num: %d' % (len(sys.argv) - 1))
+print('avg: %f' % (total / (len(sys.argv) - 1)))

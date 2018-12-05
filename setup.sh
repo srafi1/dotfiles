@@ -12,6 +12,7 @@ read -n 1 -s ans
 if [ $ans == "y" ]
 then
     ./i3_setup.sh
+    ln -sf $(pwd)/Xdefaults ~/.Xdefaults
 fi
 
 echo "Setup Polybar? [y/n]: "

@@ -1,0 +1,12 @@
+#! /bin/bash
+
+# spam given text with random colors/bgcolors all over the terminal
+
+if [ -z $1 ]
+then
+    msg=COLORS
+else
+    msg=$1
+fi
+
+while :;do e=($(shuf -i1-7 -n2));s=${*:-$msg};printf "$(set -- $(stty size);tput cup $((RANDOM%$1)) $((RANDOM%$(($2-${#s}+1)))))$(tput setaf ${e[0]})$(tput setab ${e[1]})$s";done

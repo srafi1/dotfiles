@@ -4,27 +4,25 @@ filetype plugin indent on
 syntax on
 colorscheme darcula
 set t_ut= " fixes bg color in tmux
-set number
-set relativenumber
+set number relativenumber
 let mapleader=" "
 set hidden
 set history=100
 set wrap
-set tabstop=4
-set shiftwidth=4
-set expandtab
-set smartindent
-set autoindent
+set tabstop=4 shiftwidth=4 expandtab smartindent autoindent
 set hlsearch
 set cursorline
 set showmatch
 set splitbelow
 set splitright
-set mouse=a
+set mouse=a " allows mouse interaction in terminal
 set laststatus=2 " for lightline to work with only one screen
 set showtabline=2  " always show tabline
-" quit if there are no buffers left (causes problems wiwth NERDTree)
-"autocmd BufDelete * if len(filter(range(1, bufnr('$')), '! empty(bufname(v:val)) && buflisted(v:val)')) == 1 | quit | endif
+
+let NERDTreeMapActivateNode='l'
+let NERDTreeShowHidden=1
+let NERDTreeIgnore=['\.DS_Store', '\~$', '\.swp', '\.class$', '\.git$[[dir]]', '\.pyc$']
+
 augroup Mkdir
     autocmd!
     autocmd BufWritePre *
@@ -32,9 +30,7 @@ augroup Mkdir
                 \ call mkdir(expand("<afile>:p:h"), "p") |
                 \ endif
 augroup END
-let NERDTreeMapActivateNode='l'
-let NERDTreeShowHidden=1
-let NERDTreeIgnore=['\.DS_Store', '\~$', '\.swp', '\.class$', '\.git$[[dir]]', '\.pyc$', 'flask$']
+
 " change tabs to 2 spaces for html files
 autocmd BufRead,BufNewFile *.html set tabstop=2 shiftwidth=2
 autocmd BufRead,BufNewFile *.js set tabstop=4 shiftwidth=4
@@ -45,23 +41,30 @@ nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
 nnoremap <leader>g :NERDTreeToggle<CR>
 nnoremap <leader>s :e!<CR>
 nnoremap <leader>f :edit<space>
-let g:multi_cursor_next_key='<C-o>'
-let g:multi_cursor_prev_key='<C-y>'
-let g:multi_cursor_skip_key='<C-u>'
-let g:multi_cursor_quit_key='<C-i>'
+" open splits
 nnoremap <leader>l :vsp<CR>
 nnoremap <leader>h :rightb vsp<CR>
 nnoremap <leader>j :bel split<CR>
 nnoremap <leader>k :split<CR>
+" navigate splits
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w><C-w>
 nnoremap <C-k> <C-w>W
+" resize splits
 nnoremap <M-h> <C-w><
 nnoremap <M-j> <C-w>+
 nnoremap <M-k> <C-w>-
 nnoremap <M-l> <C-w>>
+" reset resizings
 nnoremap <leader>e <C-W>=
+
+" navigate using hjkl in insert
+inoremap <C-h> <Left>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-l> <Right>
+
 nnoremap U :redo<CR>
 if has('nvim') " only run if using neovim
     tnoremap <Esc> <C-\><C-n>
@@ -70,32 +73,28 @@ if has('nvim') " only run if using neovim
     tnoremap <C-k> <Up>
     tnoremap <C-l> <Right>
 endif
+
 nnoremap <C-s> :w<CR>
 inoremap <C-s> <Esc>:w<CR>li
-nnoremap L $
-nnoremap H 0
-nnoremap J }
-nnoremap K {
-nnoremap <leader>y :bprev<CR>
-nnoremap <leader>o :bnext<CR>
+" nnoremap L $
+" nnoremap H 0
+" nnoremap J }
+" nnoremap K {
+nnoremap <C-y> :bprev<CR>
+nnoremap <C-o> :bnext<CR>
+" close buffer
 nnoremap <leader>q :lclose<bar>b#<bar>bd #<CR>
 nnoremap <leader><BS> :%s/\s\+$//e<CR>
 nnoremap <C-r> :!make run<CR>
 nnoremap Y y$
 nnoremap <leader>d :r! date "+\%Y-\%m-\%d"<CR>ddkPo<Esc>k
 
-" navigate using hjkl in insert
-inoremap <C-h> <Left>
-inoremap <C-j> <Down>
-inoremap <C-k> <Up>
-inoremap <C-l> <Right>
-
 " use lightline-buffer in lightline
 let g:lightline = {
             \ 'colorscheme': 'wombat',
             \ 'tabline': {
-            \ 'left': [ [ 'bufferinfo' ], [ 'bufferbefore', 'buffercurrent', 'bufferafter' ], ],
-            \ 'right': [ [ 'close' ], ],
+            \ 'left': [ [ 'bufferinfo' ], [ 'bufferbefore', 'buffercurrent', 'bufferafter' ] ],
+            \ 'right': [],
             \ },
             \ 'component_expand': {
             \   'buffercurrent': 'lightline#buffer#buffercurrent',

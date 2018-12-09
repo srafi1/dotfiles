@@ -1,5 +1,7 @@
 #! /bin/python
 
+# print average of all inputs
+
 import sys
 
 total = 0

@@ -1,9 +1,11 @@
 # dotfiles
-dotfiles for editors and tools in general
+dotfiles for my arch setup
+
+Run `./setup.sh` to symlink my dotfiles
 
 ## Neovim
 * plugins (using pathogen)
 * colorscheme: darcula
-* snippets
+* some custom snippets
 
-## Emacs dotfile is no longer maintained
+## Emacs files are no longer maintained (since 08/2017)

@@ -1,20 +1,8 @@
-# Path to your oh-my-zsh installation.
 export ZSH=/home/srafi1/.oh-my-zsh
 
-# Set name of the theme to load.
 ZSH_THEME="minimal"
-
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
 HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true" # Maybe disable ?
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 plugins=(
     archlinux
@@ -25,10 +13,7 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-# You may need to manually set your language environment
 export LANG=en_US.UTF-8
-
-# Compilation flags
 export ARCHFLAGS="-arch x86_64"
 
 zstyle ':completion:*' completer _complete _ignored
@@ -73,12 +58,13 @@ load_nvm() {
 }
 
 export VISUAL="nvim" # editor
+export EDITOR="nvim"
 export ANDROID_HOME=$HOME/Android/Sdk
 export GOPATH="$HOME/go"
 
 # enter path in separate lines for legibility
 PREPATH="$PATH
-$HOME/.custom_bin
+$HOME/.scripts
 $ANDROID_HOME/tools
 $ANDROID_HOME/platform-tools
 $HOME/wine_shortcuts

@@ -1,4 +1,4 @@
 #! /bin/bash
 
 cd ~/Android/Sdk/emulator
-./emulator -avd nexus4 -use-system-libs &> /dev/null
+./emulator -avd nexus -use-system-libs &> /dev/null

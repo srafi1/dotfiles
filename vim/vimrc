@@ -83,7 +83,7 @@ inoremap <C-s> <Esc>:w<CR>li
 nnoremap <C-y> :bprev<CR>
 nnoremap <C-o> :bnext<CR>
 " close buffer
-nnoremap <leader>q :lclose<bar>b#<bar>bd #<CR>
+nnoremap <C-q> :lclose<bar>b#<bar>bd #<CR>
 nnoremap <leader><BS> :%s/\s\+$//e<CR>
 nnoremap <C-r> :!make run<CR>
 nnoremap Y y$

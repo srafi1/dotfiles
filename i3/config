@@ -14,7 +14,7 @@ exec mpd
 exec redshift
 exec nm-applet
 exec blueman-applet
-# exec xautolock -time 5 -corners ---- -locker ~/.custom_bin/lock &
+# exec xautolock -time 5 -corners ---- -locker ~/.scripts/lock &
 
 bindsym $mod+Return exec i3-sensible-terminal
 # cd to same place as active terminal
@@ -168,7 +168,7 @@ bindsym $mod+g mode "music"
 mode "Shutdown?" {
     bindsym Return exec poweroff
     bindsym r exec reboot 
-    bindsym l mode "default"; exec "~/.custom_bin/lock" 
+    bindsym l mode "default"; exec "~/.scripts/lock" 
     bindsym BackSpace exec "i3-msg exit"
 
     bindsym Escape mode "default"

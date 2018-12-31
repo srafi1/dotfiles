@@ -44,13 +44,10 @@ snippet #if
 # if
 snippet if
 	if (${0}) {
-
 	}
 snippet ife
 	if (${0}) {
-
 	} else {
-
 	}
 # else
 snippet el
@@ -147,3 +144,12 @@ snippet header
 
 	${4}
 	*/
+
+# testing with catch.hpp
+snippet test
+	TEST_CASE("${1}") {
+		${0}
+	}
+
+snippet ch
+	CHECK(${0});

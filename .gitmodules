@@ -49,3 +49,9 @@
 [submodule "vim/bundle/YCM"]
 	path = vim/bundle/YCM
 	url = https://github.com/Valloric/YouCompleteMe
+[submodule "vim/bundle/i3config.vim"]
+	path = vim/bundle/i3config.vim
+	url = https://github.com/mboughaba/i3config.vim
+[submodule "vim/bundle/dart-vim-plugin"]
+	path = vim/bundle/dart-vim-plugin
+	url = https://github.com/dart-lang/dart-vim-plugin

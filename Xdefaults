@@ -1,8 +1,8 @@
+!! set some colors
 *foreground: #cccccc
 *foreground_bold: #a8a19f
 *cursor: #a8a19f
 *background: #1b1918
-
 !! black
 *color0: #1b1918
 *color8: #766e6b
@@ -28,6 +28,7 @@
 *color7: #a8a19f
 *color15: #f1efee
 
+!! rxvt-unicode settings
 URxvt.intensityStyles: false
 URxvt.depth: 32
 URxvt.transparent: true
@@ -50,10 +51,7 @@ URxvt*scrollTtyOutput: false
 URxvt*scrollWithBuffer: true
 URxvt*scrollTtyKeypress: true
 
-! ------------------------------------------------------------------------------
-! ROFI standard archlabs theme
-! ------------------------------------------------------------------------------
-
+!! rofi standard archlabs theme
 rofi.font: SFNS Display 13 
 rofi.location: 0
 rofi.fullscreen: false
@@ -62,13 +60,7 @@ rofi.hide-scrollbar: true
 rofi.line-margin: 5
 rofi.yoffset: 00
 rofi.xoffset: 0
-!rofi.width: 1920
 rofi.lines: 5
-
-! ------------------------------------------------------------------------------
-! ROFI color theme
-! ------------------------------------------------------------------------------
-
 rofi.color-enabled: true
 rofi.color-window: argb:B3444444, argb:B3000000, argb:E6ffffff
 rofi.color-normal: argb:00444444, argb:969896B3, argb:00000000, argb:00000000, argb:FFFFFFFF

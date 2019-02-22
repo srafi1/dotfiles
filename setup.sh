@@ -16,6 +16,8 @@ if [ $ans == "y" ]
 then
     ln -si $(pwd)/i3 ~/.config/i3
     ln -si $(pwd)/Xdefaults ~/.Xdefaults
+    ln -si $(pwd)/lock.png ~/.config/
+    ln -si $(pwd)/wallpaper.png ~/.config/
 fi
 
 echo "Setup Polybar? [y/n]: "

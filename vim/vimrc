@@ -118,7 +118,7 @@ let g:lightline = {
 " replace these symbols with ascii characters if your environment does not support unicode
 let g:lightline_buffer_logo = '(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ '
 let g:lightline_buffer_readonly_icon = ''
-let g:lightline_buffer_modified_icon = '✭'
+let g:lightline_buffer_modified_icon = '●'
 let g:lightline_buffer_git_icon = ' '
 let g:lightline_buffer_ellipsis_icon = '...'
 let g:lightline_buffer_expand_left_icon = '◀ '

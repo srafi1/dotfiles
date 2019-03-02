@@ -20,7 +20,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 # cd to same place as active terminal
 bindsym $mod+Shift+Return exec urxvt -cd "`xcwd`"
 # floating terminal
-bindsym $mod+Control+t exec urxvt -name floating
+bindsym $mod+t exec urxvt -name floating
 for_window [class="URxvt" instance="floating"] floating enable
 bindsym $mod+b exec google-chrome-stable 
 bindsym $mod+Shift+q kill 

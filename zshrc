@@ -1,14 +1,14 @@
 export ZSH=/home/srafi1/.oh-my-zsh
 
-ZSH_THEME="minimal"
+ZSH_THEME="refined"
 HYPHEN_INSENSITIVE="true"
 COMPLETION_WAITING_DOTS="true" # Maybe disable ?
 
 plugins=(
     archlinux
     git
-    zsh-completions
     colorize
+    calc
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -43,13 +43,13 @@ function cd() {
 
 alias grep='grep --color'
 
-# yay aliases (AUR helper
+# yay aliases (AUR helper)
 alias yain='yay -S --noconfirm'
 alias yarem='yay -Rns'
 alias yaupd='yay -Syy'
 alias yaupg='yay -Syyu --builddir ~/tmp/yay --noconfirm'
 
-# loading this automtically really slows down shell startup
+# loading this automatically really slows down shell startup
 # load manually when using nvm
 load_nvm() {
     export NVM_DIR="$HOME/.nvm"
@@ -57,7 +57,7 @@ load_nvm() {
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 }
 
-export VISUAL="nvim" # editor
+export VISUAL="nvim"
 export EDITOR="nvim"
 export ANDROID_HOME=$HOME/Android/Sdk
 export GOPATH="$HOME/go"

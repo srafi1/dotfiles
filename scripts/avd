@@ -1,4 +1,11 @@
 #! /bin/bash
 
+if [ $# -eq 0 ]
+then
+    avd="nexus"
+else
+    avd=$1
+fi
+
 cd ~/Android/Sdk/emulator
-./emulator -avd nexus -use-system-libs &> /dev/null
+./emulator -avd $avd -use-system-libs &> /dev/null

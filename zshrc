@@ -43,6 +43,10 @@ function cd() {
 
 alias grep='grep --color'
 
+function open() {
+    mimeo $@ &> /dev/null
+}
+
 # yay aliases (AUR helper)
 alias yain='yay -S --noconfirm'
 alias yarem='yay -Rns'

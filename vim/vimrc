@@ -31,6 +31,9 @@ augroup Mkdir
                 \ endif
 augroup END
 
+" compile pdf after saving tex file
+autocmd BufWritePost *.tex !pdflatex %
+
 " change tabs to 2 spaces for html files
 autocmd BufRead,BufNewFile *.html set tabstop=2 shiftwidth=2
 autocmd BufRead,BufNewFile *.js set tabstop=4 shiftwidth=4
@@ -65,15 +68,6 @@ nnoremap <leader>e <C-W>=
 " inoremap <C-k> <Up>
 " inoremap <C-l> <Right>
 
-nnoremap U :redo<CR>
-if has('nvim') " only run if using neovim
-    tnoremap <Esc> <C-\><C-n>
-    tnoremap <C-h> <Left>
-    tnoremap <C-j> <Down>
-    tnoremap <C-k> <Up>
-    tnoremap <C-l> <Right>
-endif
-
 nnoremap <C-s> :w<CR>
 inoremap <C-s> <Esc>:w<CR>li
 " nnoremap L $
@@ -88,6 +82,15 @@ nnoremap <leader><BS> :%s/\s\+$//e<CR>
 nnoremap <C-r> :!make run<CR>
 nnoremap Y y$
 nnoremap <leader>d :r! date "+\%Y-\%m-\%d"<CR>
+
+nnoremap U :redo<CR>
+if has('nvim') " only run if using neovim
+    tnoremap <Esc> <C-\><C-n>
+    tnoremap <C-h> <Left>
+    tnoremap <C-j> <Down>
+    tnoremap <C-k> <Up>
+    tnoremap <C-l> <Right>
+endif
 
 " use lightline-buffer in lightline
 let g:lightline = {

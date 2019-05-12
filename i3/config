@@ -170,6 +170,7 @@ mode "Shutdown?" {
     bindsym r exec reboot 
     bindsym l mode "default"; exec "~/.scripts/lock" 
     bindsym BackSpace exec "i3-msg exit"
+    bindsym Escape mode "default"; exec "systemctl suspend"
 
     bindsym Escape mode "default"
 }

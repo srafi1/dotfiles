@@ -35,8 +35,7 @@ augroup END
 autocmd BufWritePost *.tex !pdflatex %
 
 " change tabs to 2 spaces for html files
-autocmd BufRead,BufNewFile *.html set tabstop=2 shiftwidth=2
-autocmd BufRead,BufNewFile *.js set tabstop=4 shiftwidth=4
+autocmd BufRead,BufNewFile *.html,*.jsx,*.js set tabstop=2 shiftwidth=2
 set wildignore+=*/flask/*,*/.git/*,*/db_repository/*,*/node_modules/*
 
 " key mappings
@@ -95,6 +94,9 @@ endif
 " use lightline-buffer in lightline
 let g:lightline = {
             \ 'colorscheme': 'wombat',
+            \ 'active': {
+            \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'absolutepath', 'modified' ] ],
+            \ },
             \ 'tabline': {
             \ 'left': [ [ 'bufferinfo' ], [ 'bufferbefore', 'buffercurrent', 'bufferafter' ] ],
             \ 'right': [],

@@ -84,7 +84,7 @@ nnoremap <leader>d :r! date "+\%Y-\%m-\%d"<CR>
 
 nnoremap U :redo<CR>
 if has('nvim') " only run if using neovim
-    tnoremap <Esc> <C-\><C-n>
+    tnoremap <Esc><Esc> <C-\><C-n>
     tnoremap <C-h> <Left>
     tnoremap <C-j> <Down>
     tnoremap <C-k> <Up>

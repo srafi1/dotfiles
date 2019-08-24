@@ -3,6 +3,7 @@
 # lock using i3 with a blurred screenshot of the current screen
 
 ICON=$HOME/.config/lock.png
+rm -f /tmp/screen.png
 scrot /tmp/screen.png
 TMPBG=/tmp/screen.png
 convert $TMPBG -scale 10% -scale 1000% $TMPBG

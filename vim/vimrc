@@ -81,6 +81,7 @@ nnoremap <leader><BS> :%s/\s\+$//e<CR>
 nnoremap <C-r> :!make run<CR>
 nnoremap Y y$
 nnoremap <leader>d :r! date "+\%Y-\%m-\%d"<CR>
+vnoremap <leader>t :%!column -t<CR>
 
 nnoremap U :redo<CR>
 if has('nvim') " only run if using neovim

@@ -21,7 +21,7 @@ set showtabline=2  " always show tabline
 
 let NERDTreeMapActivateNode='l'
 let NERDTreeShowHidden=1
-let NERDTreeIgnore=['\.DS_Store', '\~$', '\.swp', '\.class$', '\.git$[[dir]]', '\.pyc$']
+let NERDTreeIgnore=['\.DS_Store', '\~$', '\.swp', '\.class$', '\.git$[[dir]]', '\.pyc$', 'node_modules']
 
 augroup Mkdir
     autocmd!

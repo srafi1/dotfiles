@@ -15,7 +15,7 @@ Plug 'ervandew/supertab'
 Plug 'tpope/vim-fugitive'
 Plug 'mxw/vim-jsx'
 Plug 'rstacruz/sparkup'
-Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe', {'do': 'python install.py --all'}
 Plug 'mboughaba/i3config.vim'
 Plug 'tpope/vim-eunuch'
 Plug 'chrisbra/unicode.vim'

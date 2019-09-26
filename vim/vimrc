@@ -1,6 +1,28 @@
 " vim-plug
 call plug#begin('~/.vim/plugged')
-
+Plug 'itchyny/lightline.vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tpope/vim-surround'
+Plug 'easymotion/vim-easymotion'
+Plug 'taohexxx/lightline-buffer'
+Plug 'scrooloose/nerdtree/'
+Plug 'tomtom/tlib_vim.git'
+Plug 'MarcWeber/vim-addon-mw-utils.git'
+Plug 'vimwiki/vimwiki'
+Plug 'ap/vim-css-color'
+Plug 'SirVer/ultisnips'
+Plug 'ervandew/supertab'
+Plug 'tpope/vim-fugitive'
+Plug 'mxw/vim-jsx'
+Plug 'rstacruz/sparkup'
+Plug 'Valloric/YouCompleteMe'
+Plug 'mboughaba/i3config.vim'
+Plug 'tpope/vim-eunuch'
+Plug 'chrisbra/unicode.vim'
+Plug 'jiangmiao/auto-pairs'
+Plug 'scrooloose/nerdcommenter'
+Plug 'w0rp/ale'
+Plug 'Shougo/vimproc.vim'
 call plug#end()
 
 " general defaults setup

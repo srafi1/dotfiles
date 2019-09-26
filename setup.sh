@@ -51,6 +51,5 @@ then
     ln -si $(pwd)/vim ~/.vim
     ln -si $(pwd)/vim ~/.config/nvim 
     ln -si $(pwd)/vim/vimrc ~/.vimrc
-    echo "========== Installing Neovim modules =========="
-    git submodule update --init 
+    nvim +PlugInstall
 fi

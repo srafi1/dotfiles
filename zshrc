@@ -77,3 +77,5 @@ $HOME/.config/yarn/global/node_modules/.bin
 $GOPATH/bin
 $HOME/.gem/ruby/2.5.0/bin"
 export PATH="${PREPATH//$'\n'/:}" # changes PREPATH into PATH format
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

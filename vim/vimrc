@@ -15,7 +15,7 @@ Plug 'ervandew/supertab'
 Plug 'tpope/vim-fugitive'
 Plug 'mxw/vim-jsx'
 Plug 'rstacruz/sparkup'
-Plug 'Valloric/YouCompleteMe', {'do': 'python install.py --all'}
+"Plug 'Valloric/YouCompleteMe', {'do': 'python install.py --all'}
 Plug 'mboughaba/i3config.vim'
 Plug 'tpope/vim-eunuch'
 Plug 'chrisbra/unicode.vim'
@@ -23,6 +23,8 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
 Plug 'w0rp/ale'
 Plug 'Shougo/vimproc.vim'
+Plug 'autozimu/LanguageClient-neovim', {'branch':'next', 'do':'bash install.sh'}
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 call plug#end()
 
 " general defaults setup
@@ -169,16 +171,16 @@ let g:lightline_buffer_minflen = 16
 let g:lightline_buffer_minfextlen = 3
 let g:lightline_buffer_reservelen = 20
 
-" make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-m>', '<Up>', '<S-TAB>']
-let g:ycm_key_list_stop_completion = ['<Enter>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
+let g:LanguageClient_serverCommands = {
+    \ 'python': ['pyls'],
+    \ 'go': ['gopls'],
+    \ 'java': ['jdtls'],
+    \ 'c': ['ccls'],
+    \ 'cpp': ['ccls'],
+    \ }
 
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_min_num_of_chars_for_completion = 2
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
-" better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+let g:deoplete#enable_at_startup = 1

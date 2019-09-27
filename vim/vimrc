@@ -177,6 +177,7 @@ let g:LanguageClient_serverCommands = {
     \ 'java': ['jdtls'],
     \ 'c': ['ccls'],
     \ 'cpp': ['ccls'],
+    \ 'rust': ['texlab'],
     \ }
 
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>

@@ -68,6 +68,19 @@ autocmd BufWritePost *.tex !pdflatex %
 autocmd BufRead,BufNewFile *.html,*.jsx,*.js set tabstop=2 shiftwidth=2
 set wildignore+=*/flask/*,*/.git/*,*/db_repository/*,*/node_modules/*
 
+" lsp config
+let g:deoplete#enable_at_startup = 1
+let g:LanguageClient_useVirtualText = 0
+let g:SuperTabDefaultCompletionType = "<c-n>"
+let g:LanguageClient_serverCommands = {
+    \ 'python': ['pyls'],
+    \ 'go': ['gopls'],
+    \ 'java': ['jdtls'],
+    \ 'c': ['ccls'],
+    \ 'cpp': ['ccls'],
+    \ 'rust': ['texlab'],
+    \ }
+
 " key mappings
 nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
 nnoremap <C-g> :NERDTreeToggle<CR>
@@ -112,8 +125,12 @@ nnoremap <C-r> :!make run<CR>
 nnoremap Y y$
 nnoremap <leader>d o<Esc>:r! date "+\%Y-\%m-\%d"<CR>
 vnoremap <leader>t :%!column -t<CR>
-
 nnoremap U :redo<CR>
+
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
 if has('nvim') " only run if using neovim
     tnoremap <Esc><Esc> <C-\><C-n>
     tnoremap <C-h> <Left>
@@ -172,20 +189,3 @@ let g:lightline_buffer_maxfextlen = 3
 let g:lightline_buffer_minflen = 16
 let g:lightline_buffer_minfextlen = 3
 let g:lightline_buffer_reservelen = 20
-
-let g:LanguageClient_serverCommands = {
-    \ 'python': ['pyls'],
-    \ 'go': ['gopls'],
-    \ 'java': ['jdtls'],
-    \ 'c': ['ccls'],
-    \ 'cpp': ['ccls'],
-    \ 'rust': ['texlab'],
-    \ }
-
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-
-let g:LanguageClient_useVirtualText = 0
-let g:deoplete#enable_at_startup = 1
-let g:SuperTabDefaultCompletionType = "<c-n>"

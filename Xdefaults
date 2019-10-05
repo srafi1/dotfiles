@@ -33,8 +33,8 @@ URxvt.intensityStyles: false
 URxvt.depth: 32
 URxvt.transparent: true
 URxvt.shading: 20
-URxvt.font: xft:Dejavu Sans Mono For Powerline:normal:size=12
-URxvt.boldFont: xft:Dejavu Sans Mono For Powerline:bold:size=12
+URxvt.font: xft:Dejavu Sans Mono For Powerline:normal:size=14
+URxvt.boldFont: xft:Dejavu Sans Mono For Powerline:bold:size=14
 URxvt.scrollBar: false
 URxvt.cursorColor: white
 URxvt.perl-ext-common: default,matcher,font-size

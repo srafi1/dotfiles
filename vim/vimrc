@@ -76,8 +76,8 @@ let g:LanguageClient_serverCommands = {
     \ 'python': ['pyls'],
     \ 'go': ['gopls'],
     \ 'java': ['jdtls'],
-    \ 'c': ['ccls'],
-    \ 'cpp': ['ccls'],
+    \ 'c': ['clangd'],
+    \ 'cpp': ['clangd'],
     \ 'rust': ['texlab'],
     \ 'javascript': ['javascript-typescript-langserver'],
     \ }

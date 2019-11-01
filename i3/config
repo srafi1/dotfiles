@@ -1,4 +1,4 @@
-set $mod Mod1
+set $mod Mod4
 font xft:FontAwesome 12
 floating_modifier $mod
 new_window pixel 3
@@ -26,8 +26,8 @@ bindsym $mod+b exec google-chrome-stable
 bindsym $mod+Shift+q kill 
 bindsym $mod+d exec rofi -show run 
 bindsym F7 exec deepin-screenshot
-bindsym Mod1+Tab focus right
-bindsym Mod1+Shift+Tab focus left
+bindsym $mod+Tab focus right
+bindsym $mod+Shift+Tab focus left
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer sset Master 5%+ #increase sound volume

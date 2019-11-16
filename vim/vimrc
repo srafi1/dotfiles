@@ -81,6 +81,7 @@ let g:LanguageClient_serverCommands = {
     \ 'rust': ['texlab'],
     \ 'javascript': ['javascript-typescript-langserver'],
     \ }
+set completeopt-=preview
 
 " key mappings
 nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>

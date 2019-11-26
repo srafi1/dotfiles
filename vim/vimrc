@@ -11,6 +11,7 @@ Plug 'taohexxx/lightline-buffer'
 Plug 'tpope/vim-fugitive'
 Plug 'vimwiki/vimwiki'
 Plug 'ap/vim-css-color'
+Plug 'junegunn/seoul256.vim'
 Plug 'rstacruz/sparkup'
 Plug 'mxw/vim-jsx'
 Plug 'mboughaba/i3config.vim'
@@ -25,14 +26,14 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'autozimu/LanguageClient-neovim', { 'branch':'next', 'do':'bash install.sh' }
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
-"Plug 'Valloric/YouCompleteMe', {'do': 'python install.py --all'}
-"Plug 'w0rp/ale'
+Plug 'junegunn/vim-easy-align'
 call plug#end()
 
 " general defaults setup
 filetype plugin indent on
 syntax on
-colorscheme darcula
+let g:seoul256_background = 235
+colorscheme seoul256
 set t_ut= " fixes bg color in tmux
 set number relativenumber
 let mapleader=" "

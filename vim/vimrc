@@ -49,6 +49,7 @@ set splitright
 set mouse=a " allows mouse interaction in terminal
 set laststatus=2 " for lightline to work with only one screen
 set showtabline=2  " always show tabline
+set scrolloff=5
 
 let NERDTreeMapActivateNode='l'
 let NERDTreeShowHidden=1

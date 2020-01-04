@@ -10,7 +10,7 @@ exec ~/.fehbg # open wallpaper
 exec dunst
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh # launch polybar
 exec xset b off
-exec mpd
+#exec mpd
 exec redshift
 exec nm-applet
 exec blueman-applet

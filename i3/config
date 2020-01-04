@@ -6,11 +6,14 @@ smart_borders no_gaps
 gaps inner 15
 gaps outer 0
 smart_gaps on
-exec ~/.fehbg # open wallpaper
+# open wallpaper
+exec ~/.fehbg
 exec dunst
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh # launch polybar
+# launch polybar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+# disable terminal bell
 exec xset b off
-#exec mpd
+# exec mpd
 exec redshift
 exec nm-applet
 exec blueman-applet

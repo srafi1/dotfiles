@@ -55,6 +55,7 @@ let NERDTreeMapActivateNode='l'
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.DS_Store', '\~$', '\.swp', '\.class$', '\.git$[[dir]]', '\.pyc$', 'node_modules']
 
+" if the directory for a new file doesn't exist, create it
 augroup Mkdir
     autocmd!
     autocmd BufWritePre *
@@ -67,7 +68,7 @@ augroup END
 autocmd BufWritePost *.tex !pdflatex %
 
 " change tabs to 2 spaces for html files
-autocmd BufRead,BufNewFile *.html,*.jsx,*.js set tabstop=2 shiftwidth=2
+autocmd BufRead,BufNewFile *.html,*.css,*.jsx,*.js set tabstop=2 shiftwidth=2
 set wildignore+=*/flask/*,*/.git/*,*/db_repository/*,*/node_modules/*
 
 " lsp config
@@ -145,14 +146,26 @@ if has('nvim') " only run if using neovim
     tnoremap <C-l> <Right>
 endif
 
+function! LightlineFilename()
+  let root = fnamemodify(get(b:, 'git_dir'), ':h')
+  let path = expand('%:p')
+  if path[:len(root)-1] ==# root
+    return path[len(root)+1:]
+  endif
+  return expand('%')
+endfunction
+
 " use lightline-buffer in lightline
 let g:lightline = {
             \ 'colorscheme': 'wombat',
             \ 'active': {
-            \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'absolutepath', 'modified' ] ],
+            \   'left': [ [ 'mode', 'paste' ],
+            \             [ 'readonly', 'filename', 'modified' ] ],
+            \   'right': [ [ 'lineinfo' ], [ 'percent' ],
+            \              [ 'gitbranch', 'filetype' ] ],
             \ },
             \ 'tabline': {
-            \ 'left': [ [ 'bufferinfo' ], [ 'bufferbefore', 'buffercurrent', 'bufferafter' ] ],
+            \ 'left': [ [ 'bufferbefore', 'buffercurrent', 'bufferafter' ] ],
             \ 'right': [],
             \ },
             \ 'component_expand': {
@@ -167,9 +180,8 @@ let g:lightline = {
             \ },
             \ 'component_function': {
             \   'bufferinfo': 'lightline#buffer#bufferinfo',
-            \ },
-            \ 'component': {
-            \   'separator': '',
+            \   'filename': 'LightlineFilename',
+            \   'gitbranch': 'fugitive#head',
             \ },
             \ }
 

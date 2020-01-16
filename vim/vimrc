@@ -69,6 +69,7 @@ autocmd BufWritePost *.tex !pdflatex %
 
 " change tabs to 2 spaces for html files
 autocmd BufRead,BufNewFile *.html,*.css,*.jsx,*.js set tabstop=2 shiftwidth=2
+
 set wildignore+=*/flask/*,*/.git/*,*/db_repository/*,*/node_modules/*
 
 " lsp config
@@ -165,7 +166,7 @@ let g:lightline = {
             \              [ 'gitbranch', 'filetype' ] ],
             \ },
             \ 'tabline': {
-            \ 'left': [ [ 'bufferbefore', 'buffercurrent', 'bufferafter' ] ],
+            \ 'left': [ [], [ 'bufferbefore', 'buffercurrent', 'bufferafter' ] ],
             \ 'right': [],
             \ },
             \ 'component_expand': {

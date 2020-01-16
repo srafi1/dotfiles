@@ -73,7 +73,7 @@ set wildignore+=*/flask/*,*/.git/*,*/db_repository/*,*/node_modules/*
 
 " lsp config
 let g:deoplete#enable_at_startup = 1
-let g:LanguageClient_useVirtualText = 0
+"let g:LanguageClient_useVirtualText = 0
 let g:SuperTabDefaultCompletionType = "<c-n>"
 let g:LanguageClient_serverCommands = {
     \ 'python': ['pyls'],

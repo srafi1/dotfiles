@@ -134,6 +134,8 @@ nnoremap <leader>d o<Esc>:r! date "+\%Y-\%m-\%d"<CR>
 " format text into columns
 vnoremap <leader>t :%!column -t<CR>
 nnoremap U :redo<CR>
+nnoremap gn :cn<CR>
+nnoremap gp :cp<CR>
 
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>

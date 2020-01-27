@@ -22,7 +22,7 @@ zstyle :compinstall filename '/home/srafi1/.zshrc'
 autoload -Uz compinit
 compinit
 
-HISTFILE=~/.histfile
+HISTFILE=~/.zsh_history
 HISTSIZE=1000
 SAVEHIST=1000
 setopt appendhistory extendedglob

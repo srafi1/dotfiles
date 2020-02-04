@@ -18,6 +18,7 @@ then
     ln -si $(pwd)/Xdefaults ~/.Xdefaults
     ln -si $(pwd)/lock.png ~/.config/
     ln -si $(pwd)/wallpaper.png ~/.config/
+    ln -si $(pwd)/urxvt ~/.urxvt
 fi
 
 echo "Setup Polybar? [y/n]: "

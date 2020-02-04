@@ -130,7 +130,6 @@ nnoremap <C-q> :lclose<bar>b#<bar>bd #<CR>
 nnoremap <leader><BS> :%s/\s\+$//e<CR>
 "nnoremap <C-r> :!make run<CR>
 nnoremap Y y$
-nnoremap <leader>d o<Esc>:r! date "+\%Y-\%m-\%d"<CR>
 " format text into columns
 vnoremap <leader>t :%!column -t<CR>
 nnoremap U :redo<CR>

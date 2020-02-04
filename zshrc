@@ -61,6 +61,15 @@ load_nvm() {
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 }
 
+# activate virtualenv for python dev
+function v() {
+    VENV_NAME=venv
+    if [[ $# -gt 0 ]]; then
+        VENV_NAME=$1
+    fi
+    . ./$VENV_NAME/bin/activate
+}
+
 export VISUAL="nvim"
 export EDITOR="nvim"
 export ANDROID_HOME=$HOME/Android/Sdk

@@ -22,8 +22,7 @@ Plug 'chrisbra/unicode.vim'
 Plug 'Shougo/vimproc.vim'
 Plug 'ervandew/supertab'
 Plug 'SirVer/ultisnips'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'autozimu/LanguageClient-neovim', { 'branch':'next', 'do':'bash install.sh' }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'

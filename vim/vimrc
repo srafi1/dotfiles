@@ -27,6 +27,8 @@ Plug 'autozimu/LanguageClient-neovim', { 'branch':'next', 'do':'bash install.sh'
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 call plug#end()
 
 " general defaults setup
@@ -135,6 +137,7 @@ vnoremap <leader>t :%!column -t<CR>
 nnoremap U :redo<CR>
 nnoremap gn :cn<CR>
 nnoremap gp :cp<CR>
+nnoremap <leader><leader>l :Goyo<CR>:Limelight!!<CR>
 
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>

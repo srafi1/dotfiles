@@ -73,21 +73,6 @@ autocmd BufRead,BufNewFile *.html,*.css,*.jsx,*.js set tabstop=2 shiftwidth=2
 
 set wildignore+=*/flask/*,*/.git/*,*/db_repository/*,*/node_modules/*
 
-" lsp config
-let g:deoplete#enable_at_startup = 1
-"let g:LanguageClient_useVirtualText = 0
-let g:SuperTabDefaultCompletionType = "<c-n>"
-let g:LanguageClient_serverCommands = {
-    \ 'python': ['pyls'],
-    \ 'go': ['gopls'],
-    \ 'java': ['jdtls'],
-    \ 'c': ['clangd'],
-    \ 'cpp': ['clangd'],
-    \ 'tex': ['texlab'],
-    \ 'javascript.jsx': ['javascript-typescript-stdio'],
-    \ }
-set completeopt-=preview
-
 " key mappings
 nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
 nnoremap <C-g> :NERDTreeToggle<CR>
@@ -137,10 +122,6 @@ nnoremap U :redo<CR>
 nnoremap gn :cn<CR>
 nnoremap gp :cp<CR>
 nnoremap <leader><leader>l :Goyo<CR>:Limelight!!<CR>
-
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 if has('nvim') " only run if using neovim
     tnoremap <Esc><Esc> <C-\><C-n>

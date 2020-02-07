@@ -1,0 +1,30 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "description": "Configuration for coc.nvim",
+    "languageserver": {
+        "python": {
+            "command": "pyls",
+            "filetypes": ["py"]
+        },
+        "go": {
+            "command": "gopls",
+            "filetypes": ["go"]
+        },
+        "java": {
+            "command": "jdtls",
+            "filetypes": ["java"]
+        },
+        "clang": {
+            "command": "clangd",
+            "filetypes": ["c", "cpp"]
+        },
+        "latex": {
+            "command": "texlab",
+            "filetypes": ["tex"]
+        },
+        "javascript.jsx": {
+            "command": "javascript-typescript-stdio",
+            "filetypes": ["js", "jsx", "ts", "tsx"]
+        }
+    }
+}

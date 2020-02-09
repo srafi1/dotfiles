@@ -21,10 +21,6 @@
         "latex": {
             "command": "texlab",
             "filetypes": ["tex"]
-        },
-        "javascript.jsx": {
-            "command": "javascript-typescript-stdio",
-            "filetypes": ["js", "jsx", "ts", "tsx"]
         }
     }
 }

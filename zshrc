@@ -63,11 +63,15 @@ load_nvm() {
 
 # activate virtualenv for python dev
 function v() {
-    VENV_NAME=venv
-    if [[ $# -gt 0 ]]; then
-        VENV_NAME=$1
+    if [[ -v VIRTUAL_ENV ]];then
+        deactivate
+    else
+        VENV_NAME=venv
+        if [[ $# -gt 0 ]]; then
+            VENV_NAME=$1
+        fi
+        . ./$VENV_NAME/bin/activate
     fi
-    . ./$VENV_NAME/bin/activate
 }
 
 export VISUAL="nvim"

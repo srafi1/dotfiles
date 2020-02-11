@@ -3,24 +3,38 @@
     "description": "Configuration for coc.nvim",
     "languageserver": {
         "python": {
-            "command": "pyls",
-            "filetypes": ["py"]
+            "command": "python",
+            "args": [
+                "-mpyls"
+            ],
+            "filetypes": [
+                "python"
+            ]
         },
         "go": {
             "command": "gopls",
-            "filetypes": ["go"]
+            "filetypes": [
+                "go"
+            ]
         },
         "java": {
             "command": "jdtls",
-            "filetypes": ["java"]
+            "filetypes": [
+                "java"
+            ]
         },
         "clang": {
             "command": "clangd",
-            "filetypes": ["c", "cpp"]
+            "filetypes": [
+                "c",
+                "cpp"
+            ]
         },
         "latex": {
             "command": "texlab",
-            "filetypes": ["tex"]
+            "filetypes": [
+                "tex"
+            ]
         }
     }
 }

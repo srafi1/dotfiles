@@ -201,6 +201,8 @@ omap af <Plug>(coc-funcobj-a)
 " Use `:Format` to format current buffer
 command! -nargs=0 Format :call CocAction('format')
 
+let g:coc_node_path='/usr/bin/node'
+
 function! LightlineFilename()
   let root = fnamemodify(get(b:, 'git_dir'), ':h')
   let path = expand('%:p')

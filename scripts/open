@@ -1,5 +1,0 @@
-#! /bin/bash
-
-# open without any output
-
-nohup xdg-open "$1" &> /dev/null &

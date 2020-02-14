@@ -55,6 +55,9 @@ set updatetime=300
 set shortmess+=c
 set signcolumn=yes
 
+" don't ignore strings and comments with EasyAlign
+let g:easy_align_ignore_groups = []
+
 let NERDTreeMapActivateNode='l'
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.DS_Store', '\~$', '\.swp', '\.class$', '\.git$[[dir]]', '\.pyc$', 'node_modules']

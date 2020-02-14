@@ -54,6 +54,7 @@ set cmdheight=2
 set updatetime=300
 set shortmess+=c
 set signcolumn=yes
+set shell=/usr/bin/zsh
 
 " don't ignore strings and comments with EasyAlign
 let g:easy_align_ignore_groups = []

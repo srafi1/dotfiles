@@ -27,7 +27,8 @@
             "command": "clangd",
             "filetypes": [
                 "c",
-                "cpp"
+                "cpp",
+                "cc"
             ]
         },
         "latex": {

@@ -18,6 +18,7 @@ exec redshift
 exec nm-applet
 exec blueman-applet
 # exec xautolock -time 5 -corners ---- -locker ~/.scripts/lock &
+exec --no-startup-id light-locker
 
 bindsym $mod+Return exec i3-sensible-terminal
 # cd to same place as active terminal
@@ -171,7 +172,7 @@ bindsym $mod+g mode "music"
 mode "Shutdown?" {
     bindsym Return exec poweroff
     bindsym r exec reboot 
-    bindsym l mode "default"; exec "~/.scripts/lock" 
+    bindsym l mode "default"; exec "light-locker-command -l"
     bindsym BackSpace exec "i3-msg exit"
     bindsym s mode "default"; exec "systemctl suspend"
 

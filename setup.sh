@@ -2,14 +2,6 @@
 
 # for symlinking dotfiles in a new setup
 
-echo "Setup Emacs? [y/n]: "
-read -n 1 -s ans
-if [ $ans == "y" ]
-then
-    ln -si $(pwd)/emacs ~/.emacs
-    ln -si $(pwd)/emacs.d ~/.emacs.d
-fi
-
 echo "Setup i3? [y/n]: "
 read -n 1 -s ans
 if [ $ans == "y" ]

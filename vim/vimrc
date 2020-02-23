@@ -22,6 +22,7 @@ Plug 'tpope/vim-eunuch'
 Plug 'chrisbra/unicode.vim'
 Plug 'Shougo/vimproc.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
@@ -75,8 +76,8 @@ augroup END
 " compile pdf after saving tex file
 autocmd BufWritePost *.tex !pdflatex %
 
-" change tabs to 2 spaces for html files
-autocmd BufRead,BufNewFile *.html,*.css,*.jsx,*.js set tabstop=2 shiftwidth=2
+" change tabs to 2 spaces for html/js/ts files
+autocmd BufRead,BufNewFile *.html,*.css,*.js,*.jsx,*.ts,*.tsx set tabstop=2 shiftwidth=2
 
 set wildignore+=*/flask/*,*/.git/*,*/db_repository/*,*/node_modules/*
 

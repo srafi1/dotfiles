@@ -47,7 +47,7 @@ set cursorline
 set showmatch
 set splitbelow
 set splitright
-set mouse=a " allows mouse interaction in terminal
+set mouse=n " allows mouse interaction in normal mode
 set laststatus=2 " for lightline to work with only one screen
 set showtabline=2  " always show tabline
 set scrolloff=5

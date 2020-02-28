@@ -43,6 +43,7 @@ set history=100
 set wrap
 set tabstop=4 shiftwidth=4 expandtab smartindent autoindent
 set hlsearch
+set ignorecase smartcase " search case insensitive unless a capital is used
 set cursorline
 set showmatch
 set splitbelow

@@ -80,6 +80,9 @@ autocmd BufWritePost *.tex !pdflatex %
 " change tabs to 2 spaces for html/js/ts files
 autocmd BufRead,BufNewFile *.html,*.css,*.js,*.jsx,*.ts,*.tsx set tabstop=2 shiftwidth=2
 
+" break lines and enable spellcheck for document based files
+autocmd BufRead,BufNewFile *.tex,*.md,*.wiki set linebreak spell
+
 set wildignore+=*/flask/*,*/.git/*,*/db_repository/*,*/node_modules/*
 
 " key mappings

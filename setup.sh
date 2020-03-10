@@ -28,7 +28,7 @@ then
     # previous zshrc gets renamed to .zshrc.pre-oh-my-zsh
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     ln -sf $(pwd)/zshrc ~/.zshrc
-    ln -sf $(pwd)/zshrc ~/.zshenv
+    ln -si $(pwd)/zshenv ~/.zshenv
 fi
 
 echo "Setup custom scripts? [y/n]: "

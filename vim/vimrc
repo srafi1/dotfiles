@@ -132,7 +132,9 @@ nnoremap Y y$
 vnoremap <leader>t :%!column -t<CR>
 nnoremap U :redo<CR>
 nnoremap gn :cn<CR>
+nnoremap gN :cnf<CR>
 nnoremap gp :cp<CR>
+nnoremap gP :cpf<CR>
 nnoremap <leader><leader>l :Goyo<CR>:Limelight!!<CR>
 
 if has('nvim') " only run if using neovim

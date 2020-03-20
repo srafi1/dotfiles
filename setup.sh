@@ -6,12 +6,12 @@ echo "Setup i3? [y/n]: "
 read -n 1 -s ans
 if [ $ans == "y" ]
 then
-    ln -si $(pwd)/i3 ~/.config/i3
+    ln -si $(pwd)/i3 ~/.config/
     ln -si $(pwd)/Xdefaults ~/.Xdefaults
     ln -si $(pwd)/lock.png ~/.config/
     ln -si $(pwd)/wallpaper.png ~/.config/
     ln -si $(pwd)/urxvt ~/.urxvt
-    ln -si $(pwd)/dunst ~/.config/dunst
+    ln -si $(pwd)/dunst ~/.config/
 fi
 
 echo "Setup Polybar? [y/n]: "

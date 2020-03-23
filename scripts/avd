@@ -1,5 +1,7 @@
 #! /bin/bash
 
+# open Android emulator by name (default is pixel)
+
 if [ $# -eq 0 ]
 then
     avd="pixel"

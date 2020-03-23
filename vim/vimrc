@@ -87,6 +87,7 @@ set wildignore+=*/flask/*,*/.git/*,*/db_repository/*,*/node_modules/*
 " key mappings
 nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
 nnoremap <C-g> :NERDTreeToggle<CR>
+nnoremap <leader>nf :NERDTreeFind<CR>
 nnoremap <leader>s :e!<CR>
 nnoremap <leader>f :edit<space>
 " open splits

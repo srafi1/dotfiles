@@ -76,6 +76,7 @@ augroup END
 
 " compile pdf after saving tex file
 autocmd BufWritePost *.tex !pdflatex %
+let g:tex_flavor = "latex"
 
 " change tabs to 2 spaces for html/js/ts files
 autocmd BufRead,BufNewFile *.html,*.css,*.js,*.jsx,*.ts,*.tsx setlocal tabstop=2 shiftwidth=2

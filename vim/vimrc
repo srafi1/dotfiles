@@ -3,7 +3,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 Plug 'easymotion/vim-easymotion'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree/'
 Plug 'scrooloose/nerdcommenter'
 Plug 'itchyny/lightline.vim'
@@ -93,6 +92,7 @@ set wildignore+=*/flask/*,*/.git/*,*/db_repository/*,*/node_modules/*
 nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
 nnoremap <C-g> :NERDTreeToggle<CR>
 nnoremap <leader>nf :NERDTreeFind<CR>
+nnoremap <C-p> :FZF<CR>
 nnoremap <leader>s :e!<CR>
 nnoremap <leader>f :edit<space>
 " open splits

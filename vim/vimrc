@@ -25,8 +25,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 Plug 'iamcco/coc-flutter', {'do': 'yarn install --frozen-lockfile'}
 Plug 'dart-lang/dart-vim-plugin'
-Plug 'natebosch/vim-lsc'
-Plug 'natebosch/vim-lsc-dart'
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
@@ -81,8 +79,10 @@ augroup END
 autocmd BufWritePost *.tex !pdflatex %
 let g:tex_flavor = "latex"
 
-" change tabs to 2 spaces for html/js/ts files
-autocmd BufRead,BufNewFile *.html,*.css,*.js,*.jsx,*.ts,*.tsx setlocal tabstop=2 shiftwidth=2
+" change tabs to 2 spaces for html/js/ts/dart files
+autocmd BufRead,BufNewFile 
+            \ *.html,*.css,*.js,*.jsx,*.ts,*.tsx,*.dart 
+            \ setlocal tabstop=2 shiftwidth=2
 
 " break lines and enable spellcheck for document based files
 autocmd BufRead,BufNewFile *.tex,*.md,*.wiki setlocal linebreak spell

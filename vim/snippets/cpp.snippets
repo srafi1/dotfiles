@@ -43,11 +43,14 @@ snippet #if
 ## Control Statements
 # if
 snippet if
-	if (${0}) {
+	if (${1}) {
+		${0}
 	}
 snippet ife
-	if (${0}) {
+	if (${1}) {
+		${2}
 	} else {
+		${0}
 	}
 # else
 snippet el
@@ -92,13 +95,8 @@ snippet ret
 ## Loops
 # for
 snippet for
-	for (int ${2:i} = 0; $2 < ${1:count}; $2${3:++}) {
-		${4}
-	}
-# for (custom)
-snippet forr
-	for (int ${1:i} = ${2:0}; ${3:$1 < 10}; $1${4:++}) {
-		${5}
+	for (int ${1:i} = 0; $1 < ${2:count}; $1${3:++}) {
+		${0}
 	}
 # while
 snippet while
@@ -133,23 +131,12 @@ snippet out
 	std::cout << ${1};
 snippet cin
 	std::cin >> ${1};
-
-# headers for class
-snippet header
+snippet header "Header for class"
 	/*
-	Author: Shakil Rafi
-	Course: CSCI-13${1:3}
-	Instructor: ${2:Mike Zamansky}
-	Assignment ${3}
+	 * Title:       `expand("%")`
+	 * Author:      ${2:Shakil Rafi}
+	 * Description: ${3:description}
+	 * Created:     `trim(system("date +%F"))`
+	 */
 
-	${4}
-	*/
-
-# testing with catch.hpp
-snippet test
-	TEST_CASE("${1}") {
-		${0}
-	}
-
-snippet ch
-	CHECK(${0});
+	 ${0}

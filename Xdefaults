@@ -37,7 +37,7 @@ URxvt.font: xft:Dejavu SansMono Nerd Font Mono:normal:size=14
 URxvt.boldFont: xft:Dejavu SansMono Nerd Font Mono:bold:size=14
 URxvt.scrollBar: false
 URxvt.cursorColor: white
-URxvt.perl-ext-common: default,matcher,font-size
+URxvt.perl-ext-common: default,matcher,font-size,bell-command
 URxvt.perl-lib: $HOME/.config/Scripts
 URxvt.url-launcher: /usr/bin/xdg-open
 URxvt.matcher.button: 1
@@ -47,9 +47,10 @@ URxvt.keysym.Shift-Control-V: eval:paste_clipboard
 URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
 URxvt.keysym.C-equal: font-size:increase
 URxvt.keysym.C-0: font-size:reset
-URxvt*scrollTtyOutput: false
-URxvt*scrollWithBuffer: true
-URxvt*scrollTtyKeypress: true
+URxvt.scrollTtyOutput: false
+URxvt.scrollWithBuffer: true
+URxvt.scrollTtyKeypress: true
+URxvt.bell-command: notify-send -i input-keyboard "rxvt-unicode: bell"
 
 !! rofi standard archlabs theme
 rofi.font: SFNS Display 13 

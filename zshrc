@@ -33,4 +33,4 @@ bindkey -v
 alias yain='yay -S --noconfirm'
 alias yarem='yay -Rns'
 alias yaupd='yay -Syy'
-alias yaupg='yay -Syyu --builddir ~/tmp/yay --noconfirm'
+alias yaupg='yay -Syyu --builddir ~/tmp/yay --noconfirm --sudoloop'

@@ -1,0 +1,25 @@
+#! /bin/bash
+
+# toggle connection to paired bluetooth devices (meant for headphones)
+
+anyconnected=no
+devices=$(bluetoothctl paired-devices | cut -f 2 -d " ")
+for d in $devices; do
+    connected=$(bluetoothctl info $d |
+        grep Connected |
+        cut -f 2 -d " ")
+    if [ $connected = yes ]; then
+        anyconnected=yes
+    fi
+done
+
+if [ $anyconnected = yes ];then
+    echo "A bluetooth connection exists"
+    bluetoothctl disconnect
+else
+    echo "No bluetooth connections exists"
+    for i in $(bluetoothctl paired-devices | cut -f 2 -d " ")
+    do
+        bluetoothctl connect $i
+    done
+fi

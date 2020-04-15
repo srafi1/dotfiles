@@ -1,8 +1,0 @@
-#! /bin/bash
-
-# connect to available paired bluetooth devices (meant for headphones)
-
-for i in $(bluetoothctl paired-devices | cut -f 2 -d " ")
-do
-    bluetoothctl connect $i
-done

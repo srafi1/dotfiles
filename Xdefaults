@@ -50,7 +50,6 @@ URxvt.keysym.C-0: font-size:reset
 URxvt.scrollTtyOutput: false
 URxvt.scrollWithBuffer: true
 URxvt.scrollTtyKeypress: true
-URxvt.bell-command: notify-send -i input-keyboard "rxvt-unicode: bell"
 
 !! rofi standard archlabs theme
 rofi.font: SFNS Display 13 

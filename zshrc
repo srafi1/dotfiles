@@ -30,7 +30,7 @@ unsetopt beep
 bindkey -v
 
 # yay aliases (AUR helper)
-alias yain='yay -S --noconfirm'
+alias yain='yay -S --noconfirm --sudoloop'
 alias yarem='yay -Rns'
 alias yaupd='yay -Syy'
 alias yaupg='yay -Syyu --builddir ~/tmp/yay --noconfirm --sudoloop'

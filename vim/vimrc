@@ -151,7 +151,7 @@ nnoremap <leader><leader>l :Goyo<CR>:Limelight!!<CR>
 
 if has('nvim') " only run if using neovim
     tnoremap <Esc><Esc> <C-\><C-n>
-    tnoremap <leader><Esc> <Esc>
+    tnoremap <leader-Esc> <Esc>
     tnoremap <C-h> <Left>
     tnoremap <C-j> <Down>
     tnoremap <C-k> <Up>

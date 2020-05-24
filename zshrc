@@ -34,3 +34,5 @@ alias yain='yay -S --noconfirm --sudoloop'
 alias yarem='yay -Rns'
 alias yaupd='yay -Syy'
 alias yaupg='yay -Syyu --builddir ~/tmp/yay --noconfirm --sudoloop'
+
+alias clean-swaps='rm ~/.local/share/nvim/swap/* -v'

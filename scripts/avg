@@ -2,13 +2,19 @@
 
 # print average of all inputs
 
-import sys
+import argparse, statistics
 
-total = 0
+parser = argparse.ArgumentParser(description='Calculate average of inputs')
+parser.add_argument('nums', type=float, nargs='+',
+        help='Numbers to calculate average of')
+parser.add_argument('-v', '--verbose', action='store_true',
+        help='Output sum and number of inputs')
 
-for i in sys.argv[1:]:
-    total += float(i)
+args = parser.parse_args()
 
-print('total: %f' % total)
-print('num: %d' % (len(sys.argv) - 1))
-print('avg: %f' % (total / (len(sys.argv) - 1)))
+if args.verbose:
+    print('total: %f' % sum(args.nums))
+    print('num: %d' % len(args.nums))
+    print('avg: %f' % statistics.mean(args.nums))
+else:
+    print(statistics.mean(args.nums))

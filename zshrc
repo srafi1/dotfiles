@@ -36,3 +36,5 @@ alias yaupd='yay -Syy'
 alias yaupg='yay -Syyu --builddir ~/tmp/yay --noconfirm --sudoloop'
 
 alias clean-swaps='rm ~/.local/share/nvim/swap/* -v'
+alias subpull='git submodule update --init --recursive . &&
+    git pull origin master'

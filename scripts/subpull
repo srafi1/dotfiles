@@ -1,6 +1,0 @@
-#! /bin/bash
-
-# pull and update all git submodules
-
-git submodule update --init .
-git pull origin master

@@ -85,10 +85,11 @@ augroup END
 autocmd BufWritePost *.tex !pdflatex %
 let g:tex_flavor = "latex"
 
-" change tabs to 2 spaces for html/js/ts/dart files
+" custom tab config by file extension
 autocmd BufRead,BufNewFile 
             \ *.html,*.css,*.js,*.jsx,*.ts,*.tsx,*.dart 
             \ setlocal tabstop=2 shiftwidth=2
+autocmd BufRead,BufNewFile *.go setlocal noexpandtab
 
 " break lines and enable spellcheck for document based files
 autocmd BufRead,BufNewFile *.tex,*.md,*.wiki setlocal linebreak spell

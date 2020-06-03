@@ -15,7 +15,6 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'rstacruz/sparkup'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'MaxMEllon/vim-jsx-pretty'
-Plug 'mboughaba/i3config.vim'
 Plug 'tomtom/tlib_vim'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tpope/vim-eunuch'
@@ -151,12 +150,13 @@ nnoremap gP :cpf<CR>
 nnoremap <leader><leader>l :Goyo<CR>:Limelight!!<CR>
 
 if has('nvim') " only run if using neovim
-    tnoremap <Esc><Esc> <C-\><C-n>
-    tnoremap <leader-Esc> <Esc>
-    tnoremap <C-h> <Left>
-    tnoremap <C-j> <Down>
-    tnoremap <C-k> <Up>
-    tnoremap <C-l> <Right>
+    au TermOpen * tnoremap <buffer> <Esc><Esc> <C-\><C-n>
+    au FileType fzf tunmap <buffer> <Esc><Esc>
+    au FileType fzf tnoremap <buffer> <Esc> <C-c>
+    "tnoremap <C-h> <Left>
+    "tnoremap <C-j> <Down>
+    "tnoremap <C-k> <Up>
+    "tnoremap <C-l> <Right>
 endif
 
 " lsp config

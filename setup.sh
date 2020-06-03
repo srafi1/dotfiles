@@ -2,13 +2,14 @@
 
 # for symlinking dotfiles in a new setup
 
+mkdir -p ~/.config
+
 echo "Setup i3? [y/n]: "
 read -n 1 -s ans
 if [ $ans == "y" ]
 then
     ln -si $(pwd)/i3 ~/.config/
     ln -si $(pwd)/Xdefaults ~/.Xdefaults
-    ln -si $(pwd)/lock.png ~/.config/
     ln -si $(pwd)/wallpaper.png ~/.config/
     ln -si $(pwd)/urxvt ~/.urxvt
     ln -si $(pwd)/dunst ~/.config/
@@ -19,6 +20,13 @@ read -n 1 -s ans
 if [ $ans == "y" ]
 then
     ln -si $(pwd)/polybar ~/.config/polybar
+fi
+
+echo "Setup GTK? [y/n]: "
+read -n 1 -s ans
+if [ $ans == "y" ]
+then
+    ln -si $(pwd)/gtk-3.0 ~/.config/gtk-3.0
 fi
 
 echo "Setup Zsh? [y/n]: "

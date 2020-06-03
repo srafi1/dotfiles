@@ -5,6 +5,7 @@
 
 rm ~/.config/i3
 rm ~/.config/polybar
+rm ~/.config/gtk-3.0
 rm ~/.vim
 rm ~/.vimrc
 rm ~/.config/nvim

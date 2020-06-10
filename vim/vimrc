@@ -11,6 +11,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'vimwiki/vimwiki'
 Plug 'ap/vim-css-color'
 Plug 'junegunn/seoul256.vim'
+Plug 'shinchu/lightline-seoul256.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'rstacruz/sparkup'
 Plug 'peitalin/vim-jsx-typescript'
@@ -216,7 +217,7 @@ endfunction
 
 " use lightline-buffer in lightline
 let g:lightline = {
-            \ 'colorscheme': 'wombat',
+            \ 'colorscheme': 'seoul256',
             \ 'active': {
             \   'left': [ [ 'mode', 'paste' ],
             \             [ 'readonly', 'filename', 'modified' ] ],

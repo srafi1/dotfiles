@@ -48,12 +48,11 @@ then
     ln -si $(pwd)/vim ~/.vim
     ln -si $(pwd)/vim ~/.config/nvim 
     ln -si $(pwd)/vim/vimrc ~/.vimrc
-    nvim +PlugInstall
+    nvim +PlugInstall +qa
 fi
 
 if [ $zsh_prompt == "y" ]
 then
-    # install oh my zsh
     # previous zshrc gets renamed to .zshrc.pre-oh-my-zsh
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     ln -sf $(pwd)/zshrc ~/.zshrc

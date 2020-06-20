@@ -56,3 +56,10 @@ then
     ln -si $(pwd)/vim/vimrc ~/.vimrc
     nvim +PlugInstall
 fi
+
+echo "Install Arch packages? [y/n]: "
+read -n 1 -s ans
+if [ $ans == "y" ]
+then
+    yay -S $(cat packages) --needed
+fi

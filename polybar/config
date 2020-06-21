@@ -251,16 +251,15 @@ master-soundcard = default
 
 master-mixer = Master
 
-format-volume = <label-volume> <bar-volume>
+format-volume = <ramp-volume> <bar-volume>
 label-volume = VOL
 label-volume-foreground = ${root.foreground}
 
 format-muted-foreground = ${colors.foreground-alt}
-label-muted = MUTE
+label-muted = 
 
-ramp-volume-0 = 🔈
-ramp-volume-1 = 🔉
-ramp-volume-2 = 🔊
+ramp-volume-0 = 
+ramp-volume-1 = 
 
 bar-volume-width = 8
 bar-volume-foreground-0 = #55aa55
@@ -322,8 +321,8 @@ format-underline = ${colors.background-alt}
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${self.format-underline}
 
-label = %temperature%
-label-warn = %temperature%
+label = %temperature-c%
+label-warn = %temperature-c%
 label-warn-foreground = ${colors.secondary}
 
 ramp-0 = 

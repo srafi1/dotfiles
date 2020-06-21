@@ -33,9 +33,9 @@ font-2 = siji:pixelsize=10;1
 font-3 = "Font Awesome:size=10;1"
 font-4 = monospace:size=10;1
 
-modules-left = bspwm i3
+modules-left = i3
 modules-center = 
-modules-right = volume mpd memory cpu temperature battery date
+modules-right = volume memory cpu temperature battery date
 
 tray-position = right
 tray-padding = 2

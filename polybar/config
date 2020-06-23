@@ -35,7 +35,7 @@ font-4 = monospace:size=10;1
 
 modules-left = i3
 modules-center = 
-modules-right = volume memory cpu temperature battery date
+modules-right = pulseaudio memory cpu temperature battery date
 
 tray-position = right
 tray-padding = 2
@@ -277,6 +277,21 @@ bar-volume-fill-font = 2
 bar-volume-empty = —
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume-underline = ${colors.background-alt}
+format-volume = <ramp-volume> <label-volume>
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+
+format-muted-underline = ${colors.background-alt}
+format-muted-foreground = ${colors.foreground-alt}
+label-muted =  —
+
+interval = 5
 
 [module/battery]
 type = internal/battery

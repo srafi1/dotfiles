@@ -33,7 +33,7 @@ bindkey -v
 alias yain='yay -S --noconfirm --sudoloop'
 alias yarem='yay -Rns'
 alias yaupd='yay -Syy'
-alias yaupg='yay -Syyu --builddir ~/tmp/yay --noconfirm --sudoloop'
+alias yaupg='yay -Syu --builddir ~/tmp/yay --noconfirm --sudoloop'
 
 alias clean-swaps='rm ~/.local/share/nvim/swap/* -v'
 alias subpull='git submodule update --init --recursive . &&

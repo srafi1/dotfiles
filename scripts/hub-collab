@@ -9,6 +9,20 @@ then
     exit
 fi
 
+is_git_dir=$(git rev-parse --is-inside-work-tree 2> /dev/null)
+if [[ "true" != $is_git_dir ]]
+then
+    echo "This is not a git directory"
+    exit
+fi
+
+has_origin=$(git remote -v | grep origin)
+if [[ -z $has_origin ]]
+then
+    echo "No remote with the name 'origin' detected"
+    exit
+fi
+
 if [[ $1 != -h && $1 != --help ]]
 then
     user=$(basename $(dirname $(git remote get-url origin)) | cut -d ":" -f "2-")

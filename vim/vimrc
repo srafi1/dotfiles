@@ -5,7 +5,6 @@ Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 Plug 'easymotion/vim-easymotion'
 Plug 'nelstrom/vim-visual-star-search'
-Plug 'scrooloose/nerdtree/'
 Plug 'scrooloose/nerdcommenter'
 Plug 'itchyny/lightline.vim'
 Plug 'taohexxx/lightline-buffer'
@@ -14,7 +13,6 @@ Plug 'vimwiki/vimwiki'
 Plug 'ap/vim-css-color'
 Plug 'junegunn/seoul256.vim'
 Plug 'shinchu/lightline-seoul256.vim'
-Plug 'ryanoasis/vim-devicons'
 Plug 'rstacruz/sparkup'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'MaxMEllon/vim-jsx-pretty'
@@ -24,6 +22,7 @@ Plug 'tpope/vim-eunuch'
 Plug 'chrisbra/unicode.vim'
 Plug 'Shougo/vimproc.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'weirongxu/coc-explorer', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
@@ -69,11 +68,6 @@ let $FZF_DEFAULT_COMMAND='fd --type f'
 " don't ignore strings and comments with EasyAlign
 let g:easy_align_ignore_groups = []
 
-" NERDTree options
-let NERDTreeMapActivateNode='l'
-let NERDTreeShowHidden=1
-let NERDTreeIgnore=['\.DS_Store', '\~$', '\.swp', '\.class$', '\.git$[[dir]]', '\.pyc$', 'node_modules']
-
 " if the directory for a new file doesn't exist, create it
 augroup Mkdir
     autocmd!
@@ -100,8 +94,7 @@ set wildignore+=*/flask/*,*/.git/*,*/db_repository/*,*/node_modules/*
 
 " key mappings
 nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
-nnoremap <C-g> :NERDTreeToggle<CR>
-nnoremap <leader>nf :NERDTreeFind<CR>
+nnoremap <C-g> :CocCommand explorer<CR>
 nnoremap <C-p> :FZF<CR>
 nnoremap <leader>s :e!<CR>
 nnoremap <leader>f :edit<space>

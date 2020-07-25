@@ -1,6 +1,10 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema",
     "description": "Configuration for coc.nvim",
+    "explorer": {
+        "icon.enableNerdfont": true,
+        "previewAction.onHover": false
+    },
     "languageserver": {
         "python": {
             "command": "python",

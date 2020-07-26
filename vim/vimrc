@@ -96,6 +96,7 @@ set wildignore+=*/flask/*,*/.git/*,*/db_repository/*,*/node_modules/*
 nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
 nnoremap <C-g> :CocCommand explorer<CR>
 nnoremap <C-p> :FZF<CR>
+nnoremap <C-b> :Buffers<CR>
 nnoremap <leader>s :e!<CR>
 nnoremap <leader>f :edit<space>
 " open splits
@@ -128,8 +129,6 @@ inoremap <C-s> <Esc>:w<CR>li
 " nnoremap H 0
 " nnoremap J }
 " nnoremap K {
-nnoremap <C-y> :bprev<CR>
-nnoremap <C-o> :bnext<CR>
 " close buffer
 nnoremap <C-q> :lclose<bar>b#<bar>bd #<CR>
 " delete trailing whitespace in file

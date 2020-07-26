@@ -23,6 +23,7 @@ Plug 'chrisbra/unicode.vim'
 Plug 'Shougo/vimproc.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'weirongxu/coc-explorer', {'do': 'yarn install --frozen-lockfile'}
+Plug 'liuchengxu/vista.vim'
 Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
@@ -94,7 +95,6 @@ set wildignore+=*/flask/*,*/.git/*,*/db_repository/*,*/node_modules/*
 
 " key mappings
 nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
-nnoremap <C-g> :CocCommand explorer<CR>
 nnoremap <C-p> :FZF<CR>
 nnoremap <C-b> :Buffers<CR>
 nnoremap <leader>s :e!<CR>
@@ -121,7 +121,52 @@ map [[ ?{<CR>w99[{<esc>
 map ][ /}<CR>b99]}<esc>
 map ]] j0[[%/{<CR><esc>
 map [] k$][%?}<CR><esc>
+" editor layout toggles
+nnoremap <M-f> :CocCommand explorer<CR>
+nnoremap <M-o> :Vista!!<CR>
+nnoremap <M-t> :call MonkeyTerminalToggle()<CR>
 
+let s:monkey_terminal_window = -1
+let s:monkey_terminal_buffer = -1
+let s:monkey_terminal_job_id = -1
+
+" monkey terminal courtesy of https://gist.github.com/ram535/b1b7af6cd7769ec0481eb2eed549ea23
+function! MonkeyTerminalToggle()
+    if win_gotoid(s:monkey_terminal_window)
+        call MonkeyTerminalClose()
+    else
+        call MonkeyTerminalOpen()
+    endif
+endfunction
+
+function! MonkeyTerminalOpen()
+    if !bufexists(s:monkey_terminal_buffer)
+        new monkey_terminal
+        wincmd J
+        resize 10
+        let s:monkey_terminal_job_id = termopen($SHELL, { 'detach': 1 })
+
+        silent file Terminal\ 1
+        let s:monkey_terminal_window = win_getid()
+        let s:monkey_terminal_buffer = bufnr('%')
+
+        set nobuflisted
+    else
+        if !win_gotoid(s:monkey_terminal_window)
+            sp
+            wincmd J   
+            resize 10
+            buffer Terminal\ 1
+            let s:monkey_terminal_window = win_getid()
+        endif
+    endif
+endfunction
+
+function! MonkeyTerminalClose()
+    if win_gotoid(s:monkey_terminal_window)
+        hide
+    endif
+endfunction
 
 nnoremap <C-s> :w<CR>
 inoremap <C-s> <Esc>:w<CR>li

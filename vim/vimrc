@@ -62,9 +62,16 @@ set updatetime=300
 set shortmess+=c
 set signcolumn=yes
 set shell=/usr/bin/zsh
+set wildignore+=*/flask/*,*/.git/*,*/db_repository/*,*/node_modules/*
 
 " use fd for FZF (respect .gitignore)
 let $FZF_DEFAULT_COMMAND='fd --type f'
+
+if exists(':terminal') " only run if using neovim
+    au TermOpen * tnoremap <buffer> <Esc><Esc> <C-\><C-n>
+    au FileType fzf tunmap <buffer> <Esc><Esc>
+    au FileType fzf tnoremap <buffer> <Esc> <C-c>
+endif
 
 " don't ignore strings and comments with EasyAlign
 let g:easy_align_ignore_groups = []
@@ -91,14 +98,19 @@ autocmd BufRead,BufNewFile *.go setlocal noexpandtab
 " break lines and enable spellcheck for document based files
 autocmd BufRead,BufNewFile *.tex,*.md,*.wiki setlocal linebreak spell
 
-set wildignore+=*/flask/*,*/.git/*,*/db_repository/*,*/node_modules/*
-
 " key mappings
 nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
+nnoremap U :redo<CR>
+nnoremap Y y$
+" navigate functions in a file
+map [[ ?{<CR>w99[{<esc>
+map ][ /}<CR>b99]}<esc>
+map ]] j0[[%/{<CR><esc>
+map [] k$][%?}<CR><esc>
 nnoremap <C-p> :FZF<CR>
 nnoremap <C-b> :Buffers<CR>
+" reload file
 nnoremap <leader>s :e!<CR>
-nnoremap <leader>f :edit<space>
 " open splits
 nnoremap <leader>l :vsp<CR>
 nnoremap <leader>h :rightb vsp<CR>
@@ -114,14 +126,24 @@ nnoremap <M-h> <C-w><
 nnoremap <M-j> <C-w>+
 nnoremap <M-k> <C-w>-
 nnoremap <M-l> <C-w>>
-" reset resizings
-nnoremap <leader>e <C-W>=
-" navigate functions in a file
-map [[ ?{<CR>w99[{<esc>
-map ][ /}<CR>b99]}<esc>
-map ]] j0[[%/{<CR><esc>
-map [] k$][%?}<CR><esc>
-" editor layout toggles
+nnoremap <M-e> <C-W>=
+" save file
+nnoremap <C-s> :w<CR>
+inoremap <C-s> <C-o>:w<CR>
+" close buffer
+nnoremap <C-q> :lclose<bar>b#<bar>bd #<CR>
+" delete trailing whitespace in file
+nnoremap <leader><BS> :%s/\s\+$//e<CR>
+" format text into columns
+vnoremap <leader>t :%!column -t<CR>
+" navigate quickfix list
+nnoremap gn :cn<CR>
+nnoremap gN :cnf<CR>
+nnoremap gp :cp<CR>
+nnoremap gP :cpf<CR>
+" goyo and limelight for writing
+nnoremap <leader><leader>l :Goyo<CR>:Limelight!!<CR>
+" toggle editor layout
 nnoremap <M-f> :CocCommand explorer<CR>
 nnoremap <M-o> :Vista!!<CR>
 nnoremap <M-t> :call MonkeyTerminalToggle()<CR>
@@ -145,11 +167,9 @@ function! MonkeyTerminalOpen()
         wincmd J
         resize 10
         let s:monkey_terminal_job_id = termopen($SHELL, { 'detach': 1 })
-
         silent file Terminal\ 1
         let s:monkey_terminal_window = win_getid()
         let s:monkey_terminal_buffer = bufnr('%')
-
         set nobuflisted
     else
         if !win_gotoid(s:monkey_terminal_window)
@@ -168,37 +188,6 @@ function! MonkeyTerminalClose()
     endif
 endfunction
 
-nnoremap <C-s> :w<CR>
-inoremap <C-s> <Esc>:w<CR>li
-" nnoremap L $
-" nnoremap H 0
-" nnoremap J }
-" nnoremap K {
-" close buffer
-nnoremap <C-q> :lclose<bar>b#<bar>bd #<CR>
-" delete trailing whitespace in file
-nnoremap <leader><BS> :%s/\s\+$//e<CR>
-"nnoremap <C-r> :!make run<CR>
-nnoremap Y y$
-" format text into columns
-vnoremap <leader>t :%!column -t<CR>
-nnoremap U :redo<CR>
-nnoremap gn :cn<CR>
-nnoremap gN :cnf<CR>
-nnoremap gp :cp<CR>
-nnoremap gP :cpf<CR>
-nnoremap <leader><leader>l :Goyo<CR>:Limelight!!<CR>
-
-if has('nvim') " only run if using neovim
-    au TermOpen * tnoremap <buffer> <Esc><Esc> <C-\><C-n>
-    au FileType fzf tunmap <buffer> <Esc><Esc>
-    au FileType fzf tnoremap <buffer> <Esc> <C-c>
-    "tnoremap <C-h> <Left>
-    "tnoremap <C-j> <Down>
-    "tnoremap <C-k> <Up>
-    "tnoremap <C-l> <Right>
-endif
-
 " lsp config
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
@@ -211,11 +200,9 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-" Use <c-space> to trigger completion.
+" trigger completion menu
 inoremap <silent><expr> <c-space> coc#refresh()
-
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
-" Coc only does snippet and additional edit on confirm.
+" accept completion
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " lsp normal mode remaps
@@ -237,7 +224,7 @@ function! s:show_documentation()
   endif
 endfunction
 
-" Create mappings for function/class text objects
+" function/class text objects
 xmap if <Plug>(coc-funcobj-i)
 xmap af <Plug>(coc-funcobj-a)
 omap if <Plug>(coc-funcobj-i)
@@ -247,7 +234,7 @@ omap ic <Plug>(coc-classobj-i)
 xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
 
-" Use `:Format` to format current buffer
+" format current buffer
 command! -nargs=0 Format :call CocAction('format')
 
 let g:coc_node_path='/usr/bin/node'
@@ -297,7 +284,6 @@ autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 " lightline-buffer ui settings
 " replace these symbols with ascii characters if your environment does not support unicode
-let g:lightline_buffer_logo = '(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ '
 let g:lightline_buffer_readonly_icon = ''
 let g:lightline_buffer_modified_icon = '●'
 let g:lightline_buffer_git_icon = ' '

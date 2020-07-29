@@ -250,8 +250,8 @@ let g:lightline = {
             \ 'active': {
             \   'left': [ [ 'mode', 'paste' ],
             \             [ 'readonly', 'filename', 'modified' ] ],
-            \   'right': [ [ 'lineinfo' ], [ 'filetype' ],
-            \              [ 'cocstatus', 'gitbranch' ] ],
+            \   'right': [ [ 'lineinfo' ], [ 'gitbranch' ],
+            \              [ 'cocstatus', 'filetype' ] ],
             \ },
             \ 'component_function': {
             \   'filename': 'LightlineFilename',

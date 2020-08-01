@@ -1,6 +1,8 @@
 " vim-plug
 call plug#begin('~/.vim/plugged')
 Plug 'michaeljsmith/vim-indent-object'
+Plug 'wellle/targets.vim'
+Plug 'terryma/vim-expand-region'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 Plug 'easymotion/vim-easymotion'

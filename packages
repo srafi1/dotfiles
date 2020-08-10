@@ -6,6 +6,7 @@ aspell-en
 blueman
 ccls
 clang
+ctags
 deepin-screen-recorder
 dunst
 evince
@@ -41,7 +42,7 @@ pulseaudio-alsa
 pulseaudio-bluetooth
 redshift
 rofi
-rxvt-unicode-patched
+rxvt-unicode
 texlab
 tree
 ttf-font-awesome-4

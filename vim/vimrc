@@ -22,6 +22,7 @@ Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tpope/vim-eunuch'
 Plug 'chrisbra/unicode.vim'
 Plug 'Shougo/vimproc.vim'
+Plug 'puremourning/vimspector'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'weirongxu/coc-explorer', {'do': 'yarn install --frozen-lockfile'}
 Plug 'liuchengxu/vista.vim'
@@ -96,6 +97,9 @@ autocmd BufRead,BufNewFile *.go setlocal noexpandtab
 
 " break lines and enable spellcheck for document based files
 autocmd BufRead,BufNewFile *.tex,*.md,*.wiki setlocal linebreak spell
+
+" Vimspector function key keybindings
+let g:vimspector_enable_mappings = 'HUMAN'
 
 " key mappings
 nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>

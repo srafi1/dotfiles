@@ -1,0 +1,69 @@
+snippet vimspector Generic Vimspector base
+	{
+	  "configurations": {
+		"run": {
+		  "adapter": "${1}",
+		  "configuration": {
+			"request": "launch",
+			"program": "${2:\${workspaceRoot\}}"
+		  }
+		}
+	  }
+	}
+snippet vimspector_c_cpp Vimspector base for C/C++
+	{
+		"configurations": {
+			"Launch": {
+				"adapter": "vscode-cpptools",
+				"configuration": {
+					"request": "launch",
+					"program": "${1:a.out}",
+					"args": [],
+					"externalConsole": true,
+					"MIMode": "gdb"
+				}
+			},
+			"Attach": {
+				"adapter": "vscode-cpptools",
+				"configuration": {
+					"request": "attach",
+					"program": "${1}",
+					"MIMode": "gdb"
+				}
+			}
+		}
+	}
+snippet vimspector_go Vimspector base for Go
+	{
+		"configurations": {
+			"run": {
+				"adapter": "vscode-go",
+				"configuration": {
+					"request": "launch",
+					"dlvToolPath": "/home/srafi1/go/bin/dlv",
+					"program": "\${workspaceRoot}",
+					"mode": "debug",
+					"trace": true,
+					"env": { "GO111MODULE": "on" }
+				}
+			}
+		}
+	}
+snippet vimspector_python Vimspector base for Python
+	{
+		"configurations": {
+			"Launch": {
+				"adapter": "debugpy",
+				"configuration": {
+					"type": "python",
+					"request": "launch",
+					"cwd": "\${workspaceRoot}",
+					"python": "/usr/bin/python",
+					"stopOnEntry": true,
+					"console": "externalTerminal",
+					"debugOptions": [],
+					"program": "\${file}"
+				}
+			}
+		}
+	}

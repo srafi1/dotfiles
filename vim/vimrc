@@ -66,6 +66,8 @@ set wildignore+=*/flask/*,*/.git/*,*/db_repository/*,*/node_modules/*
 
 " use fd for FZF (respect .gitignore)
 let $FZF_DEFAULT_COMMAND='fd --type f'
+" do not force delete branch
+let g:fzf_checkout_delete_execute = 'echo system("{git} branch -d {branch}")'
 
 if exists(':terminal') " only run if using neovim
     au TermOpen * tnoremap <buffer> <Esc><Esc> <C-\><C-n>

@@ -32,6 +32,7 @@ Plug 'iamcco/coc-flutter', {'do': 'yarn install --frozen-lockfile'}
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
+Plug 'stsewd/fzf-checkout.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'

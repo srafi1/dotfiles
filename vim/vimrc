@@ -149,9 +149,9 @@ nnoremap gP :cpf<CR>
 " goyo and limelight for writing
 nnoremap <leader><leader>l :Goyo<CR>:Limelight!!<CR>
 " toggle editor layout
-nnoremap <M-f> :CocCommand explorer<CR>
-nnoremap <M-o> :Vista!!<CR>
-nnoremap <M-t> :call MonkeyTerminalToggle()<CR>
+nnoremap <silent> <M-f> :CocCommand explorer<CR>
+nnoremap <silent> <M-o> :Vista!!<CR>
+nnoremap <silent> <M-t> :call MonkeyTerminalToggle()<CR>
 
 let s:monkey_terminal_window = -1
 let s:monkey_terminal_buffer = -1

@@ -141,6 +141,8 @@ nnoremap <C-q> :lclose<bar>b#<bar>bd #<CR>
 nnoremap <leader><BS> :%s/\s\+$//e<CR>
 " format text into columns
 vnoremap <leader>t :%!column -t<CR>
+" view unsaved edits in current buffer
+nnoremap <leader>d :w !diff % -<CR>
 " navigate quickfix list
 nnoremap gn :cn<CR>
 nnoremap gN :cnf<CR>

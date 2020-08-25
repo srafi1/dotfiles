@@ -13,22 +13,20 @@ snippet vimspector Generic Vimspector base
 snippet vimspector_c_cpp Vimspector base for C/C++
 	{
 		"configurations": {
-			"Launch": {
+			"run": {
 				"adapter": "vscode-cpptools",
 				"configuration": {
 					"request": "launch",
 					"program": "${1:a.out}",
-					"args": [],
-					"externalConsole": true,
-					"MIMode": "gdb"
-				}
-			},
-			"Attach": {
-				"adapter": "vscode-cpptools",
-				"configuration": {
-					"request": "attach",
-					"program": "${1}",
-					"MIMode": "gdb"
+					"args": [$2],
+					"stopAtEntry": true,
+					"setupCommands": [
+						{
+							"description": "Enable pretty-printing for gdb",
+							"text": "-enable-pretty-printing",
+							"ignoreFailures": true
+						}
+					]
 				}
 			}
 		}

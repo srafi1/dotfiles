@@ -268,8 +268,9 @@ let g:lightline = {
             \ 'colorscheme': 'seoul256',
             \ 'active': {
             \   'left': [ [ 'mode', 'paste' ],
-            \             [ 'readonly', 'filename', 'modified' ] ],
-            \   'right': [ [ 'lineinfo' ], [ 'gitbranch' ],
+            \             [ 'gitbranch', 'filename' ],
+            \             [ 'readonly', 'modified' ] ],
+            \   'right': [ [ 'lineinfo' ], 
             \              [ 'cocstatus', 'filetype' ] ],
             \ },
             \ 'component_function': {
@@ -277,6 +278,9 @@ let g:lightline = {
             \   'gitbranch': 'fugitive#head',
             \   'cocstatus': 'coc#status',
             \ },
+            \ 'component': {
+            \   'lineinfo': "%{line('.') . '/' . line('$')}"
+            \ }
             \ }
 
 " update lightline on coc update

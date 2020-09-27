@@ -127,16 +127,6 @@ nnoremap <C-p> :FZF<CR>
 nnoremap <C-b> :Buffers<CR>
 " reload file
 nnoremap <leader>s :e!<CR>
-" open splits
-nnoremap <leader>l :vsp<CR>
-nnoremap <leader>h :rightb vsp<CR>
-nnoremap <leader>j :bel split<CR>
-nnoremap <leader>k :split<CR>
-" navigate splits
-nnoremap <C-l> <C-w>l
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w><C-w>
-nnoremap <C-k> <C-w>W
 " resize splits
 nnoremap <M-h> <C-w><
 nnoremap <M-j> <C-w>+

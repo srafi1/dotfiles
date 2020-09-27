@@ -72,7 +72,7 @@ let g:fzf_branch_actions = {
             \ }
             \}
 
-if exists(':terminal') " only run if using neovim
+if exists(':terminal')
     au TermOpen * tnoremap <buffer> <Esc><Esc> <C-\><C-n>
     au FileType fzf tunmap <buffer> <Esc><Esc>
     au FileType fzf tnoremap <buffer> <Esc> <C-c>
@@ -156,11 +156,11 @@ nnoremap <silent> <M-f> :CocCommand explorer<CR>
 nnoremap <silent> <M-o> :Vista!!<CR>
 nnoremap <silent> <M-t> :call MonkeyTerminalToggle()<CR>
 
+" monkey terminal courtesy of https://gist.github.com/ram535/b1b7af6cd7769ec0481eb2eed549ea23
 let s:monkey_terminal_window = -1
 let s:monkey_terminal_buffer = -1
 let s:monkey_terminal_job_id = -1
 
-" monkey terminal courtesy of https://gist.github.com/ram535/b1b7af6cd7769ec0481eb2eed549ea23
 function! MonkeyTerminalToggle()
     if win_gotoid(s:monkey_terminal_window)
         call MonkeyTerminalClose()
@@ -226,7 +226,7 @@ nmap <leader>cla <Plug>(coc-codelens-action)
 nmap <leader>cw <Plug>(coc-rename)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 imap <C-p> <C-o>:call CocActionAsync("showSignatureHelp")<CR>
-nmap <leader>qf  <Plug>(coc-fix-current)
+nmap <leader>qf <Plug>(coc-fix-current)
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)

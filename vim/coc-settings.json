@@ -22,12 +22,6 @@
                 "go"
             ]
         },
-        "java": {
-            "command": "jdtls",
-            "filetypes": [
-                "java"
-            ]
-        },
         "clang": {
             "command": "ccls",
             "filetypes": [

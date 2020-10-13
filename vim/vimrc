@@ -119,6 +119,12 @@ let g:vimspector_enable_mappings = 'HUMAN'
 nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
 nnoremap U :redo<CR>
 nnoremap Y y$
+" paste without overwriting default register
+vnoremap <leader>p "_dP
+nnoremap <leader>p :set opfunc=ReplaceMotion<CR>g@
+function! ReplaceMotion(type)
+    silent exe "normal! `[v`]\"_dP"
+endfunction
 " navigate functions in a file
 map [[ ?{<CR>w99[{<esc>
 map ][ /}<CR>b99]}<esc>

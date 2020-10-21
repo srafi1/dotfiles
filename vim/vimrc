@@ -102,7 +102,7 @@ autocmd BufRead,BufNewFile
 autocmd BufRead,BufNewFile *.go setlocal noexpandtab
 
 " break lines and enable spellcheck for document based files
-autocmd BufRead,BufNewFile *.tex,*.md,*.mdx,*.wiki call WritingMode()
+autocmd BufRead,BufNewFile *.tex,*.md,*.mdx,*.wiki,*.txt call WritingMode()
 function! WritingMode()
     setlocal linebreak spell
     nnoremap <buffer> j gj

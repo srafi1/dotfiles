@@ -23,6 +23,7 @@ exec redshift
 exec nm-applet
 exec blueman-applet
 exec light-locker
+exec sh -c "notify-send 'Packages to update: $(checkupdates | wc -l)'"
 
 bindsym $mod+Return exec i3-sensible-terminal
 # cd to same place as active terminal

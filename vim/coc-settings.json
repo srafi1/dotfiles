@@ -24,6 +24,11 @@
         },
         "clang": {
             "command": "ccls",
+            "rootPatterns": [
+                ".ccls",
+                "compile_commands.json",
+                ".git/",
+            ],
             "filetypes": [
                 "c",
                 "cpp",

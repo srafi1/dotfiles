@@ -1,0 +1,12 @@
+#! /bin/bash
+
+# wait for network, then output the total number of available updates
+
+while [[ $(hostname -i | grep 192.168) = "" ]]
+do
+    sleep 1
+done
+
+from_pacman=$(checkupdates | wc -l)
+from_aur=$(yay -Qua | wc -l)
+echo "$from_pacman + $from_aur" | bc

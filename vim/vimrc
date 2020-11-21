@@ -41,7 +41,7 @@ call plug#end()
 
 " general defaults setup
 let g:seoul256_background = 235
-colorscheme seoul256
+silent! colorscheme seoul256
 filetype plugin indent on
 syntax on
 set number relativenumber

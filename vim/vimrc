@@ -37,6 +37,7 @@ Plug 'stsewd/fzf-checkout.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate', 'commit': '3c07232'}
 call plug#end()
 
 " general defaults setup
@@ -288,3 +289,14 @@ let g:lightline = {
 
 " update lightline on coc update
 autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
+
+" treesitter setup
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    disable = { "c", "rust" },  -- list of language that will be disabled
+  },
+}
+EOF

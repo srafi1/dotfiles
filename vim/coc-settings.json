@@ -25,9 +25,10 @@
         "clang": {
             "command": "ccls",
             "rootPatterns": [
+                "Makefile",
                 ".ccls",
                 "compile_commands.json",
-                ".git/",
+                ".git/"
             ],
             "filetypes": [
                 "c",

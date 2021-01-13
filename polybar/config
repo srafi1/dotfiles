@@ -35,7 +35,7 @@ font-4 = monospace:size=10;1
 
 modules-left = i3
 modules-center = 
-modules-right = pulseaudio memory cpu temperature battery date
+modules-right = backlight-acpi pulseaudio memory cpu temperature battery date
 
 tray-position = right
 tray-padding = 2
@@ -169,6 +169,9 @@ bar-empty-foreground = ${colors.foreground-alt}
 inherit = module/xbacklight
 type = internal/backlight
 card = intel_backlight
+format-underline = ${colors.background-alt}
+format =  <label>%
+label = %percentage%
 
 [module/cpu]
 type = internal/cpu

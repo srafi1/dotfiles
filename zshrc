@@ -9,6 +9,7 @@ plugins=(
     git
     colorize
     calc
+    fzf-tab
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -28,6 +29,8 @@ SAVEHIST=1000
 setopt appendhistory extendedglob
 unsetopt beep
 bindkey -v
+
+enable-fzf-tab
 
 # yay aliases (AUR helper)
 alias yain='yay -S --noconfirm --sudoloop'

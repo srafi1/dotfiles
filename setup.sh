@@ -55,7 +55,8 @@ if [ $zsh_prompt == "y" ]
 then
     # previous zshrc gets renamed to .zshrc.pre-oh-my-zsh
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-    ln -sf $(pwd)/zshrc ~/.zshrc
+    git clone https://github.com/Aloxaf/fzf-tab ~/.oh-my-zsh/custom/plugins/fzf-tab
+    ln -si $(pwd)/zshrc ~/.zshrc
     ln -si $(pwd)/zshenv ~/.zshenv
 fi
 

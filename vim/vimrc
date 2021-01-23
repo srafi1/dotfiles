@@ -16,7 +16,7 @@ Plug 'tpope/vim-eunuch'
 Plug 'chrisbra/unicode.vim'
 Plug 'puremourning/vimspector'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'weirongxu/coc-explorer', {'do': 'yarn install --frozen-lockfile'}
+Plug 'justinmk/vim-dirvish'
 Plug 'liuchengxu/vista.vim'
 Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
@@ -152,7 +152,6 @@ nnoremap gP :cpf<CR>
 " goyo and limelight for writing
 nnoremap <leader><leader>l :Goyo<CR>:Limelight!!<CR>
 " toggle editor layout
-nnoremap <silent> <M-f> :CocCommand explorer<CR>
 nnoremap <silent> <M-o> :Vista!!<CR>
 nnoremap <silent> <M-t> :call MonkeyTerminalToggle()<CR>
 

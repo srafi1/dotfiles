@@ -198,8 +198,19 @@ nnoremap <silent> <M-o> :Vista!!<CR>
     })
   end
 
+  -- diagnostics
+  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+    vim.lsp.diagnostic.on_publish_diagnostics, {
+      virtual_text = false,
+    }
+  )
 EOF
 
+" diagnostics sign/highlight definitions
+sign define LspDiagnosticsSignWarning     text=>> texthl=WarningMsg
+sign define LspDiagnosticsSignError       text=>> texthl=Exception
+sign define LspDiagnosticsSignInformation text=?
+sign define LspDiagnosticsSignHint        text=~
 " Completion
 autocmd BufEnter * lua require'completion'.on_attach()
 set completeopt=menuone,noinsert,noselect

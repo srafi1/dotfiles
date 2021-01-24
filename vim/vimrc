@@ -28,6 +28,7 @@ Plug 'itchyny/vim-qfedit'
 Plug 'akinsho/nvim-toggleterm.lua'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
+Plug 'nvim-lua/lsp-status.nvim'
 call plug#end()
 
 " general defaults setup
@@ -152,10 +153,23 @@ nnoremap <silent> <M-o> :Vista!!<CR>
 
 " -------------------- LSP ---------------------------------
 :lua << EOF
+  local lsp_status = require('lsp-status')
+  lsp_status.register_progress()
+  lsp_status.config({
+    current_function = false,
+    status_symbol = '',
+    indicator_errors = 'E',
+    indicator_warnings = 'W',
+    indicator_info = 'I',
+    indicator_hint = 'H',
+    indicator_ok = '✔️',
+    spinner_frames = { '⣾', '⣽', '⣻', '⢿', '⡿', '⣟', '⣯', '⣷' },
+  })
 
   local nvim_lsp = require('lspconfig')
 
   local on_attach = function(client, bufnr)
+    lsp_status.on_attach(client)
 
     require('completion').on_attach()
 
@@ -211,6 +225,7 @@ sign define LspDiagnosticsSignWarning     text=>> texthl=WarningMsg
 sign define LspDiagnosticsSignError       text=>> texthl=Exception
 sign define LspDiagnosticsSignInformation text=?
 sign define LspDiagnosticsSignHint        text=~
+
 " Completion
 autocmd BufEnter * lua require'completion'.on_attach()
 set completeopt=menuone,noinsert,noselect
@@ -220,6 +235,7 @@ imap <silent> <c-space> <Plug>(completion_trigger)
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " -------------------- LSP ---------------------------------
+
 function! LightlineFilename()
   let root = fnamemodify(get(b:, 'git_dir'), ':h')
   let path = expand('%:p')
@@ -227,6 +243,13 @@ function! LightlineFilename()
     return path[len(root)+1:]
   endif
   return expand('%')
+endfunction
+
+function! LspStatus() abort
+  if luaeval('#vim.lsp.buf_get_clients() > 0')
+    return luaeval("require('lsp-status').status()")
+  endif
+  return ''
 endfunction
 
 " use lightline-buffer in lightline
@@ -242,7 +265,7 @@ let g:lightline = {
             \ 'component_function': {
             \   'filename': 'LightlineFilename',
             \   'gitbranch': 'fugitive#head',
-            \   'cocstatus': 'coc#status',
+            \   'cocstatus': 'LspStatus',
             \ },
             \ 'component': {
             \   'lineinfo': "%{line('.') . '/' . line('$')}"

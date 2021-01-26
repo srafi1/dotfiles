@@ -205,13 +205,23 @@ nnoremap <silent> <M-o> :Vista!!<CR>
     end
   end
 
-  local servers = {'pyls', 'gopls', 'ccls', 'texlab', 'tsserver'}
+  local servers = {'pyls', 'ccls', 'texlab', 'tsserver'}
   for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup({
       on_attach = on_attach,
       capabilities = lsp_status.capabilities,
     })
   end
+
+  nvim_lsp.gopls.setup({
+    on_attach = on_attach,
+    capabilities = lsp_status.capabilities,
+    settings = {
+      gopls = {
+        linksInHover = false
+      }
+    },
+  })
 
   -- diagnostics
   vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(

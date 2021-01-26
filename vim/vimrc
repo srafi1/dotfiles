@@ -260,6 +260,21 @@ imap <expr> <c-k> pumvisible() ? "\<Plug>(completion_prev_source)" : "\<c-k>"
 
 " can't disable item.menu, so all will show as ... if there is more info
 let g:completion_menu_length=-100
+
+" customize item.kind column
+" let g:completion_customize_lsp_label = {
+"     \'Variable': 'var',
+"     \'Function': 'fn',
+"     \'Keyword': 'kw',
+"     \'UltiSnips': 'US',
+"     \'Snippet': 'snip',
+"     \'Path': 'path',
+"     \'Struct': 'S',
+"     \'Module': 'M',
+"     \'Class': 'C',
+"     \'TypeParameter': 'TP',
+"     \'Reference': 'ref',
+"     \}
 " -------------------- LSP ---------------------------------
 
 function! LightlineFilename()

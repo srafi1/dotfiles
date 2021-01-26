@@ -237,20 +237,29 @@ sign define LspDiagnosticsSignError       text=>> texthl=Exception
 sign define LspDiagnosticsSignInformation text=?
 sign define LspDiagnosticsSignHint        text=~
 
-" Completion
-autocmd BufEnter * lua require'completion'.on_attach()
+" completion
+autocmd BufEnter * lua require('completion').on_attach()
 set completeopt=menuone,noinsert,noselect
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+imap <silent> <c-space> <Plug>(completion_trigger)
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" snippets and path completion
 let g:completion_enable_snippet = 'UltiSnips'
 let g:UltiSnipsExpandTrigger=""
 let g:completion_chain_complete_list = {
     \'default' : [
-    \    {'complete_items': ['lsp', 'snippet', 'path']},
-    \]
+    \    {'complete_items': ['lsp', 'snippet']},
+    \    {'complete_items': ['path']},
+    \],
     \}
-imap <silent> <c-space> <Plug>(completion_trigger)
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" path completion is buggy, so this is a temporary workaround
+imap <expr> <c-j> pumvisible() ? "\<Plug>(completion_next_source)" : "\<c-j>"
+imap <expr> <c-k> pumvisible() ? "\<Plug>(completion_prev_source)" : "\<c-k>"
+
+" can't disable item.menu, so all will show as ... if there is more info
+let g:completion_menu_length=-100
 " -------------------- LSP ---------------------------------
 
 function! LightlineFilename()

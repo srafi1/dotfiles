@@ -205,7 +205,7 @@ nnoremap <silent> <M-o> :Vista!!<CR>
     end
   end
 
-  local servers = {'pyls', 'ccls', 'texlab', 'tsserver'}
+  local servers = {'pyls', 'ccls', 'texlab', 'tsserver', 'bashls', 'cssls', 'dockerls', 'html', 'vimls'}
   for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup({
       on_attach = on_attach,

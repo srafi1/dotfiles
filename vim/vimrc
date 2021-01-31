@@ -27,7 +27,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'itchyny/vim-qfedit'
 Plug 'akinsho/nvim-toggleterm.lua'
 Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
+Plug 'hrsh7th/nvim-compe'
 Plug 'SirVer/ultisnips'
 Plug 'nvim-lua/lsp-status.nvim'
 call plug#end()
@@ -172,8 +172,6 @@ nnoremap <silent> <M-o> :Vista!!<CR>
   local on_attach = function(client, bufnr)
     lsp_status.on_attach(client)
 
-    require('completion').on_attach()
-
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
     local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
@@ -238,43 +236,19 @@ sign define LspDiagnosticsSignInformation text=?
 sign define LspDiagnosticsSignHint        text=~
 
 " completion
-autocmd BufEnter * lua require('completion').on_attach()
 set completeopt=menuone,noinsert,noselect
-let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
-imap <silent> <c-space> <Plug>(completion_trigger)
+let g:compe_config = {}
+let g:compe_config.source = {}
+let g:compe_config.source.nvim_lsp = v:true
+let g:compe_config.source.path = v:true
+let g:compe_config.source.ultisnips = v:true
+call compe#setup(g:compe_config)
+inoremap <silent><expr> <C-Space> compe#complete()
+inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+inoremap <silent><expr> <esc>     compe#close('<esc>')
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-" snippets and path completion
-let g:completion_enable_snippet = 'UltiSnips'
 let g:UltiSnipsExpandTrigger='<enter>'
-let g:completion_chain_complete_list = {
-    \'default' : [
-    \    {'complete_items': ['lsp', 'snippet']},
-    \    {'complete_items': ['path']},
-    \],
-    \}
-" path completion is buggy, so this is a temporary workaround
-imap <expr> <c-j> pumvisible() ? "\<Plug>(completion_next_source)" : "\<c-j>"
-imap <expr> <c-k> pumvisible() ? "\<Plug>(completion_prev_source)" : "\<c-k>"
-
-" can't disable item.menu, so all will show as ... if there is more info
-let g:completion_menu_length=-100
-
-" customize item.kind column
-" let g:completion_customize_lsp_label = {
-"     \'Variable': 'var',
-"     \'Function': 'fn',
-"     \'Keyword': 'kw',
-"     \'UltiSnips': 'US',
-"     \'Snippet': 'snip',
-"     \'Path': 'path',
-"     \'Struct': 'S',
-"     \'Module': 'M',
-"     \'Class': 'C',
-"     \'TypeParameter': 'TP',
-"     \'Reference': 'ref',
-"     \}
 " -------------------- LSP ---------------------------------
 
 function! LightlineFilename()

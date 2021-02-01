@@ -256,7 +256,7 @@ inoremap <silent><expr> <CR>      compe#confirm('<CR>')
 inoremap <silent><expr> <esc>     compe#close('<esc>')
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-let g:UltiSnipsExpandTrigger='<enter>'
+let g:UltiSnipsExpandTrigger='<NUL>'
 " -------------------- LSP ---------------------------------
 
 function! LightlineFilename()

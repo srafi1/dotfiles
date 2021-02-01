@@ -95,15 +95,13 @@ autocmd BufRead,BufNewFile
 autocmd BufRead,BufNewFile *.go setlocal noexpandtab
 
 " break lines and enable spellcheck for document based files
-autocmd BufRead,BufNewFile *.tex,*.md,*.mdx,*.wiki call WritingMode()
+autocmd BufRead,BufNewFile *.tex,*.md,*.mdx,*.wiki,*.txt call WritingMode()
 function! WritingMode()
     setlocal linebreak spell
     nnoremap <buffer> j gj
     nnoremap <buffer> k gk
-    nnoremap <buffer> <leader>d o<Esc>:r! date "+\%Y-\%m-\%d"<CR>
-    Limelight
-    Goyo 80
 endfunction
+autocmd BufRead,BufNewFile *.wiki nnoremap <buffer> <leader>d o<Esc>:r! date "+\%Y-\%m-\%d"<CR> 
 
 " Vimspector function key keybindings
 let g:vimspector_enable_mappings = 'HUMAN'

@@ -36,6 +36,7 @@ networkmanager-openvpn
 package-query
 pacman-contrib
 pavucontrol
+polkit-gnome
 polybar
 pulseaudio
 pulseaudio-alsa

@@ -8,7 +8,6 @@ plugins=(
     archlinux
     git
     colorize
-    calc
     fzf-tab
 )
 
@@ -29,6 +28,12 @@ SAVEHIST=1000
 setopt appendhistory extendedglob
 unsetopt beep
 bindkey -v
+
+autoload -U zcalc
+function __zcalc_exp {
+    zcalc -e "$*"
+}
+aliases[=]='noglob __zcalc_exp'
 
 enable-fzf-tab
 

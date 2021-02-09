@@ -30,6 +30,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'itchyny/vim-qfedit'
+Plug 'akinsho/nvim-toggleterm.lua'
 call plug#end()
 
 " general defaults setup
@@ -151,47 +152,6 @@ nnoremap gP :cpf<CR>
 nnoremap <leader><leader>l :Goyo<CR>:Limelight!!<CR>
 " toggle editor layout
 nnoremap <silent> <M-o> :Vista!!<CR>
-nnoremap <silent> <M-t> :call MonkeyTerminalToggle()<CR>
-
-" monkey terminal courtesy of https://gist.github.com/ram535/b1b7af6cd7769ec0481eb2eed549ea23
-let s:monkey_terminal_window = -1
-let s:monkey_terminal_buffer = -1
-let s:monkey_terminal_job_id = -1
-
-function! MonkeyTerminalToggle()
-    if win_gotoid(s:monkey_terminal_window)
-        call MonkeyTerminalClose()
-    else
-        call MonkeyTerminalOpen()
-    endif
-endfunction
-
-function! MonkeyTerminalOpen()
-    if !bufexists(s:monkey_terminal_buffer)
-        new monkey_terminal
-        wincmd J
-        resize 10
-        let s:monkey_terminal_job_id = termopen($SHELL, { 'detach': 1 })
-        silent file Terminal\ 1
-        let s:monkey_terminal_window = win_getid()
-        let s:monkey_terminal_buffer = bufnr('%')
-        set nobuflisted
-    else
-        if !win_gotoid(s:monkey_terminal_window)
-            sp
-            wincmd J   
-            resize 10
-            buffer Terminal\ 1
-            let s:monkey_terminal_window = win_getid()
-        endif
-    endif
-endfunction
-
-function! MonkeyTerminalClose()
-    if win_gotoid(s:monkey_terminal_window)
-        hide
-    endif
-endfunction
 
 " lsp config
 inoremap <silent><expr> <TAB>
@@ -287,5 +247,10 @@ require'nvim-treesitter.configs'.setup {
     enable = true,              -- false will disable the whole extension
     disable = { "c", "rust" },  -- list of language that will be disabled
   },
+}
+require"toggleterm".setup{
+  size = 10,
+  open_mapping = '<M-t>',
+  persist_size = true,
 }
 EOF

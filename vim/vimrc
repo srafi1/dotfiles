@@ -248,15 +248,18 @@ set completeopt=menuone,noinsert,noselect
 let g:compe_config = {}
 let g:compe_config.source = {}
 let g:compe_config.source.nvim_lsp = v:true
+let g:compe_config.source.nvim_lua = v:true
 let g:compe_config.source.path = v:true
+let g:compe_config.source.spell = v:true
 let g:compe_config.source.ultisnips = v:true
 call compe#setup(g:compe_config)
 inoremap <silent><expr> <C-Space> compe#complete()
-inoremap <silent><expr> <CR>      compe#confirm('<CR>')
-inoremap <silent><expr> <esc>     compe#close('<esc>')
+inoremap <silent><expr> <CR> pumvisible() ? compe#confirm('<CR>') : "\<CR>"
+inoremap <silent><expr> <C-e> compe#close('<C-e>')
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 let g:UltiSnipsExpandTrigger='<NUL>'
+let g:snips_author='Shakil Rafi'
 " -------------------- LSP ---------------------------------
 
 function! LightlineFilename()

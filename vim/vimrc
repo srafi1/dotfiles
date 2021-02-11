@@ -32,6 +32,7 @@ Plug 'SirVer/ultisnips'
 Plug 'nvim-lua/lsp-status.nvim'
 Plug 'RishabhRD/popfix'
 Plug 'RishabhRD/nvim-lsputils'
+Plug 'kosayoda/nvim-lightbulb'
 call plug#end()
 
 " general defaults setup
@@ -252,6 +253,10 @@ sign define LspDiagnosticsSignWarning     text=>> texthl=WarningMsg
 sign define LspDiagnosticsSignError       text=>> texthl=Exception
 sign define LspDiagnosticsSignInformation text=?
 sign define LspDiagnosticsSignHint        text=~
+
+" lightbulb
+autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()
+sign define LightBulbSign text=! texthl=WarningMsg
 
 " completion
 set completeopt=menuone,noinsert,noselect

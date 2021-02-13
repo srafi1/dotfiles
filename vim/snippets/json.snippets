@@ -65,3 +65,12 @@ snippet vimspector_python Vimspector base for Python
 			}
 		}
 	}
+snippet pyright Pyright setup for virtualenv in current directory
+	{
+		"venvPath": ".",
+			"executionEnvironments": [
+				{
+					"venv": "${1:venv}"
+				}
+			]
+	}

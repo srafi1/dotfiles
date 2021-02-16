@@ -105,6 +105,7 @@ function! WritingMode()
     nnoremap <buffer> k gk
 endfunction
 autocmd BufRead,BufNewFile *.wiki nnoremap <buffer> <leader>d o<Esc>:r! date "+\%Y-\%m-\%d"<CR> 
+let g:vimwiki_global_ext = 0
 
 " Vimspector function key keybindings
 let g:vimspector_enable_mappings = 'HUMAN'

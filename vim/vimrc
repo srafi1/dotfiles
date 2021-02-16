@@ -61,11 +61,11 @@ set wildignore+=*/flask/*,*/.git/*,*/db_repository/*,*/node_modules/*
 " use fd for FZF (respect .gitignore)
 let $FZF_DEFAULT_COMMAND='fd --type f'
 " do not force delete branch
-let g:fzf_branch_actions = {
-            \ 'delete': {
-            \   'execute': 'echo system("{git} branch -d {branch}")'
-            \ }
-            \}
+let g:fzf_branch_actions = {}
+let g:fzf_branch_actions.delete = {}
+let g:fzf_branch_actions.delete.execute = 'G branch -d {branch}'
+let g:fzf_branch_actions.checkout = {}
+let g:fzf_branch_actions.checkout.execute = 'G checkout {branch}'
 
 if exists(':terminal')
     au TermOpen * tnoremap <buffer> <Esc><Esc> <C-\><C-n>

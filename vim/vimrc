@@ -167,7 +167,7 @@ nnoremap <silent> <M-o> :Vista!!<CR>
     indicator_warnings = 'W',
     indicator_info = 'I',
     indicator_hint = 'H',
-    indicator_ok = '✔️',
+    indicator_ok = 'LSP',
     spinner_frames = { '⣾', '⣽', '⣻', '⢿', '⡿', '⣟', '⣯', '⣷' },
   })
 
@@ -227,6 +227,12 @@ nnoremap <silent> <M-o> :Vista!!<CR>
 
   nvim_lsp.sumneko_lua.setup({
     cmd = {"lua-language-server"},
+    on_attach = on_attach,
+    capabilities = lsp_status.capabilities,
+  })
+
+  nvim_lsp.jdtls.setup({
+    cmd = {"jdtls"},
     on_attach = on_attach,
     capabilities = lsp_status.capabilities,
   })

@@ -207,35 +207,36 @@ nnoremap <silent> <M-o> :Vista!!<CR>
     end
   end
 
-  local servers = {'pyright', 'ccls', 'texlab', 'tsserver', 'bashls', 'cssls', 'dockerls', 'html', 'vimls'}
-  for _, lsp in ipairs(servers) do
-    nvim_lsp[lsp].setup({
-      on_attach = on_attach,
-      capabilities = lsp_status.capabilities,
-    })
-  end
-
-  nvim_lsp.gopls.setup({
-    on_attach = on_attach,
-    capabilities = lsp_status.capabilities,
-    settings = {
-      gopls = {
-        linksInHover = false
+  -- individual server config
+  local servers = {
+    pyright = {},
+    ccls = {},
+    texlab = {},
+    tsserver = {},
+    bashls = {},
+    cssls = {},
+    dockerls = {},
+    html = {},
+    vimls = {},
+    gopls = {
+      settings = {
+        gopls = {
+          linksInHover = false
+        }
       }
     },
-  })
-
-  nvim_lsp.sumneko_lua.setup({
-    cmd = {"lua-language-server"},
-    on_attach = on_attach,
-    capabilities = lsp_status.capabilities,
-  })
-
-  nvim_lsp.jdtls.setup({
-    cmd = {"jdtls"},
-    on_attach = on_attach,
-    capabilities = lsp_status.capabilities,
-  })
+    sumneko_lua = {
+      cmd = {'lua-language-server'},
+    },
+    jdtls = {
+      cmd = {'jdtls'},
+    },
+  }
+  for lsp, config in pairs(servers) do
+    config.on_attach = on_attach 
+    config.capabilities = lsp_status.capabilities 
+    nvim_lsp[lsp].setup(config)
+  end
 
   -- lsputil handlers
   vim.lsp.handlers['textDocument/codeAction'] = require'lsputil.codeAction'.code_action_handler

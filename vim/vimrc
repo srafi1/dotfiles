@@ -310,20 +310,17 @@ let g:lightline = {
             \             [ 'gitbranch', 'filename' ],
             \             [ 'readonly', 'modified' ] ],
             \   'right': [ [ 'lineinfo' ], 
-            \              [ 'cocstatus', 'filetype' ] ],
+            \              [ 'lspstatus', 'filetype' ] ],
             \ },
             \ 'component_function': {
             \   'filename': 'LightlineFilename',
             \   'gitbranch': 'fugitive#head',
-            \   'cocstatus': 'LspStatus',
+            \   'lspstatus': 'LspStatus',
             \ },
             \ 'component': {
             \   'lineinfo': "%{line('.') . '/' . line('$')}"
             \ }
             \ }
-
-" update lightline on coc update
-autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 " treesitter setup
 lua <<EOF

@@ -208,6 +208,7 @@ nnoremap <silent> <M-o> :Vista!!<CR>
   end
 
   -- individual server config
+  -- remember to add installation instructions for new servers to ./lsp-install.sh
   local servers = {
     pyright = {},
     ccls = {},

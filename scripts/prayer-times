@@ -1,0 +1,17 @@
+#! /bin/bash
+
+# send a notification with today's prayer times
+
+TIME_FILE=/tmp/prayer_times.json
+
+curl http://api.aladhan.com/v1/timingsByCity/:date_or_timestamp\?city\=New%20York%20City\&country\=United%20States | jq .data.timings > $TIME_FILE
+
+msg="
+Fajr:    $(jq .Fajr $TIME_FILE | tr -d '"')
+Sunrise: $(jq .Sunrise $TIME_FILE | tr -d '"')
+Dhuhr:   $(jq .Dhuhr $TIME_FILE | tr -d '"')
+Asr:     $(jq .Asr $TIME_FILE | tr -d '"')
+Maghrib: $(jq .Maghrib $TIME_FILE | tr -d '"')
+Isha:    $(jq .Isha $TIME_FILE | tr -d '"')"
+
+notify-send "Prayer Times:" "$msg"

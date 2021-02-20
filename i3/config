@@ -35,7 +35,7 @@ for_window [class="URxvt" instance="floating"] floating enable
 bindsym $mod+b exec google-chrome-stable 
 bindsym $mod+Shift+q kill 
 bindsym $mod+d exec rofi -show run 
-bindsym XF86Cut exec deepin-screenshot
+bindsym Print exec deepin-screenshot
 bindsym $mod+Tab focus right
 bindsym $mod+Shift+Tab focus left
 

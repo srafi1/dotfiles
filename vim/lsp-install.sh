@@ -32,7 +32,7 @@ for lsp in $@; do
             yarn global add vim-language-server
             ;;
         gopls|go|golang)
-            go get golang.org/x/tools/gopls
+            yay -S --noconfirm gopls
             ;;
         sumneko_lua|lua)
             yay -S --noconfirm lua-language-server-git

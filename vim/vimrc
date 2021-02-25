@@ -318,7 +318,7 @@ let g:lightline = {
             \   'lspstatus': 'LspStatus',
             \ },
             \ 'component': {
-            \   'lineinfo': "%{line('.') . '/' . line('$')}"
+            \   'lineinfo': "%{'(' . line('.') . ':' . col('.') .  ')/' . line('$')}"
             \ }
             \ }
 

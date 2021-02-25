@@ -233,7 +233,7 @@ let g:lightline = {
             \   'cocstatus': 'coc#status',
             \ },
             \ 'component': {
-            \   'lineinfo': "%{line('.') . '/' . line('$')}"
+            \   'lineinfo': "%{'(' . line('.') . ':' . col('.') .  ')/' . line('$')}"
             \ }
             \ }
 

@@ -4,7 +4,7 @@
 
 TIME_FILE=/tmp/prayer_times.json
 
-curl http://api.aladhan.com/v1/timingsByCity/:date_or_timestamp\?city\=New%20York%20City\&country\=United%20States | jq .data.timings > $TIME_FILE
+curl http://api.aladhan.com/v1/timingsByCity/:date_or_timestamp\?city\=New%20York%20City\&country\=United%20States 2> /dev/null | jq .data.timings > $TIME_FILE
 
 msg="
 Fajr:    $(jq .Fajr $TIME_FILE | tr -d '"')
@@ -14,4 +14,10 @@ Asr:     $(jq .Asr $TIME_FILE | tr -d '"')
 Maghrib: $(jq .Maghrib $TIME_FILE | tr -d '"')
 Isha:    $(jq .Isha $TIME_FILE | tr -d '"')"
 
-notify-send "Prayer Times:" "$msg"
+
+if [[ $(tty) =~ "not a tty" ]]
+then
+    notify-send "Prayer Times:" "$msg"
+else
+    echo "$msg"
+fi

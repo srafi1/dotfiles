@@ -24,7 +24,7 @@ exec nm-applet
 exec blueman-applet
 exec light-locker
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec sh -c "notify-send 'Packages to update: $(numupdates)'"
+exec numupdates
 
 bindsym $mod+Return exec i3-sensible-terminal
 # cd to same place as active terminal

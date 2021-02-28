@@ -2,18 +2,47 @@
 
 # send a notification with today's prayer times
 
-TIME_FILE=/tmp/prayer_times.json
+DATE=$(date +%m-%d-%y)
+TIME_FILE="/tmp/prayer_times_$DATE.json"
 
-curl http://api.aladhan.com/v1/timingsByCity/:date_or_timestamp\?city\=New%20York%20City\&country\=United%20States 2> /dev/null | jq .data.timings > $TIME_FILE
+if [ ! -f $TIME_FILE ]
+then
+    curl http://api.aladhan.com/v1/timingsByCity/:date_or_timestamp\?city\=New%20York%20City\&country\=United%20States 2> /dev/null | jq .data.timings > $TIME_FILE
+fi
+
+time_for() {
+    echo $(jq $1 $TIME_FILE | tr -d '"')
+}
+
+time_past() {
+    unix_now=$(date +%s)
+    unix_then=$(date --date="$1" +%s)
+    if [ $unix_then -gt $unix_now ]
+    then
+        echo ">"
+    else
+        echo " "
+    fi
+}
+
+time_12() {
+    echo $(date --date="$1" +%r)
+}
+
+F=$(time_for .Fajr)
+S=$(time_for .Sunrise)
+D=$(time_for .Dhuhr)
+A=$(time_for .Asr)
+M=$(time_for .Maghrib)
+I=$(time_for .Isha)
 
 msg="
-Fajr:    $(jq .Fajr $TIME_FILE | tr -d '"')
-Sunrise: $(jq .Sunrise $TIME_FILE | tr -d '"')
-Dhuhr:   $(jq .Dhuhr $TIME_FILE | tr -d '"')
-Asr:     $(jq .Asr $TIME_FILE | tr -d '"')
-Maghrib: $(jq .Maghrib $TIME_FILE | tr -d '"')
-Isha:    $(jq .Isha $TIME_FILE | tr -d '"')"
-
+$(time_past $F) Fajr:    $(time_12 $F)
+$(time_past $S) Sunrise: $(time_12 $S)
+$(time_past $D) Dhuhr:   $(time_12 $D)
+$(time_past $A) Asr:     $(time_12 $A)
+$(time_past $M) Maghrib: $(time_12 $M)
+$(time_past $I) Isha:    $(time_12 $I)"
 
 if [[ $(tty) =~ "not a tty" ]]
 then

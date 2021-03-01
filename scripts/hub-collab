@@ -64,7 +64,7 @@ optional arguments:
         ;;
     -c|--check)
         is_collab=$(hub api repos/$user/$repo/collaborators/$collab -i |
-    grep "Status: 204")
+            grep "204 No Content")
         if [[ -z $is_collab ]]
         then
             echo "$collab is NOT a collaborator on $user/$repo"

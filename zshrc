@@ -5,9 +5,6 @@ HYPHEN_INSENSITIVE="true"
 COMPLETION_WAITING_DOTS="true" # Maybe disable ?
 
 plugins=(
-    archlinux
-    git
-    colorize
     fzf-tab
 )
 
@@ -46,3 +43,6 @@ alias yaupg='yay -Syu --builddir ~/tmp/yay --noconfirm --sudoloop'
 alias clean-swaps='rm ~/.local/share/nvim/swap/* -v'
 alias subpull='git submodule update --init --recursive . &&
     git pull origin master'
+
+# git aliases
+alias gch='git branch | grep "^[^*]" | ifne fzf | xargs -r git checkout'

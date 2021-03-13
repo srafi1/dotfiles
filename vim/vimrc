@@ -231,6 +231,9 @@ nnoremap <silent> <M-o> :Vista!!<CR>
     },
     jdtls = {
       cmd = {'jdtls'},
+      cmd_env = {
+        PATH = '/usr/lib/jvm/java-11-openjdk/bin/:/usr/sbin',
+      },
     },
   }
   for lsp, config in pairs(servers) do

@@ -40,9 +40,10 @@ alias yarem='yay -Rns'
 alias yaupd='yay -Syy'
 alias yaupg='yay -Syu --builddir ~/tmp/yay --noconfirm --sudoloop'
 
+# clean out leftover swapfiles
 alias clean-swaps='rm ~/.local/share/nvim/swap/* -v'
-alias subpull='git submodule update --init --recursive . &&
-    git pull origin master'
 
-# git aliases
-alias gch='git branch | grep "^[^*]" | ifne fzf | xargs -r git checkout'
+# fzf aliases
+alias gch="git branch -a |
+    sed -e '/^*/d;/HEAD/d;s/^\s*remotes\/[^/]\+\///;s/^\s\+//' |
+    sort -u | ifne fzf | xargs -r git checkout"

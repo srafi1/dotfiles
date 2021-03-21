@@ -1,7 +1,6 @@
 " vim-plug
 call plug#begin('~/.vim/plugged')
 Plug 'michaeljsmith/vim-indent-object'
-Plug 'wellle/targets.vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'jiangmiao/auto-pairs'
@@ -24,6 +23,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'itchyny/vim-qfedit'
 Plug 'akinsho/nvim-toggleterm.lua'
 Plug 'neovim/nvim-lspconfig'
@@ -120,11 +120,6 @@ nnoremap <leader>p :set opfunc=ReplaceMotion<CR>g@
 function! ReplaceMotion(type)
     silent exe "normal! `[v`]\"_dP"
 endfunction
-" navigate functions in a file
-map [[ ?{<CR>w99[{<esc>
-map ][ /}<CR>b99]}<esc>
-map ]] j0[[%/{<CR><esc>
-map [] k$][%?}<CR><esc>
 nnoremap <C-p> :FZF<CR>
 nnoremap <C-b> :Buffers<CR>
 " reload file
@@ -334,6 +329,38 @@ require'nvim-treesitter.configs'.setup {
   },
   indent = {
     enable = true,
+  },
+  textobjects = {
+    select = {
+      enable = true,
+      keymaps = {
+        ["ib"] = "@block.inner",
+        ["ab"] = "@block.outer",
+        ["if"] = "@function.inner",
+        ["af"] = "@function.outer",
+        ["ic"] = "@call.inner",
+        ["ac"] = "@call.outer",
+        ["ia"] = "@parameter.inner",
+        ["aa"] = "@parameter.outer",
+      },
+    },
+    move = {
+      enable = true,
+      goto_next_start = {
+        ["]]"] = "@function.outer",
+        ["]a"] = "@parameter.inner",
+      },
+      goto_next_end = {
+        ["]["] = "@function.outer",
+      },
+      goto_previous_start = {
+        ["[["] = "@function.outer",
+        ["[a"] = "@parameter.inner",
+      },
+      goto_previous_end = {
+        ["[]"] = "@function.outer",
+      },
+    },
   },
 }
 require"toggleterm".setup{

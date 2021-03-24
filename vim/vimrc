@@ -1,7 +1,6 @@
 " vim-plug
 call plug#begin('~/.vim/plugged')
 Plug 'michaeljsmith/vim-indent-object'
-Plug 'wellle/targets.vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'jiangmiao/auto-pairs'
@@ -15,13 +14,8 @@ Plug 'shinchu/lightline-seoul256.vim'
 Plug 'tpope/vim-eunuch'
 Plug 'chrisbra/unicode.vim'
 Plug 'puremourning/vimspector'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'justinmk/vim-dirvish'
 Plug 'liuchengxu/vista.vim'
-Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
-Plug 'iamcco/coc-flutter', {'do': 'yarn install --frozen-lockfile'}
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'stsewd/fzf-checkout.vim'
@@ -29,8 +23,16 @@ Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'itchyny/vim-qfedit'
 Plug 'akinsho/nvim-toggleterm.lua'
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/nvim-compe'
+Plug 'SirVer/ultisnips'
+Plug 'nvim-lua/lsp-status.nvim'
+Plug 'RishabhRD/popfix'
+Plug 'RishabhRD/nvim-lsputils'
+Plug 'kosayoda/nvim-lightbulb'
 call plug#end()
 
 " general defaults setup
@@ -118,11 +120,6 @@ nnoremap <leader>p :set opfunc=ReplaceMotion<CR>g@
 function! ReplaceMotion(type)
     silent exe "normal! `[v`]\"_dP"
 endfunction
-" navigate functions in a file
-map [[ ?{<CR>w99[{<esc>
-map ][ /}<CR>b99]}<esc>
-map ]] j0[[%/{<CR><esc>
-map [] k$][%?}<CR><esc>
 nnoremap <C-p> :FZF<CR>
 nnoremap <C-b> :Buffers<CR>
 " reload file
@@ -154,59 +151,138 @@ nnoremap <leader><leader>l :Goyo<CR>:Limelight!!<CR>
 " toggle editor layout
 nnoremap <silent> <M-o> :Vista!!<CR>
 
-" lsp config
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" -------------------- LSP ---------------------------------
+:lua << EOF
+  local lsp_status = require('lsp-status')
+  lsp_status.register_progress()
+  lsp_status.config({
+    current_function = false,
+    status_symbol = '',
+    indicator_errors = 'E',
+    indicator_warnings = 'W',
+    indicator_info = 'I',
+    indicator_hint = 'H',
+    indicator_ok = 'LSP',
+    spinner_frames = { '⣾', '⣽', '⣻', '⢿', '⡿', '⣟', '⣯', '⣷' },
+  })
 
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+  local nvim_lsp = require('lspconfig')
 
-" trigger completion menu
-inoremap <silent><expr> <c-space> coc#refresh()
-" accept completion
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+  local on_attach = function(client, bufnr)
+    lsp_status.on_attach(client)
 
-" lsp normal mode remaps
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-nmap <leader>cc :CocCommand<CR>
-vmap <leader>ca <Plug>(coc-codeaction-selected)
-nmap <leader>cl <Plug>(coc-codelens-action)
-nmap <leader>cw <Plug>(coc-rename)
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-imap <C-p> <C-o>:call CocActionAsync("showSignatureHelp")<CR>
-nmap <leader>qf <Plug>(coc-fix-current)
+    local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+    local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
+    buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-" function/class text objects
-xmap if <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
-omap if <Plug>(coc-funcobj-i)
-omap af <Plug>(coc-funcobj-a)
-xmap ic <Plug>(coc-classobj-i)
-omap ic <Plug>(coc-classobj-i)
-xmap ac <Plug>(coc-classobj-a)
-omap ac <Plug>(coc-classobj-a)
+    -- Mappings
+    local opts = { noremap=true, silent=true }
+    buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+    buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+    buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+    buf_set_keymap('i', '<C-p>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+    buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+    buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+    buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+    buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+    buf_set_keymap('n', '<space>cw', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+    buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+    buf_set_keymap('v', '<space>ca', '<cmd>lua vim.lsp.buf.range_code_action()<CR>', opts)
+    buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+    buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+    buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+    buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
 
-" format current buffer
-command! -nargs=0 Format :call CocAction('format')
+    -- Set some keybinds conditional on server capabilities
+    if client.resolved_capabilities.document_formatting then
+        buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+    elseif client.resolved_capabilities.document_range_formatting then
+        buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+    end
+  end
 
-let g:coc_node_path='/usr/bin/node'
+  -- individual server config
+  -- remember to add installation instructions for new servers to ./lsp-install.sh
+  local servers = {
+    pyright = {},
+    ccls = {},
+    texlab = {},
+    tsserver = {},
+    bashls = {},
+    cssls = {},
+    dockerls = {},
+    html = {},
+    vimls = {},
+    gopls = {
+      settings = {
+        gopls = {
+          linksInHover = false
+        }
+      }
+    },
+    sumneko_lua = {
+      cmd = {'lua-language-server'},
+    },
+    jdtls = {
+      cmd = {'jdtls'},
+      cmd_env = {
+        PATH = '/usr/lib/jvm/java-11-openjdk/bin/:/usr/sbin',
+      },
+    },
+  }
+  for lsp, config in pairs(servers) do
+    config.on_attach = on_attach 
+    config.capabilities = lsp_status.capabilities 
+    nvim_lsp[lsp].setup(config)
+  end
+
+  -- lsputil handlers
+  vim.lsp.handlers['textDocument/codeAction'] = require'lsputil.codeAction'.code_action_handler
+  vim.lsp.handlers['textDocument/references'] = require'lsputil.locations'.references_handler
+  vim.lsp.handlers['textDocument/definition'] = require'lsputil.locations'.definition_handler
+  vim.lsp.handlers['textDocument/declaration'] = require'lsputil.locations'.declaration_handler
+  vim.lsp.handlers['textDocument/typeDefinition'] = require'lsputil.locations'.typeDefinition_handler
+  vim.lsp.handlers['textDocument/implementation'] = require'lsputil.locations'.implementation_handler
+  vim.lsp.handlers['textDocument/documentSymbol'] = require'lsputil.symbols'.document_handler
+  vim.lsp.handlers['workspace/symbol'] = require'lsputil.symbols'.workspace_handler
+
+  -- diagnostics
+  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+    vim.lsp.diagnostic.on_publish_diagnostics, {
+      virtual_text = false,
+    }
+  )
+EOF
+
+" diagnostics sign/highlight definitions
+sign define LspDiagnosticsSignWarning     text=>> texthl=WarningMsg
+sign define LspDiagnosticsSignError       text=>> texthl=Exception
+sign define LspDiagnosticsSignInformation text=?
+sign define LspDiagnosticsSignHint        text=~
+
+" lightbulb
+autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()
+sign define LightBulbSign text=! texthl=WarningMsg
+
+" completion
+set completeopt=menuone,noinsert,noselect
+let g:compe_config = {}
+let g:compe_config.source = {}
+let g:compe_config.source.nvim_lsp = v:true
+let g:compe_config.source.nvim_lua = v:true
+let g:compe_config.source.path = v:true
+let g:compe_config.source.spell = v:true
+let g:compe_config.source.ultisnips = v:true
+call compe#setup(g:compe_config)
+inoremap <silent><expr> <C-Space> compe#complete()
+inoremap <silent><expr> <CR> pumvisible() ? compe#confirm('<CR>') : "\<CR>"
+inoremap <silent><expr> <C-e> compe#close('<C-e>')
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+let g:UltiSnipsExpandTrigger='<NUL>'
+let g:snips_author='Shakil Rafi'
+" -------------------- LSP ---------------------------------
 
 function! LightlineFilename()
   let root = fnamemodify(get(b:, 'git_dir'), ':h')
@@ -217,6 +293,13 @@ function! LightlineFilename()
   return expand('%')
 endfunction
 
+function! LspStatus() abort
+  if luaeval('#vim.lsp.buf_get_clients() > 0')
+    return luaeval("require('lsp-status').status()")
+  endif
+  return ''
+endfunction
+
 " use lightline-buffer in lightline
 let g:lightline = {
             \ 'colorscheme': 'seoul256',
@@ -225,20 +308,17 @@ let g:lightline = {
             \             [ 'gitbranch', 'filename' ],
             \             [ 'readonly', 'modified' ] ],
             \   'right': [ [ 'lineinfo' ], 
-            \              [ 'cocstatus', 'filetype' ] ],
+            \              [ 'lspstatus', 'filetype' ] ],
             \ },
             \ 'component_function': {
             \   'filename': 'LightlineFilename',
             \   'gitbranch': 'fugitive#head',
-            \   'cocstatus': 'coc#status',
+            \   'lspstatus': 'LspStatus',
             \ },
             \ 'component': {
             \   'lineinfo': "%{'(' . line('.') . ':' . col('.') .  ')/' . line('$')}"
             \ }
             \ }
-
-" update lightline on coc update
-autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 " treesitter setup
 lua <<EOF
@@ -249,6 +329,38 @@ require'nvim-treesitter.configs'.setup {
   },
   indent = {
     enable = true,
+  },
+  textobjects = {
+    select = {
+      enable = true,
+      keymaps = {
+        ["ib"] = "@block.inner",
+        ["ab"] = "@block.outer",
+        ["if"] = "@function.inner",
+        ["af"] = "@function.outer",
+        ["ic"] = "@call.inner",
+        ["ac"] = "@call.outer",
+        ["ia"] = "@parameter.inner",
+        ["aa"] = "@parameter.outer",
+      },
+    },
+    move = {
+      enable = true,
+      goto_next_start = {
+        ["]]"] = "@function.outer",
+        ["]a"] = "@parameter.inner",
+      },
+      goto_next_end = {
+        ["]["] = "@function.outer",
+      },
+      goto_previous_start = {
+        ["[["] = "@function.outer",
+        ["[a"] = "@parameter.inner",
+      },
+      goto_previous_end = {
+        ["[]"] = "@function.outer",
+      },
+    },
   },
 }
 require"toggleterm".setup{

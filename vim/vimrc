@@ -150,7 +150,7 @@ nnoremap <leader><leader>l :Goyo<CR>:Limelight!!<CR>
 nnoremap <silent> <M-o> :Vista!!<CR>
 
 " -------------------- LSP ---------------------------------
-:lua << EOF
+lua << EOF
   local lsp_status = require('lsp-status')
   lsp_status.register_progress()
   lsp_status.config({

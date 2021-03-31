@@ -8,9 +8,7 @@ Plug 'nelstrom/vim-visual-star-search'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-fugitive'
 Plug 'vimwiki/vimwiki'
-Plug 'junegunn/seoul256.vim'
 Plug 'itchyny/lightline.vim'
-Plug 'shinchu/lightline-seoul256.vim'
 Plug 'tpope/vim-eunuch'
 Plug 'chrisbra/unicode.vim'
 Plug 'puremourning/vimspector'
@@ -37,7 +35,7 @@ call plug#end()
 
 " general defaults setup
 let g:seoul256_background = 235
-silent! colorscheme seoul256
+colorscheme seoul256-custom
 filetype plugin indent on
 syntax on
 set number relativenumber
@@ -302,7 +300,7 @@ endfunction
 
 " use lightline-buffer in lightline
 let g:lightline = {
-            \ 'colorscheme': 'seoul256',
+            \ 'colorscheme': 'wombat',
             \ 'active': {
             \   'left': [ [ 'mode', 'paste' ],
             \             [ 'gitbranch', 'filename' ],

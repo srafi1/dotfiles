@@ -221,6 +221,13 @@ lua << EOF
     },
     sumneko_lua = {
       cmd = {'lua-language-server'},
+      settings = {
+        Lua = {
+          workspace = {
+            preloadFileSize = 200 -- increase this if necessary
+          }
+        }
+      }
     },
     jdtls = {
       cmd = {'jdtls'},

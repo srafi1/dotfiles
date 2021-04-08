@@ -91,7 +91,7 @@ let g:tex_flavor = "latex"
 
 " custom tab config by file extension
 autocmd BufRead,BufNewFile 
-            \ *.html,*.css,*.js,*.jsx,*.ts,*.tsx,*.dart 
+            \ *.html,*.css,*.js,*.jsx,*.ts,*.tsx,*.dart,*.lua
             \ setlocal tabstop=2 shiftwidth=2
 autocmd BufRead,BufNewFile *.go setlocal noexpandtab
 

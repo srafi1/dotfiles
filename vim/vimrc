@@ -277,7 +277,6 @@ let g:compe_config.source = {}
 let g:compe_config.source.nvim_lsp = v:true
 let g:compe_config.source.nvim_lua = v:true
 let g:compe_config.source.path = v:true
-let g:compe_config.source.spell = v:true
 let g:compe_config.source.ultisnips = v:true
 call compe#setup(g:compe_config)
 inoremap <silent><expr> <C-Space> compe#complete()

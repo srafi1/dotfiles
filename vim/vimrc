@@ -33,6 +33,7 @@ Plug 'nvim-lua/lsp-status.nvim'
 Plug 'RishabhRD/popfix'
 Plug 'RishabhRD/nvim-lsputils'
 Plug 'kosayoda/nvim-lightbulb'
+Plug 'ray-x/lsp_signature.nvim'
 call plug#end()
 
 " general defaults setup
@@ -171,6 +172,10 @@ lua << EOF
 
   local on_attach = function(client, bufnr)
     lsp_status.on_attach(client)
+    require'lsp_signature'.on_attach{
+      hint_enable = false,
+      hi_parameter = 'IncSearch',
+    }
 
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
     local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
@@ -248,8 +253,6 @@ lua << EOF
   -- add borders to popups
   vim.lsp.handlers["textDocument/hover"] =
     vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
-  vim.lsp.handlers["textDocument/signatureHelp"] =
-    vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" })
 
   -- lsputil handlers
   vim.lsp.handlers['textDocument/codeAction'] = require'lsputil.codeAction'.code_action_handler

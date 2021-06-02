@@ -275,7 +275,7 @@ call s:hi('ColorColumn', ['', ''], [s:dark_bg - 1, s:light_bg - 2])
 call s:hi('CursorLine', ['', ''], [s:dark_bg - 1, s:light_bg - 1])
 call s:hi('CursorLineNr', [131, 131], [s:dark_bg - 1, s:light_bg - 1])
 call s:hi('CursorColumn', ['', ''], [s:dark_bg - 1, s:light_bg - 1])
-call s:hi('NormalFloat', ['', ''], [s:dark_bg + 1, s:light_bg - 1])
+call s:hi('NormalFloat', ['', ''], [s:dark_bg, s:light_bg])
 
 call s:hi('Directory', [187, 95], ['', ''])
 
@@ -284,7 +284,7 @@ call s:hi('DiffDelete', ['NONE', 'NONE'], [95, 181])
 call s:hi('DiffChange', ['NONE', 'NONE'], [s:dark_bg + 3, 189])
 call s:hi('DiffText',   ['NONE', 'NONE'], [52, 224])
 
-call s:hi('VertSplit', [s:dark_bg_2, s:light_bg - 3], [s:dark_bg_2, s:light_bg - 3])
+call s:hi('VertSplit', [s:dark_bg, s:light_bg], [s:dark_fg, s:light_fg])
 call s:hi('Folded', [101, 101], [s:dark_bg + 1, s:light_bg - 2])
 
 " set foldcolumn=1

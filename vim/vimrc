@@ -23,6 +23,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+Plug 'norcalli/nvim-colorizer.lua'
 Plug 'itchyny/vim-qfedit'
 Plug 'akinsho/nvim-toggleterm.lua'
 Plug 'neovim/nvim-lspconfig'
@@ -35,7 +36,8 @@ Plug 'kosayoda/nvim-lightbulb'
 call plug#end()
 
 " general defaults setup
-let g:seoul256_background = 235
+set termguicolors
+let g:seoul256_background = 234
 colorscheme seoul256-custom
 filetype plugin indent on
 syntax on
@@ -243,6 +245,12 @@ lua << EOF
     nvim_lsp[lsp].setup(config)
   end
 
+  -- add borders to popups
+  vim.lsp.handlers["textDocument/hover"] =
+    vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
+  vim.lsp.handlers["textDocument/signatureHelp"] =
+    vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" })
+
   -- lsputil handlers
   vim.lsp.handlers['textDocument/codeAction'] = require'lsputil.codeAction'.code_action_handler
   vim.lsp.handlers['textDocument/references'] = require'lsputil.locations'.references_handler
@@ -262,8 +270,8 @@ lua << EOF
 EOF
 
 " diagnostics sign/highlight definitions
-sign define LspDiagnosticsSignWarning     text=>> texthl=WarningMsg
-sign define LspDiagnosticsSignError       text=>> texthl=Exception
+sign define LspDiagnosticsSignWarning     text=>>
+sign define LspDiagnosticsSignError       text=>>
 sign define LspDiagnosticsSignInformation text=?
 sign define LspDiagnosticsSignHint        text=~
 
@@ -368,6 +376,7 @@ require'nvim-treesitter.configs'.setup {
     },
   },
 }
+require'colorizer'.setup()
 require"toggleterm".setup{
   size = 10,
   open_mapping = '<M-t>',

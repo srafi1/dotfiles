@@ -24,6 +24,7 @@ Plug 'junegunn/limelight.vim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'RRethy/nvim-treesitter-textsubjects'
+Plug 'nvim-treesitter/playground'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'itchyny/vim-qfedit'
 Plug 'akinsho/nvim-toggleterm.lua'

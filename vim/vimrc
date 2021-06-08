@@ -23,7 +23,6 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
-Plug 'RRethy/nvim-treesitter-textsubjects'
 Plug 'nvim-treesitter/playground'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'itchyny/vim-qfedit'
@@ -349,6 +348,13 @@ require'nvim-treesitter.configs'.setup {
   indent = {
     enable = true,
   },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      node_incremental = "+",
+      node_decremental = "-",
+    },
+  },
   textobjects = {
     select = {
       enable = true,
@@ -380,12 +386,6 @@ require'nvim-treesitter.configs'.setup {
         ["[]"] = "@function.outer",
       },
     },
-  },
-  textsubjects = {
-    enable = true,
-    keymaps = {
-      ['.'] = 'textsubjects-smart',
-    }
   },
 }
 require'colorizer'.setup()

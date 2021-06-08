@@ -40,5 +40,8 @@ for lsp in $@; do
         jdtls|java)
             yay -S --noconfirm jdtls
             ;;
+        rust-analyzer|rust)
+            yay -S --noconfirm rust-analyzer
+            ;;
     esac
 done

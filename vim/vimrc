@@ -244,6 +244,7 @@ lua << EOF
         PATH = '/usr/lib/jvm/java-11-openjdk/bin/:/usr/sbin',
       },
     },
+    rust_analyzer = {},
   }
   for lsp, config in pairs(servers) do
     config.on_attach = on_attach 

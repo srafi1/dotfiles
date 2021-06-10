@@ -23,6 +23,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+Plug 'romgrk/nvim-treesitter-context'
 Plug 'nvim-treesitter/playground'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'itchyny/vim-qfedit'

@@ -1,0 +1,19 @@
+snippet start "Default start for document"
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+\doublespacing
+\usepackage{csquotes}
+\MakeOuterQuote{"}
+
+\begin{document}
+${0}
+\end{document}
+endsnippet
+snippet header "Header for class"
+\noindent Shakil Rafi\\\\
+Professor ${1:name}\\\\
+${2:course code}\\\\
+`strftime("%B %d, %Y")`
+endsnippet

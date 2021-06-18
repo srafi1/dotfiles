@@ -21,6 +21,7 @@ Plug 'stsewd/fzf-checkout.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
+Plug 'folke/tokyonight.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'romgrk/nvim-treesitter-context'
@@ -40,8 +41,8 @@ call plug#end()
 
 " general defaults setup
 set termguicolors
-let g:seoul256_background = 234
-colorscheme seoul256-custom
+let g:tokyonight_style = "night"
+colorscheme tokyonight
 filetype plugin indent on
 syntax on
 set number relativenumber

@@ -41,7 +41,8 @@ call plug#end()
 
 " general defaults setup
 set termguicolors
-let g:tokyonight_style = "night"
+let g:tokyonight_style = 'night'
+let g:tokyonight_colors = {'border': '#a9b1d6', 'comment': '#848cb4'}
 colorscheme tokyonight
 filetype plugin indent on
 syntax on
@@ -204,7 +205,7 @@ lua << EOF
     buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
     buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
     -- close all floating windows (usually hover) after clearing search
-    buf_set_keymap('n', '<esc>', '<cmd>nohlsearch | lua for _, win in ipairs(vim.api.nvim_list_wins()) do if vim.api.nvim_win_get_config(win).relative ~= "" then vim.api.nvim_win_close(win, false) end end<CR>', opts)
+    buf_set_keymap('n', '<esc>', '<cmd>nohlsearch | echo | lua for _, win in ipairs(vim.api.nvim_list_wins()) do if vim.api.nvim_win_get_config(win).relative ~= "" then vim.api.nvim_win_close(win, false) end end<CR>', opts)
 
     vim.cmd [[autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()]]
     vim.cmd [[autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()]]
@@ -321,7 +322,7 @@ endfunction
 
 " use lightline-buffer in lightline
 let g:lightline = {
-            \ 'colorscheme': 'wombat',
+            \ 'colorscheme': 'tokyonight',
             \ 'active': {
             \   'left': [ [ 'mode', 'paste' ],
             \             [ 'gitbranch', 'filename' ],

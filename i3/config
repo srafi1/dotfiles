@@ -9,7 +9,7 @@ gaps outer 0
 smart_gaps on
 
 # color class           border  bg      text    indicator child_border
-client.focused          #555555 #444444 #ffffff #2e9ef4   #777777
+client.focused          #555555 #444444 #ffffff #2e9ef4   #aaaaaa
 client.unfocused        #333333 #222222 #888888 #292d2e   #222222
 
 # open wallpaper

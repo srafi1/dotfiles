@@ -38,7 +38,7 @@ enable-fzf-tab
 alias yain='yay -S --noconfirm --sudoloop'
 alias yarem='yay -Rns'
 alias yaupd='yay -Syy'
-alias yaupg='yay -Syu --builddir ~/tmp/yay --noconfirm --sudoloop'
+alias yaupg='yay -Syu --builddir ~/.cache/yay --noconfirm --sudoloop'
 
 # clean out leftover swapfiles
 alias clean-swaps='rm ~/.local/share/nvim/swap/* -v'

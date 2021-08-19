@@ -46,4 +46,4 @@ alias clean-swaps='rm ~/.local/share/nvim/swap/* -v'
 # fzf aliases
 alias gch="git branch -a |
     sed -e '/^*/d;/HEAD/d;s/^\s*remotes\/[^/]\+\///;s/^\s\+//' |
-    sort -u | ifne fzf | xargs -r git checkout"
+    sort -u | ifne fzf --reverse --height=10 | xargs -r git checkout"

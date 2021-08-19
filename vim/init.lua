@@ -49,7 +49,7 @@ end)
 
 local vimp = require'vimp'
 
-local opts = {
+local enable = {
   'termguicolors',
   'relativenumber',
   'hidden',
@@ -62,7 +62,7 @@ local opts = {
   'ignorecase',
   'smartcase'
 }
-for _, opt in ipairs(opts) do
+for _, opt in ipairs(enable) do
   vim.o[opt] = true
 end
 
@@ -102,27 +102,27 @@ vim.cmd [[
 vim.g.easy_align_ignore_groups = {}
 
 -- if the directory for a new file doesn't exist, create it
-vim.cmd [[
+vim.cmd(([[
   augroup Mkdir
-    autocmd!
-    autocmd BufWritePre *
-      \ if !isdirectory(expand("<afile>:p:h")) |
-      \ call mkdir(expand("<afile>:p:h"), "p") |
-      \ endif
+      autocmd!
+      autocmd BufWritePre * \
+                   if !isdirectory(expand("<afile>:p:h")) | \
+                   call mkdir(expand("<afile>:p:h"), "p") | \
+                   endif
   augroup END
-]]
+]]):gsub('\\\n', ' '))
 
 -- compile pdf after saving tex file
 vim.cmd [[autocmd BufWritePost *.tex !pdflatex %]]
 vim.g.tex_flavor = 'latex'
 
 -- custom tab config by file extension
-vim.cmd [[
+vim.cmd(([[
   autocmd BufRead,BufNewFile 
-    \ *.html,*.css,*.js,*.jsx,*.ts,*.tsx,*.dart,*.lua
-    \ setlocal tabstop=2 shiftwidth=2
-  autocmd BufRead,BufNewFile *.go setlocal noexpandtab
-]]
+    *.html,*.css,*.js,*.jsx,*.ts,*.tsx,*.dart,*.lua
+    setlocal tabstop=2 shiftwidth=2
+]]):gsub('\n', ' '))
+vim.cmd [[ autocmd BufRead,BufNewFile *.go setlocal noexpandtab ]]
 
 
 -- break lines and enable spellcheck for document based files
@@ -140,7 +140,8 @@ vim.g.vimspector_enable_mappings = 'HUMAN'
 
 -- key mappings
 vimp.nnoremap({'silent'}, '<esc>', function()
-  vim.cmd [[<cmd>nohlsearch | echo]]
+  vim.cmd [[nohlsearch | echo]]
+  -- close all floating windows (usually hover) after clearing search
   for _, win in ipairs(vim.api.nvim_list_wins()) do
     if vim.api.nvim_win_get_config(win).relative ~= "" then
       vim.api.nvim_win_close(win, false)
@@ -154,7 +155,7 @@ vimp.vnoremap('<leader>p', '"_dP')
 vimp.nnoremap('<leader>p', ':set opfunc=ReplaceMotion<CR>g@')
 vim.cmd [[
   function! ReplaceMotion(type)
-    silent exe "normal! `[v`]\"_dP"
+    silent exe "normal! `[v`]\\"_dP"
   endfunction
 ]]
 vimp.nnoremap('<C-p>', ':FZF<CR>')
@@ -172,9 +173,9 @@ vimp.nnoremap('<M-e>', '<C-W>=')
 vimp.nnoremap('<C-s>', ':w<CR>')
 vimp.inoremap('<C-s>', '<C-o>:w<CR>')
 -- close buffer
-vimp.nnoremap('<C-q>', ':lclose<bar>b#<bar>bd') #<CR>
+vimp.nnoremap('<C-q>', ':lclose<bar>b#<bar>bd #<CR>')
 -- delete trailing whitespace in file
-vimp.nnoremap('<leader><BS>', ':%s/\s\+$//e<CR>')
+vimp.nnoremap('<leader><BS>', ':%s/\\s\\+$//e<CR>')
 -- format text into columns
 vimp.vnoremap('<leader>t', ':%!column -t<CR>')
 -- view unsaved edits in current buffer

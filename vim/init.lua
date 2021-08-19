@@ -332,3 +332,45 @@ vimp.inoremap({'silent', 'expr'}, '<CR>', 'pumvisible() ? compe#confirm("<CR>") 
 vimp.inoremap({'silent', 'expr'}, '<C-e>', 'compe#close("<C-e>")')
 vimp.inoremap({'expr'}, '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"')
 vimp.inoremap({'expr'}, '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<S-Tab>"')
+
+-- lightline
+LightlineFilename = function()
+  if vim.fn.expand('%') == '' then
+    return '[No name]'
+  end
+  local root = vim.fn.fnamemodify(vim.b.git_dir, ':h')
+  local path = vim.fn.expand('%:p')
+  if path:sub(1, #path) ~= root then
+    return path:sub(#root+2)
+  end
+  return vim.fn.expand('%')
+end
+
+LspStatus = function()
+  if #vim.lsp.buf_get_clients() > 0 then
+    return require'lsp-status'.status()
+  end
+end
+
+vim.g.lightline = {
+  colorscheme = 'tokyonight',
+  active = {
+    left = {
+      { 'mode', 'paste' },
+      { 'gitbranch', 'filename' },
+      { 'readonly', 'modified' }
+    },
+    right = {
+      { 'lineinfo' },
+      { 'lspstatus', 'filetype' }
+    }
+  },
+  component_function = {
+    gitbranch = 'fugitive#head'
+  },
+  component = {
+    filename = "%{luaeval('LightlineFilename()')}", 
+    lspstatus = "%{luaeval('LspStatus()')}",
+    lineinfo = "%{'(' . line('.') . ':' . col('.') .  ')/' . line('$')}"
+  }
+}

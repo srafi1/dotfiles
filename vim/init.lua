@@ -34,9 +34,17 @@ require'packer'.startup(function()
   use 'nvim-treesitter/nvim-treesitter-textobjects'
   use 'romgrk/nvim-treesitter-context'
   use 'nvim-treesitter/playground'
-  use 'norcalli/nvim-colorizer.lua'
+  use { 'norcalli/nvim-colorizer.lua', config = function()
+    require'colorizer'.setup()
+  end}
   use 'itchyny/vim-qfedit'
-  use 'akinsho/nvim-toggleterm.lua'
+  use{ 'akinsho/nvim-toggleterm.lua', config = function()
+    require"toggleterm".setup{
+      size = 10,
+      open_mapping = '<M-t>',
+      persist_size = true,
+    }
+  end}
   use 'neovim/nvim-lspconfig'
   use { 'hrsh7th/nvim-compe', config = function()
     require'compe'.setup {

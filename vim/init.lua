@@ -21,12 +21,17 @@ require'packer'.startup(function()
   use 'tpope/vim-eunuch'
   use 'tpope/vim-rsi'
   use 'chrisbra/unicode.vim'
-  use 'puremourning/vimspector'
+  use { 'puremourning/vimspector', config = function()
+    vim.g.vimspector_enable_mappings = 'HUMAN'
+  end}
   use 'justinmk/vim-dirvish'
   use 'liuchengxu/vista.vim'
   use 'junegunn/fzf.vim'
   use 'stsewd/fzf-checkout.vim'
-  use 'junegunn/vim-easy-align'
+  use{  'junegunn/vim-easy-align', config = function()
+    -- don't ignore strings and comments
+    vim.g.easy_align_ignore_groups = {}
+  end}
   use 'junegunn/goyo.vim'
   use 'junegunn/limelight.vim'
   use 'folke/tokyonight.nvim'
@@ -66,6 +71,7 @@ end)
 
 local vimp = require'vimp'
 
+-- section: general options
 local enable = {
   'termguicolors',
   'relativenumber',
@@ -108,15 +114,13 @@ vim.g.fzf_branch_actions = {
   }
 }
 
+-- section augroups/autocmd
 -- terminal autocmd with fzf
 vim.cmd [[
   au TermOpen * tnoremap <buffer> <Esc><Esc> <C-\><C-n>
   au FileType fzf tunmap <buffer> <Esc><Esc>
   au FileType fzf tnoremap <buffer> <Esc> <C-c>
 ]]
-
--- don't ignore strings and comments with EasyAlign
-vim.g.easy_align_ignore_groups = {}
 
 -- if the directory for a new file doesn't exist, create it
 vim.cmd(([[
@@ -152,10 +156,7 @@ vim.cmd [[
   endfunction
 ]]
 
--- Vimspector function key keybindings
-vim.g.vimspector_enable_mappings = 'HUMAN'
-
--- key mappings
+-- section: key mappings
 vimp.nnoremap({'silent'}, '<esc>', function()
   vim.cmd [[nohlsearch | echo]]
   -- close all floating windows (usually hover) after clearing search
@@ -207,7 +208,7 @@ vimp.nnoremap('<leader><leader>l', ':Goyo<CR>:Limelight!!<CR>')
 -- toggle editor layout
 vimp.nnoremap({'silent'}, '<M-o>', ':Vista!!<CR>')
 
--- LSP
+-- section: lsp
 local lsp_status = require('lsp-status')
 lsp_status.register_progress()
 lsp_status.config({
@@ -232,7 +233,6 @@ local on_attach = function(client, bufnr)
 
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  -- Mappings
   local opts = { 'buffer', 'silent' }
   vimp.nnoremap(opts, 'gd', vim.lsp.buf.definition)
   vimp.nnoremap(opts, 'gr', vim.lsp.buf.references)
@@ -331,7 +331,7 @@ vim.fn.sign_define('LspDiagnosticsSignHint',        { text='~'  })
 vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
 vim.fn.sign_define('LightBulbSign', { text='!', texthl='WarningMsg' })
 
--- completion
+-- section: completion
 vim.o.completeopt = vim.o.completeopt .. ',menuone,noinsert,noselect'
 vim.g.UltiSnipsExpandTrigger = '<NUL>'
 vim.g.snips_author = 'Shakil Rafi'
@@ -341,7 +341,7 @@ vimp.inoremap({'silent', 'expr'}, '<C-e>', 'compe#close("<C-e>")')
 vimp.inoremap({'expr'}, '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"')
 vimp.inoremap({'expr'}, '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<S-Tab>"')
 
--- lightline
+-- section: lightline
 LightlineFilename = function()
   if vim.fn.expand('%') == '' then
     return '[No name]'
@@ -382,6 +382,8 @@ vim.g.lightline = {
     lineinfo = "%{'(' . line('.') . ':' . col('.') .  ')/' . line('$')}"
   }
 }
+
+-- section: treesitter
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "maintained",
   highlight = {

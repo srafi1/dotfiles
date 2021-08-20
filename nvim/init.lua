@@ -74,6 +74,7 @@ local vimp = require'vimp'
 -- section: general options
 local enable = {
   'termguicolors',
+  'number',
   'relativenumber',
   'hidden',
   'wrap',

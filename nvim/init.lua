@@ -140,7 +140,7 @@ vim.g.tex_flavor = 'latex'
 
 -- custom tab config by file extension
 vim.cmd(([[
-  autocmd BufRead,BufNewFile 
+  autocmd BufRead,BufNewFile
     *.html,*.css,*.js,*.jsx,*.ts,*.tsx,*.dart,*.lua
     setlocal tabstop=2 shiftwidth=2
 ]]):gsub('\n', ' '))
@@ -240,7 +240,7 @@ local on_attach = function(client, bufnr)
   vimp.nnoremap(opts, 'K', vim.lsp.buf.hover)
   vimp.inoremap(opts, '<C-p>', vim.lsp.buf.signature_help)
   vimp.nnoremap(opts, 'gy', vim.lsp.buf.type_definition)
-  vimp.nnoremap(opts, '<space>cw', vim.lsp.buf.rename)
+  vimp.nnoremap(opts, '<space>cw', require'rename')
   vimp.nnoremap(opts, '<space>ca', vim.lsp.buf.code_action)
   vimp.vnoremap(opts, '<space>ca', vim.lsp.buf.range_code_action)
   vimp.nnoremap(opts, '<space>e', function()
@@ -296,8 +296,8 @@ local servers = {
   rust_analyzer = {},
 }
 for lsp, config in pairs(servers) do
-  config.on_attach = on_attach 
-  config.capabilities = lsp_status.capabilities 
+  config.on_attach = on_attach
+  config.capabilities = lsp_status.capabilities
   nvim_lsp[lsp].setup(config)
 end
 
@@ -378,7 +378,7 @@ vim.g.lightline = {
     gitbranch = 'fugitive#head'
   },
   component = {
-    filename = "%{luaeval('LightlineFilename()')}", 
+    filename = "%{luaeval('LightlineFilename()')}",
     lspstatus = "%{luaeval('LspStatus()')}",
     lineinfo = "%{'(' . line('.') . ':' . col('.') .  ')/' . line('$')}"
   }

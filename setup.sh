@@ -45,10 +45,8 @@ fi
 
 if [ $neovim_prompt == "y" ]
 then
-    ln -si $(pwd)/vim ~/.vim
-    ln -si $(pwd)/vim ~/.config/nvim 
-    ln -si $(pwd)/vim/vimrc ~/.vimrc
-    nvim +PlugInstall +qa
+    ln -si $(pwd)/nvim ~/.config/nvim 
+    nvim +PackerSync +qa
 fi
 
 if [ $zsh_prompt == "y" ]

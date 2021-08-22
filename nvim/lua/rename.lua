@@ -18,7 +18,10 @@ local popup_opts = {
 return function()
   local input = require'nui.input'(popup_opts, {
     prompt = "> ",
-    on_submit = vim.lsp.buf.rename
+    on_submit = function(val)
+      vim.cmd'normal l'
+      vim.lsp.buf.rename(val)
+    end
   })
   input:mount()
   input:map("i", "<esc>", input.input_props.on_close, { noremap = true })

@@ -1,4 +1,4 @@
--- Install packer
+-- install packer
 local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
 
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
@@ -18,6 +18,7 @@ require'packer'.startup(function()
   use 'tpope/vim-fugitive'
   use 'vimwiki/vimwiki'
   use 'itchyny/lightline.vim'
+  use 'nvim-lua/lsp-status.nvim'
   use {
     'smiteshp/nvim-gps',
     requires = 'nvim-treesitter/nvim-treesitter',
@@ -26,49 +27,62 @@ require'packer'.startup(function()
   use 'tpope/vim-eunuch'
   use 'tpope/vim-rsi'
   use 'chrisbra/unicode.vim'
-  use { 'puremourning/vimspector', config = function()
-    vim.g.vimspector_enable_mappings = 'HUMAN'
-  end}
+  use {
+    'puremourning/vimspector', config = function()
+      vim.g.vimspector_enable_mappings = 'HUMAN'
+    end
+  }
   use 'justinmk/vim-dirvish'
   use 'liuchengxu/vista.vim'
   use 'junegunn/fzf.vim'
   use 'stsewd/fzf-checkout.vim'
-  use{  'junegunn/vim-easy-align', config = function()
-    -- don't ignore strings and comments
-    vim.g.easy_align_ignore_groups = {}
-  end}
+  use {
+    'junegunn/vim-easy-align', config = function()
+      -- don't ignore strings and comments
+      vim.g.easy_align_ignore_groups = {}
+    end
+  }
   use 'junegunn/goyo.vim'
   use 'junegunn/limelight.vim'
   use 'folke/tokyonight.nvim'
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate'
+  }
   use 'nvim-treesitter/nvim-treesitter-textobjects'
   use 'romgrk/nvim-treesitter-context'
   use 'nvim-treesitter/playground'
-  use { 'norcalli/nvim-colorizer.lua', config = function()
-    require'colorizer'.setup()
-  end}
+  use {
+    'norcalli/nvim-colorizer.lua', 
+    config = function() require'nvim-gps'.setup{} end,
+  }
   use 'itchyny/vim-qfedit'
-  use{ 'akinsho/nvim-toggleterm.lua', config = function()
-    require"toggleterm".setup{
-      size = 10,
-      open_mapping = '<M-t>',
-      persist_size = true,
-    }
-  end}
-  use 'neovim/nvim-lspconfig'
-  use { 'hrsh7th/nvim-compe', config = function()
-    require'compe'.setup {
-      source = {
-        nvim_lsp = true,
-        nvim_lua = true,
-        path = true,
-        ultisnips = true,
+  use {
+    'akinsho/nvim-toggleterm.lua',
+    config = function()
+      require"toggleterm".setup{
+        size = 10,
+        open_mapping = '<M-t>',
+        persist_size = true,
       }
-    }
-  end}
+    end
+  }
+  use 'neovim/nvim-lspconfig'
+  use {
+    'hrsh7th/nvim-compe',
+    config = function()
+      require'compe'.setup {
+        source = {
+          nvim_lsp = true,
+          nvim_lua = true,
+          path = true,
+          ultisnips = true,
+        }
+      }
+    end
+  }
   use 'SirVer/ultisnips'
-  use 'nvim-lua/lsp-status.nvim'
-  use { 'RishabhRD/nvim-lsputils', requires = { 'RishabhRD/popfix' } }
+  use { 'RishabhRD/nvim-lsputils', requires = 'RishabhRD/popfix' }
   use 'kosayoda/nvim-lightbulb'
   use 'ray-x/lsp_signature.nvim'
   use 'MunifTanjim/nui.nvim'

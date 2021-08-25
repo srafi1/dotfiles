@@ -76,6 +76,9 @@ end)
 
 local vimp = require'vimp'
 
+-- command for opening config
+vim.cmd [[ command Config e ~/.config/nvim/init.lua ]]
+
 -- section: general options
 local enable = {
   'termguicolors',

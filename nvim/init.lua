@@ -18,6 +18,11 @@ require'packer'.startup(function()
   use 'tpope/vim-fugitive'
   use 'vimwiki/vimwiki'
   use 'itchyny/lightline.vim'
+  use {
+    'smiteshp/nvim-gps',
+    requires = 'nvim-treesitter/nvim-treesitter',
+    config = function() require'nvim-gps'.setup{} end,
+  }
   use 'tpope/vim-eunuch'
   use 'tpope/vim-rsi'
   use 'chrisbra/unicode.vim'
@@ -355,6 +360,15 @@ LightlineFilename = function()
   return vim.fn.expand('%')
 end
 
+LightlineGPS = function()
+  local gps = require'nvim-gps'
+  if gps.is_available() and gps.get_location() ~= '' then
+    return '> ' .. gps.get_location()
+  else
+    return ''
+  end
+end
+
 LspStatus = function()
   if #vim.lsp.buf_get_clients() > 0 then
     return require'lsp-status'.status()
@@ -378,7 +392,7 @@ vim.g.lightline = {
     gitbranch = 'fugitive#head'
   },
   component = {
-    filename = "%{luaeval('LightlineFilename()')}",
+    filename = "%{luaeval('LightlineFilename()')} %{luaeval('LightlineGPS()')}",
     lspstatus = "%{luaeval('LspStatus()')}",
     lineinfo = "%{'(' . line('.') . ':' . col('.') .  ')/' . line('$')}"
   }

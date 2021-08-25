@@ -50,7 +50,6 @@ require'packer'.startup(function()
     run = ':TSUpdate'
   }
   use 'nvim-treesitter/nvim-treesitter-textobjects'
-  use 'romgrk/nvim-treesitter-context'
   use 'nvim-treesitter/playground'
   use {
     'norcalli/nvim-colorizer.lua', 

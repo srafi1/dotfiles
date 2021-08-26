@@ -167,7 +167,6 @@ vim.cmd(([[
 ]]):gsub('\n', ' '))
 vim.cmd [[ autocmd BufRead,BufNewFile *.go setlocal noexpandtab ]]
 
-
 -- break lines and enable spellcheck for document based files
 vim.cmd [[
   autocmd BufRead,BufNewFile *.tex,*.md,*.mdx,*.wiki,*.txt call WritingMode()
@@ -370,10 +369,10 @@ LightlineFilename = function()
   end
   local root = vim.fn.fnamemodify(vim.b.git_dir, ':h')
   local path = vim.fn.expand('%:p')
-  if path:sub(1, #path) ~= root then
+  if path:sub(1, #root) == root then
     return path:sub(#root+2)
   end
-  return vim.fn.expand('%')
+  return vim.fn.expand('%:p:~')
 end
 
 LightlineGPS = function()

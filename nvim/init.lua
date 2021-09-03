@@ -34,6 +34,7 @@ require'packer'.startup(function()
   }
   use 'justinmk/vim-dirvish'
   use 'liuchengxu/vista.vim'
+  use { 'junegunn/fzf', run = './install --bin' }
   use 'junegunn/fzf.vim'
   use 'stsewd/fzf-checkout.vim'
   use {

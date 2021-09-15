@@ -82,7 +82,7 @@ require'packer'.startup(function()
     end
   }
   use 'SirVer/ultisnips'
-  use { 'RishabhRD/nvim-lsputils', requires = 'RishabhRD/popfix' }
+  use { 'RishabhRD/nvim-lsputils', requires = 'RishabhRD/popfix', commit = 'ae2f20d6938bab234815e0bc69dae1a991307b99' }
   use 'kosayoda/nvim-lightbulb'
   use 'ray-x/lsp_signature.nvim'
   use 'MunifTanjim/nui.nvim'

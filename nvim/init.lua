@@ -53,8 +53,8 @@ require'packer'.startup(function()
   use 'nvim-treesitter/nvim-treesitter-textobjects'
   use 'nvim-treesitter/playground'
   use {
-    'norcalli/nvim-colorizer.lua', 
-    config = function() require'nvim-gps'.setup{} end,
+    'norcalli/nvim-colorizer.lua',
+    config = function() require'colorizer'.setup{} end,
   }
   use 'itchyny/vim-qfedit'
   use {

@@ -410,12 +410,13 @@ vim.g.lightline = {
   active = {
     left = {
       { 'mode', 'paste' },
-      { 'gitbranch', 'filename' },
-      { 'readonly', 'modified' }
+      { 'gitbranch' },
+      { 'filename', 'readonly', 'modified' },
     },
     right = {
       { 'lineinfo' },
-      { 'lspstatus', 'filetype' }
+      { 'filetype' },
+      { 'lspstatus' },
     }
   },
   component_function = {

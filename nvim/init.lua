@@ -60,7 +60,7 @@ require'packer'.startup(function()
     'akinsho/nvim-toggleterm.lua',
     config = function()
       require"toggleterm".setup{
-        size = 10,
+        size = 15,
         open_mapping = '<M-t>',
         persist_size = true,
       }
@@ -384,7 +384,7 @@ LightlineFilename = function()
   end
   local root = vim.fn.fnamemodify(vim.b.git_dir, ':h')
   local path = vim.fn.expand('%:p')
-  if path:sub(1, #root) == root then
+  if path:sub(1, #root) == root and path:sub(1, #path-1) ~= root then
     return path:sub(#root+2)
   end
   return vim.fn.expand('%:p:~')

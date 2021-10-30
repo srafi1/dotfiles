@@ -56,12 +56,6 @@
 [experimental]
     per_monitor_dpi = false
 
-[shortcuts]
-    close = ctrl+space
-    close_all = ctrl+shift+space
-    history = ctrl+grave
-    context = ctrl+shift+period
-
 [urgency_low]
     background = "#222222"
     foreground = "#888888"

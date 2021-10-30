@@ -4,12 +4,8 @@
 
 echo "Install Arch packages? [y/n]: "
 read -n 1 -s packages_prompt
-echo "Setup i3? [y/n]: "
-read -n 1 -s i3_prompt
-echo "Setup Polybar? [y/n]: "
-read -n 1 -s polybar_prompt
-echo "Setup GTK? [y/n]: "
-read -n 1 -s gtk_prompt
+echo "Setup desktop? [y/n]: "
+read -n 1 -s desktop_prompt
 echo "Setup Neovim? [y/n]: "
 read -n 1 -s neovim_prompt
 echo "Setup Zsh? [y/n]: "
@@ -24,23 +20,14 @@ then
     yay -S $(cat packages) --needed
 fi
 
-if [ $i3_prompt == "y" ]
+if [ $desktop_prompt == "y" ]
 then
     ln -si $(pwd)/i3 ~/.config/
-    ln -si $(pwd)/Xdefaults ~/.Xdefaults
+    ln -si $(pwd)/polybar ~/.config/
     ln -si $(pwd)/wallpaper.png ~/.config/
-    ln -si $(pwd)/urxvt ~/.urxvt
     ln -si $(pwd)/dunst ~/.config/
-fi
-
-if [ $polybar_prompt == "y" ]
-then
-    ln -si $(pwd)/polybar ~/.config/polybar
-fi
-
-if [ $gtk_prompt == "y" ]
-then
-    ln -si $(pwd)/gtk-3.0 ~/.config/gtk-3.0
+    ln -si $(pwd)/gtk-3.0 ~/.config/
+    ln -si $(pwd)/rofi ~/.config/
 fi
 
 if [ $neovim_prompt == "y" ]

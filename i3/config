@@ -14,7 +14,7 @@ client.unfocused        #333333 #222222 #888888 #292d2e   #222222
 
 # open wallpaper
 exec ~/.fehbg
-exec dunst
+exec exec dunst
 # launch polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # disable terminal bell
@@ -26,16 +26,19 @@ exec light-locker
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec numupdates
 
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec alacritty
 # cd to same place as active terminal
-bindsym $mod+Shift+Return exec urxvt -cd "`xcwd`"
+bindsym $mod+Shift+Return exec alacritty --working-directory "`xcwd`"
 # floating terminal
-bindsym $mod+t exec urxvt -name floating
-for_window [class="URxvt" instance="floating"] floating enable
+bindsym $mod+t exec alacritty --class floating
+for_window [class="Alacritty" instance="floating"] floating enable
 bindsym $mod+b exec google-chrome-stable 
 bindsym $mod+Shift+q kill 
 bindsym $mod+d exec rofi -show run 
 bindsym Print exec deepin-screenshot
+bindsym Control+space exec dunstctl close
+bindsym Control+shift+space exec dunstctl close-all
+bindsym Control+grave exec dunstctl history-pop
 bindsym $mod+Tab focus right
 bindsym $mod+Shift+Tab focus left
 

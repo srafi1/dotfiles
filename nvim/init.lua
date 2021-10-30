@@ -85,12 +85,21 @@ require'packer'.startup(function()
   use 'kosayoda/nvim-lightbulb'
   use 'ray-x/lsp_signature.nvim'
   use 'MunifTanjim/nui.nvim'
+  use {
+    'gelguy/wilder.nvim',
+    config = function()
+      vim.fn['wilder#setup']({modes = {':', '/', '?'}})
+      vim.cmd [[call wilder#set_option('pipeline', [wilder#branch(wilder#cmdline_pipeline({'fuzzy':1}),wilder#search_pipeline({'pattern':wilder#python_fuzzy_pattern(), 'sorter':wilder#python_difflib_sorter(), 'engine': 're'}))])]]
+      vim.cmd [[call wilder#set_option('renderer', wilder#popupmenu_renderer({'highlighter': wilder#basic_highlighter()}))
+      ]]
+    end
+  }
 end)
 
 local vimp = require'vimp'
 
 -- command for opening config
-vim.cmd [[ command Config e ~/.config/nvim/init.lua ]]
+vim.cmd [[ command! Config e ~/.config/nvim/init.lua ]]
 
 -- section: general options
 local enable = {

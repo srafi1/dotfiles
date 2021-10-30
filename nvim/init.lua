@@ -16,7 +16,6 @@ require'packer'.startup(function()
   use 'nelstrom/vim-visual-star-search'
   use 'tomtom/tcomment_vim'
   use 'tpope/vim-fugitive'
-  use 'vimwiki/vimwiki'
   use 'itchyny/lightline.vim'
   use 'nvim-lua/lsp-status.nvim'
   use {
@@ -86,12 +85,21 @@ require'packer'.startup(function()
   use 'kosayoda/nvim-lightbulb'
   use 'ray-x/lsp_signature.nvim'
   use 'MunifTanjim/nui.nvim'
+  use {
+    'gelguy/wilder.nvim',
+    config = function()
+      vim.fn['wilder#setup']({modes = {':', '/', '?'}})
+      vim.cmd [[call wilder#set_option('pipeline', [wilder#branch(wilder#cmdline_pipeline({'fuzzy':1}),wilder#search_pipeline({'pattern':wilder#python_fuzzy_pattern(), 'sorter':wilder#python_difflib_sorter(), 'engine': 're'}))])]]
+      vim.cmd [[call wilder#set_option('renderer', wilder#popupmenu_renderer({'highlighter': wilder#basic_highlighter()}))
+      ]]
+    end
+  }
 end)
 
 local vimp = require'vimp'
 
 -- command for opening config
-vim.cmd [[ command Config e ~/.config/nvim/init.lua ]]
+vim.cmd [[ command! Config e ~/.config/nvim/init.lua ]]
 
 -- section: general options
 local enable = {
@@ -170,7 +178,7 @@ vim.cmd [[ autocmd BufRead,BufNewFile *.go setlocal noexpandtab ]]
 
 -- break lines and enable spellcheck for document based files
 vim.cmd [[
-  autocmd BufRead,BufNewFile *.tex,*.md,*.mdx,*.wiki,*.txt call WritingMode()
+  autocmd BufRead,BufNewFile *.tex,*.md,*.mdx,*.txt call WritingMode()
   function! WritingMode()
     setlocal linebreak spell
     nnoremap <buffer> j gj
@@ -198,7 +206,13 @@ vim.cmd [[
     silent exe "normal! `[v`]\\"_dP"
   endfunction
 ]]
-vimp.nnoremap('<C-p>', ':FZF<CR>')
+vimp.nnoremap('<C-p>', function()
+  if vim.b.git_dir == "" then
+    vim.cmd [[FZF]]
+  else
+    vim.cmd [[GFiles]]
+  end
+end)
 vimp.nnoremap('<C-b>', ':Buffers<CR>')
 vimp.nnoremap('<C-f>', ':BLines<CR>')
 -- reload file
@@ -396,12 +410,13 @@ vim.g.lightline = {
   active = {
     left = {
       { 'mode', 'paste' },
-      { 'gitbranch', 'filename' },
-      { 'readonly', 'modified' }
+      { 'gitbranch' },
+      { 'filename', 'readonly', 'modified' },
     },
     right = {
       { 'lineinfo' },
-      { 'lspstatus', 'filetype' }
+      { 'filetype' },
+      { 'lspstatus' },
     }
   },
   component_function = {

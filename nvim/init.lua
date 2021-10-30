@@ -206,7 +206,13 @@ vim.cmd [[
     silent exe "normal! `[v`]\\"_dP"
   endfunction
 ]]
-vimp.nnoremap('<C-p>', ':FZF<CR>')
+vimp.nnoremap('<C-p>', function()
+  if vim.b.git_dir == "" then
+    vim.cmd [[FZF]]
+  else
+    vim.cmd [[GFiles]]
+  end
+end)
 vimp.nnoremap('<C-b>', ':Buffers<CR>')
 vimp.nnoremap('<C-f>', ':BLines<CR>')
 -- reload file

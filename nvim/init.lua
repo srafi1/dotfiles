@@ -16,7 +16,6 @@ require'packer'.startup(function()
   use 'nelstrom/vim-visual-star-search'
   use 'tomtom/tcomment_vim'
   use 'tpope/vim-fugitive'
-  use 'vimwiki/vimwiki'
   use 'itchyny/lightline.vim'
   use 'nvim-lua/lsp-status.nvim'
   use {
@@ -170,7 +169,7 @@ vim.cmd [[ autocmd BufRead,BufNewFile *.go setlocal noexpandtab ]]
 
 -- break lines and enable spellcheck for document based files
 vim.cmd [[
-  autocmd BufRead,BufNewFile *.tex,*.md,*.mdx,*.wiki,*.txt call WritingMode()
+  autocmd BufRead,BufNewFile *.tex,*.md,*.mdx,*.txt call WritingMode()
   function! WritingMode()
     setlocal linebreak spell
     nnoremap <buffer> j gj

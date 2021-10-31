@@ -378,7 +378,7 @@ vimp.inoremap({'expr'}, '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"')
 vimp.inoremap({'expr'}, '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<S-Tab>"')
 
 -- section: lightline
-LightlineFilename = function()
+BaseFilename = function()
   if vim.fn.expand('%') == '' then
     return '[No name]'
   end
@@ -390,8 +390,7 @@ LightlineFilename = function()
   return vim.fn.expand('%:p:~')
 end
 
-LightlineShortFilename = function()
-  local full_name = LightlineFilename()
+ShortFilename = function(full_name)
   local parts = {}
   local current = ''
   for i = 1, #full_name do
@@ -421,6 +420,14 @@ LightlineShortFilename = function()
     short_name = short_name:sub(1, #short_name-1)
   end
   return short_name
+end
+
+LightlineFilename = function()
+  local full_name = BaseFilename()
+  if #full_name > 50 then
+    return ShortFilename(full_name)
+  end
+  return full_name
 end
 
 LightlineGPS = function()
@@ -456,7 +463,7 @@ vim.g.lightline = {
     gitbranch = 'fugitive#head'
   },
   component = {
-    filename = "%{luaeval('LightlineShortFilename()')} %{luaeval('LightlineGPS()')}",
+    filename = "%{luaeval('LightlineFilename()')} %{luaeval('LightlineGPS()')}",
     lspstatus = "%{luaeval('LspStatus()')}",
     lineinfo = "%{'(' . line('.') . ':' . col('.') .  ')/' . line('$')}"
   }

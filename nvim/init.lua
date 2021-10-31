@@ -390,6 +390,39 @@ LightlineFilename = function()
   return vim.fn.expand('%:p:~')
 end
 
+LightlineShortFilename = function()
+  local full_name = LightlineFilename()
+  local parts = {}
+  local current = ''
+  for i = 1, #full_name do
+    local c = full_name:sub(i, i)
+    if c == '/' then
+      table.insert(parts, current)
+      current = ''
+    else
+      current = current .. c
+    end
+  end
+  local trailing_slash = current == ''
+  if not trailing_slash then
+    table.insert(parts, current)
+  end
+  local short_name = ''
+  for i = 1, #parts do
+    local add
+    if i <= #parts - 2 then
+      add = parts[i]:sub(1,1)
+    else
+      add = parts[i]
+    end
+    short_name = short_name .. add .. '/'
+  end
+  if not trailing_slash then
+    short_name = short_name:sub(1, #short_name-1)
+  end
+  return short_name
+end
+
 LightlineGPS = function()
   local gps = require'nvim-gps'
   if gps.is_available() and gps.get_location() ~= '' then
@@ -423,7 +456,7 @@ vim.g.lightline = {
     gitbranch = 'fugitive#head'
   },
   component = {
-    filename = "%{luaeval('LightlineFilename()')} %{luaeval('LightlineGPS()')}",
+    filename = "%{luaeval('LightlineShortFilename()')} %{luaeval('LightlineGPS()')}",
     lspstatus = "%{luaeval('LspStatus()')}",
     lineinfo = "%{'(' . line('.') . ':' . col('.') .  ')/' . line('$')}"
   }

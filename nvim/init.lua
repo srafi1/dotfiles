@@ -68,32 +68,67 @@ require'packer'.startup(function()
   }
   use 'neovim/nvim-lspconfig'
   use {
-    'hrsh7th/nvim-compe',
+    'hrsh7th/nvim-cmp',
+    requires = {
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-nvim-lua',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-cmdline',
+      'SirVer/ultisnips',
+      'quangnguyen30192/cmp-nvim-ultisnips',
+    },
     config = function()
-      require'compe'.setup {
-        source = {
-          nvim_lsp = true,
-          nvim_lua = true,
-          path = true,
-          ultisnips = true,
-        }
+      vim.g.UltiSnipsExpandTrigger = '<NUL>'
+      vim.g.snips_author = 'Shakil Rafi'
+      vim.o.completeopt = 'menu,menuone,noselect'
+      local cmp = require'cmp'
+      cmp.setup{
+        mapping = {
+          ['<C-space>'] = cmp.mapping.complete(),
+          ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), {'i', 's', 'c'}),
+          ['<S-Tab>'] = cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's', 'c'}),
+          ['<C-e>'] = cmp.mapping.close(),
+          ['<CR>'] = cmp.mapping.confirm{
+            select = true,
+            behavior = cmp.ConfirmBehavior.Replace,
+          },
+          ['<C-d>'] = cmp.mapping.scroll_docs(4),
+          ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+        },
+        sources = {
+          { name = 'nvim_lua' },
+          { name = 'nvim_lsp' },
+          { name = 'path' },
+          { name = 'ultisnips' },
+          { name = 'buffer' },
+        },
+        snippet = {
+          expand = function(args)
+            vim.fn['UltiSnips#Anon'](args.body)
+          end,
+        },
       }
+
+      cmp.setup.cmdline('/', {
+        sources = {
+          { name = 'buffer' }
+        },
+      })
+
+      cmp.setup.cmdline(':', {
+        sources = cmp.config.sources({
+          { name = 'path' }
+        }, {
+            { name = 'cmdline' }
+          })
+      })
     end
   }
-  use 'SirVer/ultisnips'
   use { 'RishabhRD/nvim-lsputils', requires = 'RishabhRD/popfix', commit = 'ae2f20d6938bab234815e0bc69dae1a991307b99' }
   use 'kosayoda/nvim-lightbulb'
   use 'ray-x/lsp_signature.nvim'
   use 'MunifTanjim/nui.nvim'
-  use {
-    'gelguy/wilder.nvim',
-    config = function()
-      vim.fn['wilder#setup']({modes = {':', '/', '?'}})
-      vim.cmd [[call wilder#set_option('pipeline', [wilder#branch(wilder#cmdline_pipeline({'fuzzy':1}),wilder#search_pipeline({'pattern':wilder#python_fuzzy_pattern(), 'sorter':wilder#python_difflib_sorter(), 'engine': 're'}))])]]
-      vim.cmd [[call wilder#set_option('renderer', wilder#popupmenu_renderer({'highlighter': wilder#basic_highlighter()}))
-      ]]
-    end
-  }
 end)
 
 local vimp = require'vimp'
@@ -366,16 +401,6 @@ vim.fn.sign_define('LspDiagnosticsSignHint',        { text='~'  })
 -- lightbulb
 vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
 vim.fn.sign_define('LightBulbSign', { text='!', texthl='WarningMsg' })
-
--- section: completion
-vim.o.completeopt = vim.o.completeopt .. ',menuone,noinsert,noselect'
-vim.g.UltiSnipsExpandTrigger = '<NUL>'
-vim.g.snips_author = 'Shakil Rafi'
-vimp.inoremap({'silent'}, '<C-Space>', vim.fn['compe#complete'])
-vimp.inoremap({'silent', 'expr'}, '<CR>', 'pumvisible() ? compe#confirm("<CR>") : "\\<CR>"')
-vimp.inoremap({'silent', 'expr'}, '<C-e>', 'compe#close("<C-e>")')
-vimp.inoremap({'expr'}, '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"')
-vimp.inoremap({'expr'}, '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<S-Tab>"')
 
 -- section: lightline
 BaseFilename = function()

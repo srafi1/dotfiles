@@ -125,7 +125,7 @@ require'packer'.startup(function()
       })
     end
   }
-  use { 'RishabhRD/nvim-lsputils', requires = 'RishabhRD/popfix', commit = 'ae2f20d6938bab234815e0bc69dae1a991307b99' }
+  use { 'RishabhRD/nvim-lsputils', requires = 'RishabhRD/popfix' }
   use 'kosayoda/nvim-lightbulb'
   use 'ray-x/lsp_signature.nvim'
   use 'MunifTanjim/nui.nvim'
@@ -141,7 +141,6 @@ local enable = {
   'termguicolors',
   'number',
   'relativenumber',
-  'hidden',
   'wrap',
   'cursorline',
   'showmatch',
@@ -232,7 +231,6 @@ vimp.nnoremap({'silent'}, '<esc>', function()
   end
 end)
 vimp.nnoremap('U', ':redo<CR>')
-vimp.nnoremap('Y', 'y$')
 -- paste without overwriting default register
 vimp.vnoremap('<leader>p', '"_dP')
 vimp.nnoremap('<leader>p', ':set opfunc=ReplaceMotion<CR>g@')

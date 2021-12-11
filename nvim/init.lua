@@ -128,7 +128,30 @@ require'packer'.startup(function()
   use { 'RishabhRD/nvim-lsputils', requires = 'RishabhRD/popfix' }
   use 'kosayoda/nvim-lightbulb'
   use 'ray-x/lsp_signature.nvim'
-  use 'MunifTanjim/nui.nvim'
+  use {
+    'stevearc/dressing.nvim',
+    requires = 'MunifTanjim/nui.nvim',
+    config = function ()
+      require'dressing'.setup{
+        input = {
+          anchor = 'NW',
+          relative = 'cursor',
+          row = 1,
+          col = 0,
+        },
+        select = {
+          backend = { 'nui' },
+          nui = {
+            relative = 'cursor',
+            position = { col = 0, row = 1 },
+            border = {
+              style = 'single'
+            },
+          },
+        },
+      }
+    end
+  }
 end)
 
 local vimp = require'vimp'
@@ -308,7 +331,7 @@ local on_attach = function(client, bufnr)
   vimp.nnoremap(opts, 'K', vim.lsp.buf.hover)
   vimp.inoremap(opts, '<C-p>', vim.lsp.buf.signature_help)
   vimp.nnoremap(opts, 'gy', vim.lsp.buf.type_definition)
-  vimp.nnoremap(opts, '<space>cw', require'rename')
+  vimp.nnoremap(opts, '<space>cw', vim.lsp.buf.rename)
   vimp.nnoremap(opts, '<space>ca', vim.lsp.buf.code_action)
   vimp.vnoremap(opts, '<space>ca', vim.lsp.buf.range_code_action)
   vimp.nnoremap(opts, '<space>e', function()

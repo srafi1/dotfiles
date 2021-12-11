@@ -3,6 +3,8 @@
 # toggle connection to paired bluetooth devices (meant for headphones)
 # add "headphones" to the name for the devices using Blueman
 
+rfkill unblock bluetooth
+
 bt_headphones() {
     bluetoothctl paired-devices |
         grep -i headphones |

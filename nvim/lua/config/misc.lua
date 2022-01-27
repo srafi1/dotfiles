@@ -41,6 +41,9 @@ vim.cmd(([[
 ]]):gsub('\n', ' '))
 vim.cmd [[ autocmd BufRead,BufNewFile *.go setlocal noexpandtab ]]
 
+-- go fmt on save
+vim.cmd [[ autocmd BufWritePost *.go silent !go fmt % ]]
+
 -- break lines and enable spellcheck for document based files
 vim.cmd [[
   autocmd BufRead,BufNewFile *.tex,*.md,*.mdx,*.txt call WritingMode()

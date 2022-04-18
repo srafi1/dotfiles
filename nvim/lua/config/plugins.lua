@@ -16,6 +16,7 @@ require'packer'.startup(function()
   use 'nelstrom/vim-visual-star-search'
   use 'tomtom/tcomment_vim'
   use 'tpope/vim-fugitive'
+  use 'tpope/vim-rhubarb'
   use 'itchyny/lightline.vim'
   use 'nvim-lua/lsp-status.nvim'
   use 'tpope/vim-eunuch'
@@ -92,8 +93,6 @@ require'packer'.startup(function()
         input = {
           anchor = 'NW',
           relative = 'cursor',
-          row = 1,
-          col = 0,
         },
         select = {
           backend = { 'nui' },

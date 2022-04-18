@@ -29,3 +29,4 @@ vim.o.signcolumn = 'yes'
 vim.o.shell = '/usr/bin/zsh'
 vim.o.shortmess = vim.o.shortmess .. 'c'
 vim.o.wildignore =  vim.o.wildignore .. '.git,node_modules'
+vim.o.laststatus = 3

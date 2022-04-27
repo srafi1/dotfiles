@@ -33,6 +33,10 @@ require'packer'.startup(function()
   use 'junegunn/fzf.vim'
   use 'stsewd/fzf-checkout.vim'
   use {
+    'ojroques/nvim-lspfuzzy',
+    config = function() require'lspfuzzy'.setup{} end,
+  }
+  use {
     'junegunn/vim-easy-align', config = function()
       -- don't ignore strings and comments
       vim.g.easy_align_ignore_groups = {}
@@ -82,7 +86,6 @@ require'packer'.startup(function()
     },
     config = require'config/nvim-cmp'.setup,
   }
-  use { 'RishabhRD/nvim-lsputils', requires = 'RishabhRD/popfix' }
   use 'kosayoda/nvim-lightbulb'
   use 'ray-x/lsp_signature.nvim'
   use {

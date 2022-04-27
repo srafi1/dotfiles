@@ -25,21 +25,23 @@ local on_attach = function(client, bufnr)
 
   local opts = { 'buffer', 'silent' }
   vimp.nnoremap(opts, 'gd', vim.lsp.buf.definition)
+  vimp.nnoremap(opts, 'gD', vim.lsp.buf.declaration)
+  vimp.nnoremap(opts, 'gm', vim.lsp.buf.implementation)
   vimp.nnoremap(opts, 'gr', vim.lsp.buf.references)
   vimp.nnoremap(opts, 'K', vim.lsp.buf.hover)
-  vimp.inoremap(opts, '<C-p>', vim.lsp.buf.signature_help)
+  -- vimp.inoremap(opts, '<C-p>', vim.lsp.buf.signature_help)
   vimp.nnoremap(opts, 'gy', vim.lsp.buf.type_definition)
   vimp.nnoremap(opts, '<space>cw', vim.lsp.buf.rename)
   vimp.nnoremap(opts, '<space>ca', vim.lsp.buf.code_action)
   vimp.vnoremap(opts, '<space>ca', vim.lsp.buf.range_code_action)
   vimp.nnoremap(opts, '<space>e', function()
-    vim.lsp.diagnostic.show_line_diagnostics({border = "single"})
+    vim.diagnostic.open_float({border = "single"})
   end)
   vimp.nnoremap(opts, '[e', function()
-    vim.lsp.diagnostic.goto_prev({enable_popup = false})
+    vim.diagnostic.goto_prev({enable_popup = false})
   end)
   vimp.nnoremap(opts, ']e', function()
-    vim.lsp.diagnostic.goto_next({enable_popup = false})
+    vim.diagnostic.goto_next({enable_popup = false})
   end)
   vimp.nnoremap(opts, '<space>f', vim.lsp.buf.formatting)
 
@@ -49,16 +51,6 @@ end
 
 -- add borders to popups
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
-
--- lsputil handlers
-vim.lsp.handlers['textDocument/codeAction'] = require'lsputil.codeAction'.code_action_handler
-vim.lsp.handlers['textDocument/references'] = require'lsputil.locations'.references_handler
-vim.lsp.handlers['textDocument/definition'] = require'lsputil.locations'.definition_handler
-vim.lsp.handlers['textDocument/declaration'] = require'lsputil.locations'.declaration_handler
-vim.lsp.handlers['textDocument/typeDefinition'] = require'lsputil.locations'.typeDefinition_handler
-vim.lsp.handlers['textDocument/implementation'] = require'lsputil.locations'.implementation_handler
-vim.lsp.handlers['textDocument/documentSymbol'] = require'lsputil.symbols'.document_handler
-vim.lsp.handlers['workspace/symbol'] = require'lsputil.symbols'.workspace_handler
 
 -- diagnostics
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(

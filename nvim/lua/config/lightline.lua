@@ -44,7 +44,7 @@ end
 
 LightlineFilename = function()
   local full_name = BaseFilename()
-  if #full_name > 50 then
+  if #full_name > 70 then
     return ShortFilename(full_name)
   end
   return full_name

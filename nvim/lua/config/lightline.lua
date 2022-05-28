@@ -80,7 +80,7 @@ vim.g.lightline = {
     }
   },
   component_function = {
-    gitbranch = 'fugitive#head'
+    gitbranch = 'FugitiveHead'
   },
   component = {
     filename = "%{luaeval('LightlineFilename()')} %{luaeval('LightlineGPS()')}",

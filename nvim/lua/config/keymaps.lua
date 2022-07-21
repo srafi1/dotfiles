@@ -57,10 +57,10 @@ vimp.nnoremap('<leader><BS>', ':%s/\\s\\+$//e<CR>')
 vimp.vnoremap('<leader>t', ':%!column -t<CR>')
 
 -- navigate quickfix list
-vimp.nnoremap('gn', ':cn<CR>')
-vimp.nnoremap('gN', ':cnf<CR>')
-vimp.nnoremap('gp', ':cp<CR>')
-vimp.nnoremap('gP', ':cpf<CR>')
+vimp.nnoremap(']q', ':cn<CR>')
+vimp.nnoremap(']Q', ':cnf<CR>')
+vimp.nnoremap('[q', ':cp<CR>')
+vimp.nnoremap('[Q', ':cpf<CR>')
 
 -- goyo and limelight for writing
 vimp.nnoremap('<leader><leader>l', ':Goyo<CR>:Limelight!!<CR>')

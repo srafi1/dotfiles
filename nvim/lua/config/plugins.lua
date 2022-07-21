@@ -45,10 +45,7 @@ require'packer'.startup(function()
   use 'junegunn/goyo.vim'
   use 'junegunn/limelight.vim'
   use 'folke/tokyonight.nvim'
-  use {
-    'smiteshp/nvim-gps',
-    config = function() require'nvim-gps'.setup{} end,
-  }
+  use 'smiteshp/nvim-navic'
   use {
     'nvim-treesitter/nvim-treesitter',
     requires = {

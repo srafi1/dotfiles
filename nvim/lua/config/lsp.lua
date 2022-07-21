@@ -20,6 +20,7 @@ local on_attach = function(client, bufnr)
     hint_enable = false,
     hi_parameter = 'IncSearch',
   }
+  require'nvim-navic'.attach(client, bufnr)
 
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 

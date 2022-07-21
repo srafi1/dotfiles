@@ -50,10 +50,10 @@ LightlineFilename = function()
   return full_name
 end
 
-LightlineGPS = function()
-  local gps = require'nvim-gps'
-  if gps.is_available() and gps.get_location() ~= '' then
-    return '> ' .. gps.get_location()
+GetLocation = function()
+  local navic = require'nvim-navic'
+  if navic.is_available() and navic.get_location() ~= '' then
+    return '> ' .. navic.get_location()
   else
     return ''
   end
@@ -83,7 +83,7 @@ vim.g.lightline = {
     gitbranch = 'FugitiveHead'
   },
   component = {
-    filename = "%{luaeval('LightlineFilename()')} %{luaeval('LightlineGPS()')}",
+    filename = "%{luaeval('LightlineFilename()')} %{luaeval('GetLocation()')}",
     lspstatus = "%{luaeval('LspStatus()')}",
     lineinfo = "%{'(' . line('.') . ':' . col('.') .  ')/' . line('$')}"
   }

@@ -34,7 +34,22 @@ require'packer'.startup(function()
   use 'stsewd/fzf-checkout.vim'
   use {
     'ojroques/nvim-lspfuzzy',
-    config = function() require'lspfuzzy'.setup{} end,
+    config = function()
+      require'lspfuzzy'.setup({
+        fzf_action = {
+          ['ctrl-q'] = function(lines)
+            local entries = {}
+            for _, line in ipairs(lines) do
+              local filename, lnum, col = line:match('(.*):([0-9]+):([0-9]+)')
+              table.insert(entries, {filename = filename, lnum = lnum, col = col, text = line})
+            end
+            vim.fn.setqflist(entries)
+            vim.cmd[[copen]]
+            vim.cmd[[cc]]
+          end,
+        }
+      })
+    end,
   }
   use {
     'junegunn/vim-easy-align', config = function()

@@ -67,3 +67,6 @@ vimp.nnoremap('<leader><leader>l', ':Goyo<CR>:Limelight!!<CR>')
 
 -- toggle editor layout
 vimp.nnoremap({'silent'}, '<M-o>', ':Vista!!<CR>')
+
+-- copy the github link at the current line
+vimp.nnoremap('gl', ':.GBrowse!<CR>')

@@ -44,7 +44,18 @@ require'packer'.startup(function()
   }
   use 'junegunn/goyo.vim'
   use 'junegunn/limelight.vim'
-  use 'folke/tokyonight.nvim'
+  use {
+    'folke/tokyonight.nvim',
+    config = function ()
+      require('tokyonight').setup({
+        style = 'moon',
+        on_colors = function(colors)
+          colors.border = '#a9b1d6'
+        end
+      })
+      vim.cmd[[colorscheme tokyonight]]
+    end
+  }
   use 'smiteshp/nvim-navic'
   use {
     'nvim-treesitter/nvim-treesitter',

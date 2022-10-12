@@ -15,9 +15,6 @@ for _, opt in ipairs(enable) do
   vim.o[opt] = true
 end
 
-vim.g.tokyonight_style = 'night'
-vim.g.tokyonight_colors = {border = '#a9b1d6', comment = '#848cb4'}
-vim.cmd [[colorscheme tokyonight]]
 vim.g.mapleader = ' '
 vim.o.history = 100
 vim.o.tabstop = 4

@@ -42,7 +42,7 @@ vim.cmd(([[
 vim.cmd [[ autocmd BufRead,BufNewFile *.go setlocal noexpandtab ]]
 
 -- go fmt on save
-vim.cmd [[ autocmd BufWritePost *.go silent !go fmt % ]]
+vim.cmd [[ autocmd BufWritePost *.go silent lua vim.lsp.buf.format() vim.cmd'w' ]]
 
 -- break lines and enable spellcheck for document based files
 vim.cmd [[

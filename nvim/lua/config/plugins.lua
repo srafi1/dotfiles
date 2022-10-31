@@ -19,6 +19,16 @@ require'packer'.startup(function()
   use 'tpope/vim-rhubarb'
   use 'itchyny/lightline.vim'
   use 'nvim-lua/lsp-status.nvim'
+  use {
+    'b0o/incline.nvim',
+    config = function()
+      require('incline').setup({
+        window = {
+          padding_char = "|"
+        }
+      })
+    end
+  }
   use 'tpope/vim-eunuch'
   use 'tpope/vim-rsi'
   use 'chrisbra/unicode.vim'

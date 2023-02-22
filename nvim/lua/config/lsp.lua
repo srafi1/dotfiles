@@ -34,7 +34,7 @@ local on_attach = function(client, bufnr)
   vimp.nnoremap(opts, 'gy', vim.lsp.buf.type_definition)
   vimp.nnoremap(opts, '<space>cw', vim.lsp.buf.rename)
   vimp.nnoremap(opts, '<space>ca', vim.lsp.buf.code_action)
-  vimp.vnoremap(opts, '<space>ca', vim.lsp.buf.range_code_action)
+  vimp.vnoremap(opts, '<space>ca', vim.lsp.buf.code_action)
   vimp.nnoremap(opts, '<space>e', function()
     vim.diagnostic.open_float({border = "single"})
   end)
@@ -46,7 +46,7 @@ local on_attach = function(client, bufnr)
   end)
   vimp.nnoremap(opts, '<space>f', vim.lsp.buf.formatting)
 
-  vim.cmd [[autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()]]
+  vim.cmd [[autocmd CursorMoved <buffer> lua vim.lsp.buf.document_highlight()]]
   vim.cmd [[autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()]]
 end
 

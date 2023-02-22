@@ -40,7 +40,25 @@ require'packer'.startup(function()
   use 'justinmk/vim-dirvish'
   use 'liuchengxu/vista.vim'
   use { 'junegunn/fzf', run = './install --bin' }
-  use 'junegunn/fzf.vim'
+  use {
+    'junegunn/fzf.vim', config = function()
+      vim.g.fzf_colors = {
+        fg =      {'fg', 'Normal'},
+        bg =      {'bg', 'Normal'},
+        hl =      {'fg', 'Comment'},
+        info =    {'fg', 'PreProc'},
+        border =  {'fg', 'Ignore'},
+        prompt =  {'fg', 'Conditional'},
+        pointer = {'fg', 'Exception'},
+        marker =  {'fg', 'Keyword'},
+        spinner = {'fg', 'Label'},
+        header =  {'fg', 'Comment'},
+      }
+      vim.g.fzf_colors['fg+'] = {'fg', 'CursorLine', 'CursorColumn', 'Normal'}
+      vim.g.fzf_colors['bg+'] = {'bg', 'CursorLine', 'CursorColumn'}
+      vim.g.fzf_colors['hl+'] = {'fg', 'Statement'}
+    end
+  }
   use 'stsewd/fzf-checkout.vim'
   use {
     'ojroques/nvim-lspfuzzy',

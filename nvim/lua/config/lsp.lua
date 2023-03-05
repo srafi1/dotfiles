@@ -89,7 +89,7 @@ local servers = {
       }
     }
   },
-  sumneko_lua = {
+  lua_ls = {
     cmd = {'lua-language-server'},
     settings = {
       Lua = {

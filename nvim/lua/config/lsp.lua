@@ -50,8 +50,14 @@ local on_attach = function(client, bufnr)
   vim.cmd [[autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()]]
 end
 
--- add borders to popups
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
+-- add borders to hover and limit width
+local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+  opts = opts or {}
+  opts.border = opts.border or 'single'
+  opts.max_width= opts.max_width or 100
+  return orig_util_open_floating_preview(contents, syntax, opts, ...)
+end
 
 -- diagnostics
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(

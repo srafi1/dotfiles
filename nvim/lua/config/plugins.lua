@@ -8,7 +8,6 @@ end
 local use = require'packer'.use
 require'packer'.startup(function()
   use 'wbthomason/packer.nvim'
-  use 'svermeulen/vimpeccable'
   use 'michaeljsmith/vim-indent-object'
   use 'tpope/vim-surround'
   use 'tpope/vim-repeat'

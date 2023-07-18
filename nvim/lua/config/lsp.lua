@@ -12,7 +12,6 @@ lsp_status.config({
 })
 
 local nvim_lsp = require('lspconfig')
-local vimp = require'vimp'
 
 local on_attach = function(client, bufnr)
   lsp_status.on_attach(client)
@@ -24,27 +23,27 @@ local on_attach = function(client, bufnr)
 
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  local opts = { 'buffer', 'silent' }
-  vimp.nnoremap(opts, 'gd', vim.lsp.buf.definition)
-  vimp.nnoremap(opts, 'gD', vim.lsp.buf.declaration)
-  vimp.nnoremap(opts, 'gm', vim.lsp.buf.implementation)
-  vimp.nnoremap(opts, 'gr', vim.lsp.buf.references)
-  vimp.nnoremap(opts, 'K', vim.lsp.buf.hover)
+  local opts = { buffer = true, silent = true }
+  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+  vim.keymap.set('n', 'gm', vim.lsp.buf.implementation, opts)
+  vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+  vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
   -- vimp.inoremap(opts, '<C-p>', vim.lsp.buf.signature_help)
-  vimp.nnoremap(opts, 'gy', vim.lsp.buf.type_definition)
-  vimp.nnoremap(opts, '<space>cw', vim.lsp.buf.rename)
-  vimp.nnoremap(opts, '<space>ca', vim.lsp.buf.code_action)
-  vimp.vnoremap(opts, '<space>ca', vim.lsp.buf.code_action)
-  vimp.nnoremap(opts, '<space>e', function()
+  vim.keymap.set('n', 'gy', vim.lsp.buf.type_definition, opts)
+  vim.keymap.set('n', '<space>cw', vim.lsp.buf.rename, opts)
+  vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, opts)
+  vim.keymap.set('v', '<space>ca', vim.lsp.buf.code_action, opts)
+  vim.keymap.set('n', '<space>e', function()
     vim.diagnostic.open_float({border = "single"})
-  end)
-  vimp.nnoremap(opts, '[e', function()
+  end, opts)
+  vim.keymap.set('n', '[e', function()
     vim.diagnostic.goto_prev({enable_popup = false})
-  end)
-  vimp.nnoremap(opts, ']e', function()
+  end, opts)
+  vim.keymap.set('n', ']e', function()
     vim.diagnostic.goto_next({enable_popup = false})
-  end)
-  vimp.nnoremap(opts, '<space>f', vim.lsp.buf.formatting)
+  end, opts)
+  vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, opts)
 
   vim.cmd [[autocmd CursorMoved <buffer> lua vim.lsp.buf.document_highlight()]]
   vim.cmd [[autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()]]

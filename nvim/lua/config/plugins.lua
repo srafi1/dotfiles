@@ -136,7 +136,15 @@ require'packer'.startup(function()
     },
     config = require'config/nvim-cmp'.setup,
   }
-  use 'kosayoda/nvim-lightbulb'
+  use {
+    'kosayoda/nvim-lightbulb',
+    config = function()
+      require'nvim-lightbulb'.setup({
+        sign = { enabled = true, text = '!', hl = 'DiagnosticSignWarn' },
+        autocmd = { enabled = true },
+      })
+    end
+  }
   use 'ray-x/lsp_signature.nvim'
   use {
     'stevearc/dressing.nvim',

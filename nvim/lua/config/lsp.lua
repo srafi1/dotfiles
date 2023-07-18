@@ -71,10 +71,6 @@ vim.fn.sign_define('LspDiagnosticsSignError',       { text='>>' })
 vim.fn.sign_define('LspDiagnosticsSignInformation', { text='?'  })
 vim.fn.sign_define('LspDiagnosticsSignHint',        { text='~'  })
 
--- lightbulb
-vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
-vim.fn.sign_define('LightBulbSign', { text='!', texthl='WarningMsg' })
-
 -- individual server config
 -- remember to add installation instructions for new servers to ./lsp-install.sh
 local servers = {

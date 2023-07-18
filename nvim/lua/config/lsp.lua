@@ -23,6 +23,14 @@ local on_attach = function(client, bufnr)
 
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
+  vim.api.nvim_create_autocmd('CursorMoved', {
+    buffer = bufnr,
+    callback = function()
+      vim.lsp.buf.clear_references()
+      vim.lsp.buf.document_highlight()
+    end
+  })
+
   local opts = { buffer = true, silent = true }
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
@@ -44,9 +52,6 @@ local on_attach = function(client, bufnr)
     vim.diagnostic.goto_next({enable_popup = false})
   end, opts)
   vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, opts)
-
-  vim.cmd [[autocmd CursorMoved <buffer> lua vim.lsp.buf.document_highlight()]]
-  vim.cmd [[autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()]]
 end
 
 -- add borders to hover and limit width

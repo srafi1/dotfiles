@@ -160,10 +160,9 @@ require'packer'.startup(function()
   use {
     'stevearc/dressing.nvim',
     requires = 'MunifTanjim/nui.nvim',
-    config = function ()
+    config = function()
       require'dressing'.setup{
         input = {
-          anchor = 'NW',
           relative = 'cursor',
         },
         select = {

@@ -53,3 +53,5 @@ vim.cmd [[
     nnoremap <buffer> k gk
   endfunction
 ]]
+
+vim.cmd [[ autocmd User FugitiveChanged :LspRestart ]]

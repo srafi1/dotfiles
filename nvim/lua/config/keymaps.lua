@@ -71,3 +71,5 @@ vim.keymap.set('n', 'gl', ':.GBrowse!<CR>')
 -- open oil
 vim.keymap.set("n", "-", ":Oil<CR>")
 
+-- revJ
+vim.keymap.set('n', '<leader>j', function() require('trevj').format_at_cursor() end)

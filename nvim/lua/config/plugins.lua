@@ -36,7 +36,18 @@ require'packer'.startup(function()
       vim.g.vimspector_enable_mappings = 'HUMAN'
     end
   }
-  use 'justinmk/vim-dirvish'
+  use {
+    'stevearc/oil.nvim',
+    requires = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      require('oil').setup({
+        use_default_keymaps = true,
+        keymaps = {
+          ["gq"] = "actions.close",
+        },
+      })
+    end
+  }
   use 'liuchengxu/vista.vim'
   use { 'junegunn/fzf', run = './install --bin' }
   use {

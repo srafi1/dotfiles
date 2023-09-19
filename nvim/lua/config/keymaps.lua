@@ -68,3 +68,6 @@ vim.keymap.set('n', '<M-o>', ':Vista!!<CR>', {silent = true})
 
 -- copy the github link at the current line
 vim.keymap.set('n', 'gl', ':.GBrowse!<CR>')
+-- open oil
+vim.keymap.set("n", "-", ":Oil<CR>")
+

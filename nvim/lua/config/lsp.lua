@@ -1,20 +1,6 @@
-local lsp_status = require('lsp-status')
-lsp_status.register_progress()
-lsp_status.config({
-  current_function = false,
-  status_symbol = '',
-  indicator_errors = 'E',
-  indicator_warnings = 'W',
-  indicator_info = 'I',
-  indicator_hint = 'H',
-  indicator_ok = 'LSP',
-  spinner_frames = { '⣾', '⣽', '⣻', '⢿', '⡿', '⣟', '⣯', '⣷' },
-})
-
 local nvim_lsp = require('lspconfig')
 
 local on_attach = function(client, bufnr)
-  lsp_status.on_attach(client)
   require'lsp_signature'.on_attach{
     hint_enable = false,
     hi_parameter = 'IncSearch',
@@ -115,6 +101,5 @@ local servers = {
 }
 for lsp, config in pairs(servers) do
   config.on_attach = on_attach
-  config.capabilities = lsp_status.capabilities
   nvim_lsp[lsp].setup(config)
 end

@@ -17,7 +17,15 @@ require'packer'.startup(function()
   use 'tpope/vim-fugitive'
   use 'tpope/vim-rhubarb'
   use 'itchyny/lightline.vim'
-  use 'nvim-lua/lsp-status.nvim'
+  use {
+    'j-hui/fidget.nvim',
+    tag = 'legacy',
+    config = function()
+      require("fidget").setup {
+        -- options
+      }
+    end,
+  }
   use {
     'b0o/incline.nvim',
     config = function()

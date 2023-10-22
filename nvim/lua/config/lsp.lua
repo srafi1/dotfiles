@@ -46,6 +46,7 @@ function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
   opts = opts or {}
   opts.border = opts.border or 'single'
   opts.max_width= opts.max_width or 100
+  vim.schedule(function() vim.fn['lightline#update']() end) -- fix lightline on hover
   return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end
 

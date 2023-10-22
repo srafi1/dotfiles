@@ -21,9 +21,7 @@ require'packer'.startup(function()
     'j-hui/fidget.nvim',
     tag = 'legacy',
     config = function()
-      require("fidget").setup {
-        -- options
-      }
+      require("fidget").setup{}
     end,
   }
   use {
@@ -110,6 +108,7 @@ require'packer'.startup(function()
     config = function ()
       require('tokyonight').setup({
         style = 'moon',
+        dim_inactive = 'true',
         on_colors = function(colors)
           colors.border = '#a9b1d6'
         end
@@ -190,6 +189,14 @@ require'packer'.startup(function()
     'AckslD/nvim-trevJ.lua',
     config = function()
       require'trevj'.setup{}
+    end,
+  }
+  use {
+    'karb94/neoscroll.nvim',
+    config = function()
+      require('neoscroll').setup{
+        mappings = {'<C-u>', '<C-d>'},
+      }
     end,
   }
 end)

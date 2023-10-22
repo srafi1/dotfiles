@@ -2,7 +2,8 @@ vim.keymap.set('n', '<esc>', function()
   vim.cmd [[nohlsearch | echo]]
   -- close all floating windows (usually hover) after clearing search
   for _, win in ipairs(vim.api.nvim_list_wins()) do
-    if vim.api.nvim_win_get_config(win).relative ~= "" then
+    local cfg = vim.api.nvim_win_get_config(win)
+    if cfg.relative ~= "" and cfg.focusable then
       vim.api.nvim_win_close(win, false)
     end
   end

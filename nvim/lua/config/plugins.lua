@@ -19,7 +19,6 @@ require'packer'.startup(function()
   use 'itchyny/lightline.vim'
   use {
     'j-hui/fidget.nvim',
-    tag = 'legacy',
     config = function()
       require("fidget").setup{}
     end,

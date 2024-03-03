@@ -60,8 +60,15 @@ GetLocation = function()
 end
 
 LspStatus = function()
-  local parts = require'fidget'.get_fidgets()
-  return '[' .. vim.fn.join(parts, ',') .. ']'
+  local clients = vim.lsp.get_active_clients()
+  local bufnr = vim.api.nvim_get_current_buf()
+  local attached_clients = {}
+  for _, client in ipairs(clients) do
+    if client.attached_buffers[bufnr] then
+      table.insert(attached_clients, client.name)
+    end
+  end
+  return '[' .. vim.fn.join(attached_clients, ',') .. ']'
 end
 
 vim.g.lightline = {

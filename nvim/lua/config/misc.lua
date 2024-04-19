@@ -36,10 +36,10 @@ vim.g.tex_flavor = 'latex'
 -- custom tab config by file extension
 vim.cmd(([[
   autocmd BufRead,BufNewFile
-    *.html,*.css,*.js,*.jsx,*.ts,*.tsx,*.dart,*.lua
+    *.html,*.css,*.js,*.jsx,*.ts,*.tsx,*.dart,*.lua,*.proto
     setlocal tabstop=2 shiftwidth=2
 ]]):gsub('\n', ' '))
-vim.cmd [[ autocmd BufRead,BufNewFile *.go setlocal noexpandtab ]]
+vim.cmd [[ autocmd BufRead,BufNewFile *.go,*.cue setlocal noexpandtab ]]
 
 -- go fmt on save
 vim.cmd [[ autocmd BufWritePost *.go silent lua vim.lsp.buf.format() vim.cmd'w' ]]
@@ -54,4 +54,4 @@ vim.cmd [[
   endfunction
 ]]
 
-vim.cmd [[ autocmd User FugitiveChanged :LspRestart ]]
+-- vim.cmd [[ autocmd User FugitiveChanged :LspRestart ]]

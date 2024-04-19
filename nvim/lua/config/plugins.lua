@@ -190,12 +190,4 @@ require'packer'.startup(function()
       require'trevj'.setup{}
     end,
   }
-  use {
-    'karb94/neoscroll.nvim',
-    config = function()
-      require('neoscroll').setup{
-        mappings = {'<C-u>', '<C-d>'},
-      }
-    end,
-  }
 end)

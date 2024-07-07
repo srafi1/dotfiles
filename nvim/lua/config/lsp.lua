@@ -99,6 +99,7 @@ local servers = {
     },
   },
   rust_analyzer = {},
+  dartls = {},
 }
 for lsp, config in pairs(servers) do
   config.on_attach = on_attach

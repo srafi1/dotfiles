@@ -37,7 +37,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', ']e', function()
     vim.diagnostic.goto_next({enable_popup = false})
   end, opts)
-  vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, opts)
+  vim.keymap.set('n', '<space>f', vim.lsp.buf.format, opts)
 end
 
 -- add borders to hover and limit width
@@ -69,7 +69,7 @@ local servers = {
   pyright = {},
   ccls = {},
   texlab = {},
-  tsserver = {},
+  ts_ls = {},
   bashls = {},
   cssls = {},
   dockerls = {},

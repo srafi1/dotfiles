@@ -118,11 +118,12 @@ require'packer'.startup(function()
   use 'smiteshp/nvim-navic'
   use {
     'nvim-treesitter/nvim-treesitter',
-    requires = {
-      'nvim-treesitter/nvim-treesitter-textobjects',
-      'nvim-treesitter/playground',
-    },
+    branch = 'main',
     run = ':TSUpdate',
+  }
+  use {
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    branch = 'main',
   }
   use {
     'norcalli/nvim-colorizer.lua',
